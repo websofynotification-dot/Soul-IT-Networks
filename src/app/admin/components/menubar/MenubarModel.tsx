@@ -1,0 +1,237 @@
+"use client";
+import { useState } from "react";
+import Label from "../form/Label";
+import Tooltip from "../common/Tooltip";
+import { LiaCheckCircle } from "react-icons/lia";
+import { FiLoader, FiMinus } from "react-icons/fi";
+import { RxCross2 } from "react-icons/rx";
+import { GiCancel } from "react-icons/gi";
+import { IoIosAdd } from "react-icons/io";
+
+export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
+    const [tooltip, setTooltip] = useState<any>(null);
+    const [loading, setLoading] = useState(false);
+
+    const [form, setForm] = useState(
+        initialData || {
+            primaryMenu: "",
+            href: "",
+            subMenu: false,
+            secondaryMenu: [{ label: "", href: "" }],
+        }
+    );
+
+    const showTooltip = (message: string, type: any = "info") => {
+        setTooltip({ message, type });
+        setTimeout(() => setTooltip(null), 3000);
+    };
+
+    const handleChange = (e: any) =>
+        setForm({ ...form, [e.target.name]: e.target.value });
+
+    const handleSubmit = () => {
+        setLoading(true);
+
+        if (!form.primaryMenu) {
+            showTooltip("Primary menu is required!", "error");
+            setLoading(false);
+            return;
+        }
+
+        if (!form.subMenu && !form.href) {
+            showTooltip("URL is required for primary menu!", "error");
+            setLoading(false);
+            return;
+        }
+
+        if (
+            form.subMenu &&
+            form.secondaryMenu.some(
+                (item: any) => !item.label || !item.href
+            )
+        ) {
+            showTooltip("Fill all submenu fields!", "error");
+            setLoading(false);
+            return;
+        }
+
+        onSave(form);
+    };
+
+
+    const addSubMenuField = () => {
+        setForm({
+            ...form,
+            secondaryMenu: [...form.secondaryMenu, { label: "", href: "" }],
+        });
+    };
+
+    const removeSubMenuField = (index: number) => {
+        const updated = form.secondaryMenu.filter((_: any, i: number) => i !== index);
+        setForm({ ...form, secondaryMenu: updated });
+    };
+
+    return (
+        <div
+            className="fixed inset-0 bg-black/60 flex items-center justify-center z-[9999]"
+            onClick={onClose}
+        >
+            {tooltip && <Tooltip message={tooltip.message} type={tooltip.type} />}
+
+            <div
+                className={`bg-white p-6 rounded-lg w-[95%] ${mode === "delete" ? "max-w-[500px]" : "max-w-[800px]"}  max-h-[90vh] shadow-lg overflow-y-auto `}
+                onClick={(e) => e.stopPropagation()}
+            >
+                {/* Header */}
+                <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-xl">
+                        {mode === "edit" ? "Update" : mode === "delete" ? "Delete" : "Add"} Menu
+                    </h2>
+
+                    <button
+                        onClick={onClose}
+                        className="h-9 w-9 flex items-center justify-center rounded-full bg-primary/20 text-primary"
+                    >
+                        <RxCross2 size={20} />
+                    </button>
+                </div>
+
+                {mode === "delete" ? (
+                    <p>Are you sure want to delete this menu?</p>
+                ) : <>
+                    <div className="space-y-4">
+                        <div>
+                            <Label>Primary Menu</Label>
+                            <input
+                                name="primaryMenu"
+                                placeholder="Label"
+                                value={form.primaryMenu}
+                                onChange={handleChange}
+                                className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                            />
+                        </div>
+
+                        <div>
+                            <Label>Menu Type</Label>
+                            <div className="flex gap-4 mt-2">
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input
+                                        type="radio"
+                                        checked={!form.subMenu}
+                                        onChange={() =>
+                                            setForm((prev: any) => ({
+                                                ...prev,
+                                                subMenu: false,
+                                            }))
+                                        }
+                                    />
+                                    Primary
+                                </label>
+
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input
+                                        type="radio"
+                                        checked={form.subMenu}
+                                        onChange={() =>
+                                            setForm((prev: any) => ({
+                                                ...prev,
+                                                subMenu: true,
+                                                href: "",
+                                            }))
+                                        }
+                                    />
+                                    Submenu
+                                </label>
+                            </div>
+                        </div>
+
+                        {!form.subMenu && (
+                            <div>
+                                <Label>URL</Label>
+                                <input
+                                    name="href"
+                                    value={form.href}
+                                    placeholder="Primary menu url"
+                                    onChange={handleChange}
+                                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                />
+                            </div>
+                        )}
+                        {form.subMenu && (
+                            <div>
+                                <Label>Submenu Items</Label>
+
+                                {form.secondaryMenu.map((item: any, index: number) => (
+                                    <div key={index} className="flex gap-2 mb-2">
+
+                                        <input
+                                            placeholder="Label"
+                                            value={item.label}
+                                            onChange={(e) => {
+                                                const updated = [...form.secondaryMenu];
+                                                updated[index].label = e.target.value;
+                                                setForm({ ...form, secondaryMenu: updated });
+                                            }}
+                                            className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                        />
+
+                                        <input
+                                            placeholder="Secondary menu url"
+                                            value={item.href}
+                                            onChange={(e) => {
+                                                const updated = [...form.secondaryMenu];
+                                                updated[index].href = e.target.value;
+                                                setForm({ ...form, secondaryMenu: updated });
+                                            }}
+                                            className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                        />
+                                        {form.secondaryMenu.length > 1 && (
+                                            <button
+                                                onClick={() => removeSubMenuField(index)}
+                                                className="bg-error h-10 w-10 text-white px-3 py-1 rounded"
+                                            >
+                                                <FiMinus />
+                                            </button>
+                                        )}
+
+                                        {index === form.secondaryMenu.length - 1 && (
+                                            <button
+                                                onClick={addSubMenuField}
+                                                className="bg-success h-10 w-10 text-white px-3 py-1 rounded"
+                                            >
+                                                <IoIosAdd />
+                                            </button>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </>
+                }
+
+                {/* Footer Buttons */}
+                <div className="flex justify-end gap-3 mt-6">
+                    <button
+                        className="bg-gray-300 px-3 py-1 rounded flex items-center gap-2"
+                        onClick={onClose}
+                    >
+                        Cancel <GiCancel />
+                    </button>
+
+                    <button
+                        className="bg-primary text-white px-3 py-1 flex items-center gap-2 rounded"
+                        onClick={handleSubmit}
+                    >
+                        {loading ? (
+                            <FiLoader className="animate-spin" />
+                        ) : (
+                            <LiaCheckCircle />
+                        )}
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div >
+    );
+};
