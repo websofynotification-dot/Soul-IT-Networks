@@ -8,10 +8,12 @@ export async function POST(req: Request) {
   try {
     await dbConnect();
     const { email, password, captcha } = await req.json();
-    
+
     const captchaVerify = await fetch(
-      `${process.env.RECAPTCHA_BASE_URL! + process.env.RECAPTCHA_SECRET_KEY!}&response=${captcha}`,
-      { method: "POST" }
+      `${process.env.RECAPTCHA_BASE_URL}?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captcha}`,
+      {
+        method: "POST",
+      }
     );
 
     const captchaData = await captchaVerify.json();
@@ -36,7 +38,7 @@ export async function POST(req: Request) {
     res.cookies.set("token", token, {
       httpOnly: true,
       path: "/admin",
-      maxAge: 60 * 60 * 24, 
+      maxAge: 60 * 60 * 24,
     });
 
     return res;
