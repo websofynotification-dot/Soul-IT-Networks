@@ -66,7 +66,7 @@ export const HeroSliderImage = ({
                           <span> Talk to Our Team </span>
                           <MdOutlineArrowRightAlt size={25} />
                         </button>
-                        <button className="border border-white/40 cursor-pointer hover:bg-white/10 px-6 py-3 rounded-md font-medium flex items-center gap-2 transition" onClick={() => router.push("/contact-us")}>
+                        <button className="border border-white/40 cursor-pointer hover:bg-white/10 px-6 py-3 rounded-md font-medium flex items-center gap-2 transition" onClick={() => router.push("/about-us")}>
                           <span> See What We Do</span>
                           <MdOutlineArrowRightAlt size={25} />
                         </button>
