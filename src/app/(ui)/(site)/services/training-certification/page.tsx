@@ -13,7 +13,7 @@ const page = () => {
         title="Training & Certification"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='services/training-certification/training-certification-banner.jpg'
       />
       <TrainingAndCertificationPage />
     </>

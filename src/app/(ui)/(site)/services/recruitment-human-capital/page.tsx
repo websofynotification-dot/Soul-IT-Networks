@@ -13,7 +13,7 @@ const page = () => {
         title="Recruitment & Human Capital Solutions"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='services/recruitment-human-capital-solutions/recruitment-human-capital-solutions-banner.jpg'
       />
       <RecruitmentAndHumanCapitalSolutionsPage />
     </>

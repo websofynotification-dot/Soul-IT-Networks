@@ -1,10 +1,27 @@
 import { getData } from "@/lib/getData";
-import Partner from "@/models/admin-model/HomePage/Partner";
+import Approach from "@/models/admin-model/Services/Approach";
+import Delivery from "@/models/admin-model/Services/Delivery";
+import Overview from "@/models/admin-model/Services/Overview";
+import WhyChooseSoulIt from "@/models/admin-model/Services/WhyChooseSoulIt";
+import { service } from "@/types/serviceContext";
+import { Overviews } from "../../Shared Component/Overviews";
+import { WhyChoosSoulIt } from "../../Shared Component/WhyChoosSoulIt";
+import { Approaches } from "../../Shared Component/Approaches";
+import { Deliveries } from "../../Shared Component/Deliveries";
+import { ContactCta } from "../../Cta For Connect/ContactCta";
 
 
 export const OutsourcingAndPlacementServicesPage = async () => {
 
-    const partnerData = await getData(Partner);
+    const oveviewData = await getData(Overview);
+    const whyChooseData = await getData(WhyChooseSoulIt);
+    const approachData = await getData(Approach);
+    const deliveryData = await getData(Delivery);
+
+    const filterOverviewData = oveviewData.filter((item: service) => item.pageName === "Outsourcing & Placement Services");
+    const filterWhyChooseData = whyChooseData.filter((item: service) => item.pageName === "Outsourcing & Placement Services");
+    const filterApproachData = approachData.filter((item: service) => item.pageName === "Outsourcing & Placement Services");
+    const filterDeliveryData = deliveryData.filter((item: service) => item.pageName === "Outsourcing & Placement Services");
 
     return (
         <div className="mt-10">
@@ -17,7 +34,32 @@ export const OutsourcingAndPlacementServicesPage = async () => {
                     Helping organizations build high-performing IT teams through trusted staffing and outsourcing services.
                 </p>
             </div>
+            <Overviews serviceData={filterOverviewData} />
+            <WhyChoosSoulIt
+                serviceData={filterWhyChooseData}
+                title="Why Choose Soul IT Networks"
+                subtitle="Trusted IT @ Staffing Expertise"
+                description="Backed by a strong talent pool and proven recruitment processes, we help organizations deploy skilled @ IT professionals quickly and efficiently."
+            />
+
+            <Approaches
+                serviceData={filterApproachData}
+                title="Our Approach"
+                subtitle="End-to-End IT @ Staffing Delivery"
+                description="Integrating recruitment, technical evaluation, onboarding, and workforce management into @ scalable staffing solutions."
+            />
+
+            <Deliveries
+                serviceData={filterDeliveryData}
+                title="We Deliver"
+                subtitle="Workforce Solutions @ That Drive Results"
+                description="From contract staffing to permanent recruitment, we provide qualified IT professionals who support @ business continuity and long-term growth."
+            />
+
+            <ContactCta title="Scale Your IT Workforce with Confidence" description="From short-term projects to enterprise staffing needs, we provide qualified IT talent quickly, efficiently, and at scale." buttonText="Request a Consultation" nevigateUrl="contact-us" />
         </div>
+
+
     );
 };
 

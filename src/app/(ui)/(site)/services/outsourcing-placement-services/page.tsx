@@ -15,7 +15,7 @@ const page = () => {
         title="Outsourcing & Placement Services"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='services/outsourcing-placement-services/outsourcing-placement-services-banner.jpg'
       />
       <OutsourcingAndPlacementServicesPage />
     </>

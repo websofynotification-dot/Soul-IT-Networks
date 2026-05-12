@@ -13,7 +13,7 @@ const page = () => {
         title="Database & Storage Solutions"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='services/database-storage-solutions/database-storage-solutions-banner.jpg'
       />
       <DatabaseAndStorageSolutionsPage />
     </>
