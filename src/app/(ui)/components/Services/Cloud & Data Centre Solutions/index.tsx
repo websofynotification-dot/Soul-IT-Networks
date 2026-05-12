@@ -18,10 +18,10 @@ export const CloudAndDataCentreSolutionsPage = async () => {
     const approachData = await getData(Approach);
     const deliveryData = await getData(Delivery);
 
-    const filterOverviewData = oveviewData.filter((item: service) => item.pageName === "Cloud & Datacentre Solutions");
-    const filterWhyChooseData = whyChooseData.filter((item: service) => item.pageName === "Cloud & Datacentre Solutions");
-    const filterApproachData = approachData.filter((item: service) => item.pageName === "Cloud & Datacentre Solutions");
-    const filterDeliveryData = deliveryData.filter((item: service) => item.pageName === "Cloud & Datacentre Solutions");
+    const filterOverviewData = oveviewData.filter((item: service) => item.pageName === "Cloud & Data Centre Solutions");
+    const filterWhyChooseData = whyChooseData.filter((item: service) => item.pageName === "Cloud & Data Centre Solutions");
+    const filterApproachData = approachData.filter((item: service) => item.pageName === "Cloud & Data Centre Solutions");
+    const filterDeliveryData = deliveryData.filter((item: service) => item.pageName === "Cloud & Data Centre Solutions");
 
     return (
         <div className="mt-10">
