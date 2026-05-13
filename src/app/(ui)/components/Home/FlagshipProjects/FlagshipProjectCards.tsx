@@ -1,9 +1,14 @@
+"use client"
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { projectsIcons } from "@/app/api/data";
 import { PreLoader } from "../../Common/PreLoader";
 import { projectProps } from "@/types/projectContext";
+import { useRouter } from "next/navigation";
 
 export const FlagshipProjectCards: React.FC<projectProps> = ({ projectData }) => {
+
+    const router = useRouter();
+    
     return (
         <section>
             <div className="container">
@@ -49,7 +54,7 @@ export const FlagshipProjectCards: React.FC<projectProps> = ({ projectData }) =>
                         </div>
                 }
                 <div className="flex items-center justify-center mt-10">
-                    <button className="px-6 flex py-3 justify-center items-center gap-2 text-primary rounded-md font-semibold border border-secondary transition-all duration-300 hover:bg-primary hover:text-white">
+                    <button onClick={()=>router.push("/projects")} className="px-6 flex py-3 justify-center items-center gap-2 text-primary rounded-md font-semibold border border-secondary transition-all duration-300 hover:bg-primary hover:text-white">
                         View All Projects <MdOutlineArrowRightAlt size={25} />
                     </button>
                 </div>

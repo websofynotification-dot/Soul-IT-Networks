@@ -3,25 +3,27 @@ import Approach from "@/models/admin-model/Services/Approach";
 import Delivery from "@/models/admin-model/Services/Delivery";
 import Overview from "@/models/admin-model/Services/Overview";
 import WhyChooseSoulIt from "@/models/admin-model/Services/WhyChooseSoulIt";
-import { service } from "@/types/serviceContext";
 import { Overviews } from "../../Shared Component/Overviews";
 import { WhyChoosSoulIt } from "../../Shared Component/WhyChoosSoulIt";
 import { Approaches } from "../../Shared Component/Approaches";
 import { Deliveries } from "../../Shared Component/Deliveries";
 import { ContactCta } from "../../Cta For Connect/ContactCta";
 
-
 export const NetworkAndCyberSecurityPage = async () => {
 
-    const oveviewData = await getData(Overview);
-    const whyChooseData = await getData(WhyChooseSoulIt);
-    const approachData = await getData(Approach);
-    const deliveryData = await getData(Delivery);
+    const filter = "Network & Cyber Security";
 
-    const filterOverviewData = oveviewData.filter((item: service) => item.pageName === "Network & Cyber Security");
-    const filterWhyChooseData = whyChooseData.filter((item: service) => item.pageName === "Network & Cyber Security");
-    const filterApproachData = approachData.filter((item: service) => item.pageName === "Network & Cyber Security");
-    const filterDeliveryData = deliveryData.filter((item: service) => item.pageName === "Network & Cyber Security");
+    const [
+        overviewData,
+        whyChooseData,
+        approachData,
+        deliveryData,
+    ] = await Promise.all([
+        getData(Overview, filter),
+        getData(WhyChooseSoulIt, filter),
+        getData(Approach, filter),
+        getData(Delivery, filter),
+    ]);
 
     return (
         <div className="mt-10">
@@ -34,23 +36,23 @@ export const NetworkAndCyberSecurityPage = async () => {
                     Protecting your business with comprehensive security solutions, strategic consulting, training, and secure implementation.
                 </p>
             </div>
-            <Overviews serviceData={filterOverviewData} />
+            <Overviews serviceData={overviewData} />
             <WhyChoosSoulIt
-                serviceData={filterWhyChooseData}
+                serviceData={whyChooseData}
                 title="Why Choose Soul IT Networks"
                 subtitle="Security Built @ for Modern Threats"
                 description="Powered by leading cybersecurity technologies and certified professionals, we design @ layered security environments that protect critical systems from evolving threats."
 
             />
             <Approaches
-                serviceData={filterApproachData}
+                serviceData={approachData}
                 title="Our Approach"
                 subtitle="Our Cybersecurity @ Delivery Framework"
                 description="Integrating advanced security technologies, threat intelligence, and compliance-focused @ practices to build resilient IT environments."
             />
 
             <Deliveries
-                serviceData={filterDeliveryData}
+                serviceData={deliveryData}
                 title="We Deliver"
                 subtitle="Cybersecurity @ That Supports Growth"
                 description="We build layered cybersecurity frameworks that protect systems, data, @ and operations against evolving digital threats."

@@ -13,7 +13,7 @@ const page = () => {
         title="Remote CCTV Monitoring"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='services/remote-cctv-monitoring/remote-cctv-monitoring-banner.avif'
       />
       <RemoteCcTvMonitoringPage />
     </>

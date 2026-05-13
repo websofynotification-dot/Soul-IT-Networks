@@ -25,8 +25,6 @@ export const JobOpenings: React.FC<jobProps & categoryProps> = ({ jobData, categ
     );
 }
 
-
-
 export const JobList: React.FC<jobProps & categoryProps> = ({ jobData, categoryData }) => {
     const INITIAL_COUNT = 3;
 

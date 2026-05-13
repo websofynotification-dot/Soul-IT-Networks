@@ -3,7 +3,6 @@ import Approach from "@/models/admin-model/Services/Approach";
 import Delivery from "@/models/admin-model/Services/Delivery";
 import Overview from "@/models/admin-model/Services/Overview";
 import WhyChooseSoulIt from "@/models/admin-model/Services/WhyChooseSoulIt";
-import { service } from "@/types/serviceContext";
 import { ContactCta } from "../../Cta For Connect/ContactCta";
 import { Overviews } from "../../Shared Component/Overviews";
 import { WhyChoosSoulIt } from "../../Shared Component/WhyChoosSoulIt";
@@ -11,16 +10,19 @@ import { Approaches } from "../../Shared Component/Approaches";
 import { Deliveries } from "../../Shared Component/Deliveries";
 
 export const ManageItServicesPage = async () => {
+    const filter = "Managed IT Services";
 
-    const oveviewData = await getData(Overview);
-    const whyChooseData = await getData(WhyChooseSoulIt);
-    const approachData = await getData(Approach);
-    const deliveryData = await getData(Delivery);
-
-    const filterOverviewData = oveviewData.filter((item: service) => item.pageName === "Managed IT Services");
-    const filterWhyChooseData = whyChooseData.filter((item: service) => item.pageName === "Managed IT Services");
-    const filterApproachData = approachData.filter((item: service) => item.pageName === "Managed IT Services");
-    const filterDeliveryData = deliveryData.filter((item: service) => item.pageName === "Managed IT Services");
+    const [
+        overviewData,
+        whyChooseData,
+        approachData,
+        deliveryData,
+    ] = await Promise.all([
+        getData(Overview, filter),
+        getData(WhyChooseSoulIt, filter),
+        getData(Approach, filter),
+        getData(Delivery, filter),
+    ]);
 
     return (
         <div className="mt-10">
@@ -34,28 +36,28 @@ export const ManageItServicesPage = async () => {
                 </p>
             </div>
 
-            <Overviews serviceData={filterOverviewData} />
+            <Overviews serviceData={overviewData} />
             <WhyChoosSoulIt
-                serviceData={filterWhyChooseData}
+                serviceData={whyChooseData}
                 title="Why Choose Soul IT Networks"
                 subtitle="Enterprise-Grade @ Managed IT Expertise"
                 description="Backed by 24/7 monitoring, ITIL-driven operations, and experienced engineers, we deliver @ reliable IT support with proven uptime for mission-critical environments."
 
             />
             <Approaches
-                serviceData={filterApproachData}
+                serviceData={approachData}
                 title="Our Approach"
                 subtitle="Managed IT, @ Delivered Proactively"
                 description="Combining monitoring, automation, technical support, and infrastructure optimization @ to maintain secure and efficient IT environments."
             />
 
             <Deliveries
-                serviceData={filterDeliveryData}
+                serviceData={deliveryData}
                 title="We Deliver"
                 subtitle="Reliable IT @ Operations, Delivered"
                 description="Our managed services ensure secure, scalable, and optimized IT environments @ through continuous monitoring, maintenance, and support."
             />
-            
+
             <ContactCta title="Focus on Business. We’ll Handle IT" description="Our managed IT experts ensure your infrastructure stays secure, reliable, and optimized—so your team can focus on growth and innovation." buttonText="Request a Consultation" nevigateUrl="contact-us" />
         </div>
     );

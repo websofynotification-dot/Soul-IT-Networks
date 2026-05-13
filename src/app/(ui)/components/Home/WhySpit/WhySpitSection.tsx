@@ -5,8 +5,11 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { PreLoader } from "../../Common/PreLoader";
 import { Stats } from "../../Common/Stats";
+import { useRouter } from "next/navigation";
 
 export const WhySpitSection: React.FC<cardProps> = ({ cardData }) => {
+
+  const router = useRouter();
 
   const statsData = Array.isArray(cardData) ? cardData.filter(item => !item.title?.includes("Step") && !item.description?.includes("customers")) : [];
 
@@ -37,12 +40,11 @@ export const WhySpitSection: React.FC<cardProps> = ({ cardData }) => {
               </>
           }
           <div className="flex mt-10">
-            <button className="px-6 flex py-3 justify-center items-center gap-2 text-primary rounded-md font-semibold border border-secondary transition-all duration-300 hover:bg-primary hover:text-white">
+            <button onClick={()=>router.push("/about-us")} className="px-6 flex py-3 justify-center items-center gap-2 text-primary rounded-md font-semibold border border-secondary transition-all duration-300 hover:bg-primary hover:text-white">
               Learn More About Us <MdOutlineArrowRightAlt size={25} />
             </button>
           </div>
         </div>
-
         <div className="relative" data-aos="fade-right">
           <Image
             src="/images/why-choose-spit/whyChooseSpit.jpg"

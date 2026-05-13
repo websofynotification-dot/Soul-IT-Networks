@@ -1,19 +1,7 @@
 import dbConnect from "./dbConnect";
 
-export const getData = async (model: any) => {
+export const getData = async (model: any, query?: string) => {
   await dbConnect();
-  const data = await model.find().lean();
-  return JSON.parse(JSON.stringify(data));
-};
-
-
-export const getDatabase = async (
-  model: any,
-  query: string
-) => {
-  await dbConnect();
-
-  const data = await model.find({ pageName: query }).lean();
-
+  const data = query ? await model.find({ pageName: query }).lean() : await model.find().lean();
   return JSON.parse(JSON.stringify(data));
 };

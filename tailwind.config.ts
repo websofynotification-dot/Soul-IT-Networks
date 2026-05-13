@@ -79,7 +79,6 @@ const config: Config = {
         '3': '3',
       },
       colors: {
-        // primary: "#c49086",
         primary: "#891503",
         secondary: "#942916",
         formbg: "#f3eccd",

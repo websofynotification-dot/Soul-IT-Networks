@@ -13,7 +13,7 @@ const page = () => {
         title="Software Development"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='services/software-development/software-development-banner.avif'
       />
       <SoftwareDevelopmentPage />
     </>

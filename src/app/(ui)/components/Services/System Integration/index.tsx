@@ -1,7 +1,6 @@
-import { getData, getDatabase } from "@/lib/getData";
+import { getData } from "@/lib/getData";
 import Overview from "@/models/admin-model/Services/Overview";
 import WhyChooseSoulIt from "@/models/admin-model/Services/WhyChooseSoulIt";
-import { service } from "@/types/serviceContext";
 import Approach from "@/models/admin-model/Services/Approach";
 import Delivery from "@/models/admin-model/Services/Delivery";
 import { ContactCta } from "../../Cta For Connect/ContactCta";
@@ -11,16 +10,6 @@ import { Approaches } from "../../Shared Component/Approaches";
 import { Deliveries } from "../../Shared Component/Deliveries";
 
 export const SystemIntegrationPage = async () => {
-    // const oveviewData = await getData(Overview);
-    // const whyChooseData = await getData(WhyChooseSoulIt);
-    // const approachData = await getData(Approach);
-    // const deliveryData = await getData(Delivery);
-
-    // const filterOverviewData = oveviewData.filter((item: service) => item.pageName === "System Integration");
-    // const filterWhyChooseData = whyChooseData.filter((item: service) => item.pageName === "System Integration");
-    // const filterApproachData = approachData.filter((item: service) => item.pageName === "System Integration");
-    // const filterDeliveryData = deliveryData.filter((item: service) => item.pageName === "System Integration");
-
     const filter = "System Integration";
 
     const [
@@ -29,10 +18,10 @@ export const SystemIntegrationPage = async () => {
         approachData,
         deliveryData,
     ] = await Promise.all([
-        getDatabase(Overview, filter),
-        getDatabase(WhyChooseSoulIt, filter),
-        getDatabase(Approach, filter),
-        getDatabase(Delivery, filter),
+        getData(Overview, filter),
+        getData(WhyChooseSoulIt, filter),
+        getData(Approach, filter),
+        getData(Delivery, filter),
     ]);
 
 

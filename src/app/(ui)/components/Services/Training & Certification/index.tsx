@@ -3,7 +3,6 @@ import Approach from "@/models/admin-model/Services/Approach";
 import Delivery from "@/models/admin-model/Services/Delivery";
 import Overview from "@/models/admin-model/Services/Overview";
 import WhyChooseSoulIt from "@/models/admin-model/Services/WhyChooseSoulIt";
-import { service } from "@/types/serviceContext";
 import { Overviews } from "../../Shared Component/Overviews";
 import { Approaches } from "../../Shared Component/Approaches";
 import { Deliveries } from "../../Shared Component/Deliveries";
@@ -13,15 +12,19 @@ import { WhyChoosSoulIt } from "../../Shared Component/WhyChoosSoulIt";
 
 export const TrainingAndCertificationPage = async () => {
 
-    const oveviewData = await getData(Overview);
-    const whyChooseData = await getData(WhyChooseSoulIt);
-    const approachData = await getData(Approach);
-    const deliveryData = await getData(Delivery);
+    const filter = "Training & Certification";
 
-    const filterOverviewData = oveviewData.filter((item: service) => item.pageName === "Training & Certification");
-    const filterWhyChooseData = whyChooseData.filter((item: service) => item.pageName === "Training & Certification");
-    const filterApproachData = approachData.filter((item: service) => item.pageName === "Training & Certification");
-    const filterDeliveryData = deliveryData.filter((item: service) => item.pageName === "Training & Certification");
+    const [
+        overviewData,
+        whyChooseData,
+        approachData,
+        deliveryData,
+    ] = await Promise.all([
+        getData(Overview, filter),
+        getData(WhyChooseSoulIt, filter),
+        getData(Approach, filter),
+        getData(Delivery, filter),
+    ]);
 
     return (
         <div className="mt-10">
@@ -35,27 +38,26 @@ export const TrainingAndCertificationPage = async () => {
                 </p>
             </div>
 
-            <Overviews serviceData={filterOverviewData} />
+            <Overviews serviceData={overviewData} />
             <WhyChoosSoulIt
-                serviceData={filterWhyChooseData}
+                serviceData={whyChooseData}
                 title="Why Choose Soul IT Networks"
-                subtitle="Scalable Database & @ Storage Architectures"
-                description="Soul IT networks combines strategic OEM partnerships, certified specialists, @
-                            and scalable architectures to deliver reliable and future-ready data infrastructure solutions."
+                subtitle="Training That Builds @ Real-World IT Skills"
+                description="Our expert trainers, advanced labs, and practical learning approach help professionals gain @ job-ready technical expertise and certifications."
             />
 
             <Approaches
-                serviceData={filterApproachData}
+                serviceData={approachData}
                 title="Our Approach"
-                subtitle="How We Manage @ Enterprise Data"
-                description="A comprehensive methodology combining storage architecture, backup strategy, disaster recovery, @ and performance optimization."
+                subtitle="Training Designed for @ Real-World Success"
+                description="We combine expert instructors, hands-on labs, and industry-focused curriculum to create @ impactful learning experiences that deliver measurable results."
             />
 
             <Deliveries
-                serviceData={filterDeliveryData}
+                serviceData={deliveryData}
                 title="We Deliver"
-                subtitle="Delivering More @ Than Storage"
-                description="We build intelligent database and storage environments that maximize performance, strengthen protection, @ and support mission-critical operations."
+                subtitle="Delivering More @ Than IT Training"
+                description="We equip professionals with real-world technical expertise, industry certifications, and @ practical skills that create measurable career and business impact."
             />
 
             <ContactCta title="Build a Future-Ready Workforce" description="Empower your teams with hands-on IT training and globally recognized certifications designed for evolving technology challenges." buttonText="Request a Consultation" nevigateUrl="contact-us" />

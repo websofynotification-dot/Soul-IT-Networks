@@ -27,7 +27,7 @@ export const POST = async (req: NextRequest) => {
         }
         const newOverview = await Overview.create({ title, pageName, description, keySteps, image, image_public_Id });
 
-        return NextResponse.json({ message: "Popular test package added successfully.", success: true, data: newOverview });
+        return NextResponse.json({ message: "Overview data added successfully.", success: true, data: newOverview });
     } catch (error) {
         const err = error as Error;
         console.error("Error adding overview data  :", err);

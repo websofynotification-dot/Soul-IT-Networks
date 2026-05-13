@@ -3,7 +3,6 @@ import Approach from "@/models/admin-model/Services/Approach";
 import Delivery from "@/models/admin-model/Services/Delivery";
 import Overview from "@/models/admin-model/Services/Overview";
 import WhyChooseSoulIt from "@/models/admin-model/Services/WhyChooseSoulIt";
-import { service } from "@/types/serviceContext";
 import { Overviews } from "../../Shared Component/Overviews";
 import { WhyChoosSoulIt } from "../../Shared Component/WhyChoosSoulIt";
 import { Approaches } from "../../Shared Component/Approaches";
@@ -13,15 +12,19 @@ import { ContactCta } from "../../Cta For Connect/ContactCta";
 
 export const CloudAndDataCentreSolutionsPage = async () => {
 
-    const oveviewData = await getData(Overview);
-    const whyChooseData = await getData(WhyChooseSoulIt);
-    const approachData = await getData(Approach);
-    const deliveryData = await getData(Delivery);
-
-    const filterOverviewData = oveviewData.filter((item: service) => item.pageName === "Cloud & Data Centre Solutions");
-    const filterWhyChooseData = whyChooseData.filter((item: service) => item.pageName === "Cloud & Data Centre Solutions");
-    const filterApproachData = approachData.filter((item: service) => item.pageName === "Cloud & Data Centre Solutions");
-    const filterDeliveryData = deliveryData.filter((item: service) => item.pageName === "Cloud & Data Centre Solutions");
+    const filter = "Cloud & Data Centre Solutions";
+    
+    const [
+        overviewData,
+        whyChooseData,
+        approachData,
+        deliveryData,
+    ] = await Promise.all([
+        getData(Overview, filter),
+        getData(WhyChooseSoulIt, filter),
+        getData(Approach, filter),
+        getData(Delivery, filter),
+    ]);
 
     return (
         <div className="mt-10">
@@ -35,23 +38,23 @@ export const CloudAndDataCentreSolutionsPage = async () => {
                 </p>
             </div>
 
-            <Overviews serviceData={filterOverviewData} />
+            <Overviews serviceData={overviewData} />
             <WhyChoosSoulIt
-                serviceData={filterWhyChooseData}
+                serviceData={whyChooseData}
                 title="Why Choose Soul IT Networks"
                 subtitle="Trusted Cloud & @ Data centre Expertise"
                 description="Backed by certified architects and proven enterprise deployments, we create secure, @ scalable cloud and datacentre environments with maximum uptime and reliability."
 
             />
             <Approaches
-                serviceData={filterApproachData}
+                serviceData={approachData}
                 title="Our Approach"
                 subtitle="Infrastructure Built @ for Scale and Reliability"
                 description="A comprehensive methodology combining infrastructure strategy, virtualization, automation, @ security, and business continuity planning."
             />
 
             <Deliveries
-                serviceData={filterDeliveryData}
+                serviceData={deliveryData}
                 title="We Deliver"
                 subtitle="Delivering More @ Than Infrastructure"
                 description="We create resilient cloud and datacentre ecosystems that ensure high availability, @ operational efficiency, and long-term scalability."

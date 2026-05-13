@@ -13,15 +13,19 @@ import { ContactCta } from "../../Cta For Connect/ContactCta";
 
 export const OutsourcingAndPlacementServicesPage = async () => {
 
-    const oveviewData = await getData(Overview);
-    const whyChooseData = await getData(WhyChooseSoulIt);
-    const approachData = await getData(Approach);
-    const deliveryData = await getData(Delivery);
-
-    const filterOverviewData = oveviewData.filter((item: service) => item.pageName === "Outsourcing & Placement Services");
-    const filterWhyChooseData = whyChooseData.filter((item: service) => item.pageName === "Outsourcing & Placement Services");
-    const filterApproachData = approachData.filter((item: service) => item.pageName === "Outsourcing & Placement Services");
-    const filterDeliveryData = deliveryData.filter((item: service) => item.pageName === "Outsourcing & Placement Services");
+    const filter = "Outsourcing & Placement Services";
+    
+    const [
+        overviewData,
+        whyChooseData,
+        approachData,
+        deliveryData,
+    ] = await Promise.all([
+        getData(Overview, filter),
+        getData(WhyChooseSoulIt, filter),
+        getData(Approach, filter),
+        getData(Delivery, filter),
+    ]);
 
     return (
         <div className="mt-10">
@@ -34,23 +38,23 @@ export const OutsourcingAndPlacementServicesPage = async () => {
                     Helping organizations build high-performing IT teams through trusted staffing and outsourcing services.
                 </p>
             </div>
-            <Overviews serviceData={filterOverviewData} />
+            <Overviews serviceData={overviewData} />
             <WhyChoosSoulIt
-                serviceData={filterWhyChooseData}
+                serviceData={whyChooseData}
                 title="Why Choose Soul IT Networks"
                 subtitle="Trusted IT @ Staffing Expertise"
                 description="Backed by a strong talent pool and proven recruitment processes, we help organizations deploy skilled @ IT professionals quickly and efficiently."
             />
 
             <Approaches
-                serviceData={filterApproachData}
+                serviceData={approachData}
                 title="Our Approach"
                 subtitle="End-to-End IT @ Staffing Delivery"
                 description="Integrating recruitment, technical evaluation, onboarding, and workforce management into @ scalable staffing solutions."
             />
 
             <Deliveries
-                serviceData={filterDeliveryData}
+                serviceData={deliveryData}
                 title="We Deliver"
                 subtitle="Workforce Solutions @ That Drive Results"
                 description="From contract staffing to permanent recruitment, we provide qualified IT professionals who support @ business continuity and long-term growth."

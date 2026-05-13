@@ -13,7 +13,7 @@ const page = () => {
         title="Government IT Tenders"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='services/goveronment-it-tenders/goveronment-it-tenders-banner.avif'
       />
       <GovernmentItTendersPage />
     </>
