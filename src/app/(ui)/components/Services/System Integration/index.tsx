@@ -1,4 +1,4 @@
-import { getData } from "@/lib/getData";
+import { getData, getDatabase } from "@/lib/getData";
 import Overview from "@/models/admin-model/Services/Overview";
 import WhyChooseSoulIt from "@/models/admin-model/Services/WhyChooseSoulIt";
 import { service } from "@/types/serviceContext";
@@ -11,15 +11,29 @@ import { Approaches } from "../../Shared Component/Approaches";
 import { Deliveries } from "../../Shared Component/Deliveries";
 
 export const SystemIntegrationPage = async () => {
-    const oveviewData = await getData(Overview);
-    const whyChooseData = await getData(WhyChooseSoulIt);
-    const approachData = await getData(Approach);
-    const deliveryData = await getData(Delivery);
-    
-    const filterOverviewData = oveviewData.filter((item: service) => item.pageName === "System Integration");
-    const filterWhyChooseData = whyChooseData.filter((item: service) => item.pageName === "System Integration");
-    const filterApproachData = approachData.filter((item: service) => item.pageName === "System Integration");
-    const filterDeliveryData = deliveryData.filter((item: service) => item.pageName === "System Integration");
+    // const oveviewData = await getData(Overview);
+    // const whyChooseData = await getData(WhyChooseSoulIt);
+    // const approachData = await getData(Approach);
+    // const deliveryData = await getData(Delivery);
+
+    // const filterOverviewData = oveviewData.filter((item: service) => item.pageName === "System Integration");
+    // const filterWhyChooseData = whyChooseData.filter((item: service) => item.pageName === "System Integration");
+    // const filterApproachData = approachData.filter((item: service) => item.pageName === "System Integration");
+    // const filterDeliveryData = deliveryData.filter((item: service) => item.pageName === "System Integration");
+
+    const filter = "System Integration";
+
+    const [
+        overviewData,
+        whyChooseData,
+        approachData,
+        deliveryData,
+    ] = await Promise.all([
+        getDatabase(Overview, filter),
+        getDatabase(WhyChooseSoulIt, filter),
+        getDatabase(Approach, filter),
+        getDatabase(Delivery, filter),
+    ]);
 
 
     return (
@@ -33,9 +47,9 @@ export const SystemIntegrationPage = async () => {
                     We connect your technologies into one coordinated platform for smoother operations and better performance.
                 </p>
             </div>
-            <Overviews serviceData={filterOverviewData} />
+            <Overviews serviceData={overviewData} />
             <WhyChoosSoulIt
-                serviceData={filterWhyChooseData}
+                serviceData={whyChooseData}
                 title="Why Choose Soul IT Networks"
                 subtitle="Proven Integration @ Expertise at Scale"
                 description="From government infrastructure to enterprise environments, our certified engineers
@@ -43,14 +57,14 @@ export const SystemIntegrationPage = async () => {
 
             />
             <Approaches
-                serviceData={filterApproachData}
+                serviceData={approachData}
                 title="Our Approach"
                 subtitle="How We Deliver @ System Integration"
                 description="A structured approach focused on seamless integration, optimized performance, @ and long-term scalability."
             />
 
             <Deliveries
-                serviceData={filterDeliveryData}
+                serviceData={deliveryData}
                 title="We Deliver"
                 subtitle="Delivering More @ Than Integration"
                 description="We create unified IT ecosystems that improve performance, scalability, and reliability by seamlessly @ integrating infrastructure, applications, networks, and cloud environments"
