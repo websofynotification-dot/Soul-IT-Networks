@@ -13,7 +13,7 @@ const page = () => {
         title="Cloud & Data Centre Consulting"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='solutions/cloud-datacentre-consulting/cloud-datacentre-consulting-banner.jpg'
       />
       <CloudAndDataCentreConsultingPage />
     </>

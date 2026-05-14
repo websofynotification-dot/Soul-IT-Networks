@@ -1,10 +1,20 @@
 import { getData } from "@/lib/getData";
-import Partner from "@/models/admin-model/HomePage/Partner";
+import Overview from "@/models/admin-model/Services/Overview";
+import UseCase from "@/models/admin-model/Solutions/UseCase";
+import { Overviews } from "../../Shared Component/Overviews";
 
 
 export const BusinessContinuityAndDrPage = async () => {
 
-    const partnerData = await getData(Partner);
+    const filter = "Business Continuity & DR";
+
+    const [
+        overviewData,
+        usecaseData,
+    ] = await Promise.all([
+        getData(Overview, filter),
+        getData(UseCase, filter)
+    ]);
 
     return (
         <div className="mt-10">
@@ -17,6 +27,7 @@ export const BusinessContinuityAndDrPage = async () => {
                     Disaster recovery and continuity frameworks designed to ensure availability, resilience, and operational stability.
                 </p>
             </div>
+            <Overviews serviceData={overviewData} />
         </div>
     );
 };

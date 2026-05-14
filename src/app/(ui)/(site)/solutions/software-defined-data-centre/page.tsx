@@ -13,7 +13,7 @@ const page = () => {
         title="Software Defined Data Centre"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='solutions/software-defined-datacentre/software-defined-datacentre-banner.avif'
       />
       <SoftwareDefinedDataCentrePage />
     </>

@@ -1,10 +1,20 @@
 import { getData } from "@/lib/getData";
-import Partner from "@/models/admin-model/HomePage/Partner";
+import Overview from "@/models/admin-model/Services/Overview";
+import UseCase from "@/models/admin-model/Solutions/UseCase";
+import { Overviews } from "../../Shared Component/Overviews";
 
 
 export const NetworkSecuritySolutionsPage = async () => {
 
-    const partnerData = await getData(Partner);
+    const filter = "Network Security Solutions";
+
+    const [
+        overviewData,
+        usecaseData,
+    ] = await Promise.all([
+        getData(Overview, filter),
+        getData(UseCase, filter)
+    ]);
 
     return (
         <div className="mt-10">
@@ -17,6 +27,7 @@ export const NetworkSecuritySolutionsPage = async () => {
                     Advanced network security solutions designed to defend your infrastructure from evolving cyber threats.
                 </p>
             </div>
+            <Overviews serviceData={overviewData} />
         </div>
     );
 };

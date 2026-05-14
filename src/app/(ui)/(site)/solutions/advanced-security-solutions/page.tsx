@@ -13,7 +13,7 @@ const page = () => {
         title="Advanced Security Solutions"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='solutions/advanced-security/advanced-security-banner.avif'
       />
       <AdvancedSecuritySolutionsPage />
     </>

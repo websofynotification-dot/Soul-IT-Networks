@@ -7,7 +7,7 @@ import { ChevronDown, Ellipsis, KeySquare } from "lucide-react";
 import { useSidebar } from "@/app/context/SidebarContext";
 import { FaArrowCircleRight, FaPhoneAlt, FaRegUser, FaUserFriends } from "react-icons/fa";
 import { LuLayoutDashboard } from "react-icons/lu";
-import {  MdMiscellaneousServices, MdOutlineCategory } from "react-icons/md";
+import { MdMiscellaneousServices, MdOutlineCategory } from "react-icons/md";
 import { PiAlignTopBold } from "react-icons/pi";
 import { TbMessageCircleUser } from "react-icons/tb";
 import { IoHomeOutline } from "react-icons/io5";
@@ -106,15 +106,15 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    name: "Contact Us",
-    icon: <FaPhoneAlt size={15} />,
-    path: "/admin/contact-us"
-  },
-  {
     name: "Category",
     icon: <MdOutlineCategory size={18} />,
     path: "/admin/category"
 
+  },
+  {
+    name: "Contact Us",
+    icon: <FaPhoneAlt size={15} />,
+    path: "/admin/contact-us"
   },
   {
     icon: <FaRegUser size={18} />,

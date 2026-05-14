@@ -1,10 +1,20 @@
 import { getData } from "@/lib/getData";
-import Partner from "@/models/admin-model/HomePage/Partner";
+import Overview from "@/models/admin-model/Services/Overview";
+import UseCase from "@/models/admin-model/Solutions/UseCase";
+import { Overviews } from "../../Shared Component/Overviews";
 
 
 export const EnterpriseMessagingAndCollaborationPage = async () => {
 
-    const partnerData = await getData(Partner);
+    const filter = "Enterprise Messaging & Collaboration";
+
+    const [
+        overviewData,
+        usecaseData,
+    ] = await Promise.all([
+        getData(Overview, filter),
+        getData(UseCase, filter)
+    ]);
 
     return (
         <div className="mt-10">
@@ -17,6 +27,7 @@ export const EnterpriseMessagingAndCollaborationPage = async () => {
                     Unified messaging and collaboration platforms built to improve connectivity, teamwork, and efficiency.
                 </p>
             </div>
+            <Overviews serviceData={overviewData} />
         </div>
     );
 };

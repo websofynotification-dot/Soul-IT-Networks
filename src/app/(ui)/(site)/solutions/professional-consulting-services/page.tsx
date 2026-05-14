@@ -15,7 +15,7 @@ const page = () => {
         title="Professional & Consulting Services"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='solutions/professional-consulting/professional-consulting-banner.jpg'
       />
       <ProfessionalAndConsultingServicesPage />
     </>

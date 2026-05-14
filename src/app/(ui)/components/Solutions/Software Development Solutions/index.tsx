@@ -1,10 +1,19 @@
 import { getData } from "@/lib/getData";
-import Partner from "@/models/admin-model/HomePage/Partner";
-
+import Overview from "@/models/admin-model/Services/Overview";
+import UseCase from "@/models/admin-model/Solutions/UseCase";
+import { Overviews } from "../../Shared Component/Overviews";
 
 export const SoftwareDevelopmentSolutionsPage = async () => {
 
-    const partnerData = await getData(Partner);
+    const filter = "Software Development Solutions";
+
+    const [
+        overviewData,
+        usecaseData,
+    ] = await Promise.all([
+        getData(Overview, filter),
+        getData(UseCase, filter)
+    ]);
 
     return (
         <div className="mt-10">
@@ -17,6 +26,7 @@ export const SoftwareDevelopmentSolutionsPage = async () => {
                     End-to-end software solutions focused on automation, performance optimization, and digital innovation.
                 </p>
             </div>
+            <Overviews serviceData={overviewData} />
         </div>
     );
 };

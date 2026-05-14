@@ -1,10 +1,19 @@
 import { getData } from "@/lib/getData";
-import Partner from "@/models/admin-model/HomePage/Partner";
-
+import { Overviews } from "../../Shared Component/Overviews";
+import Overview from "@/models/admin-model/Services/Overview";
+import UseCase from "@/models/admin-model/Solutions/UseCase";
 
 export const CampusWideWiFiSolutionsPage = async () => {
 
-    const partnerData = await getData(Partner);
+    const filter = "Campus Wide WiFi Solutions";
+
+    const [
+        overviewData,
+        usecaseData,
+    ] = await Promise.all([
+        getData(Overview, filter),
+        getData(UseCase, filter)
+    ]);
 
     return (
         <div className="mt-10">
@@ -17,6 +26,7 @@ export const CampusWideWiFiSolutionsPage = async () => {
                     Scalable wireless infrastructure delivering seamless roaming, secure access, and uninterrupted connectivity.
                 </p>
             </div>
+            <Overviews serviceData={overviewData} />
         </div>
     );
 };

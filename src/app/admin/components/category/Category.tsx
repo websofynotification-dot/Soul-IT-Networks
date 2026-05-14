@@ -17,7 +17,7 @@ export const Category: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [search, setSearch] = useState<SearchState>({ category: "" });
-  const recordsPerPage = 10;
+  const recordsPerPage = 25;
 
   const fetchData = async () => {
     const res = await fetch("/api/auth/category");

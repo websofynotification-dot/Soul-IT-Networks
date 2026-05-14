@@ -20,7 +20,7 @@ export const Approach: React.FC = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [search, setSearch] = useState<SearchState>({ title: "", "page name": "" });
     const [pageCategorydata, setPageCategorydata] = useState<category[]>([]);
-    const recordsPerPage = 10;
+    const recordsPerPage = 25;
 
     useEffect(() => {
         fetchData();

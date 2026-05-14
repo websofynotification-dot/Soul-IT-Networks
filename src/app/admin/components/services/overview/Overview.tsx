@@ -19,7 +19,7 @@ export const Overview: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [search, setSearch] = useState<SearchState>({ title: "", "page name": "" });
     const [pageCategorydata, setPageCategorydata] = useState<category[]>([]);
-    const recordsPerPage = 10;
+    const recordsPerPage = 25;
 
     useEffect(() => {
         fetchData();

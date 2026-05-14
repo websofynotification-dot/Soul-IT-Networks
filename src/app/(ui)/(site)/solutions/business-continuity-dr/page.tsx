@@ -13,7 +13,7 @@ const page = () => {
         title="Business Continuity & DR"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='partners/partners-banner.jpg'
+        imageSrc='solutions/business-continuity-dr/business-continuity-dr-banner.avif'
       />
       <BusinessContinuityAndDrPage />
     </>

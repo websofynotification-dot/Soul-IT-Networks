@@ -1,10 +1,19 @@
 import { getData } from "@/lib/getData";
-import Partner from "@/models/admin-model/HomePage/Partner";
-
+import { Overviews } from "../../Shared Component/Overviews";
+import Overview from "@/models/admin-model/Services/Overview";
+import UseCase from "@/models/admin-model/Solutions/UseCase";
 
 export const CcTvAndSurveillanceSolutionsPage = async () => {
 
-    const partnerData = await getData(Partner);
+    const filter = "CCTV & Surveillance Solutions";
+
+    const [
+        overviewData,
+        usecaseData,
+    ] = await Promise.all([
+        getData(Overview, filter),
+        getData(UseCase, filter)
+    ]);
 
     return (
         <div className="mt-10">
@@ -17,6 +26,7 @@ export const CcTvAndSurveillanceSolutionsPage = async () => {
                     Delivering intelligent CCTV systems for real-time monitoring, protection, and operational control.
                 </p>
             </div>
+            <Overviews serviceData={overviewData} />
         </div>
     );
 };
