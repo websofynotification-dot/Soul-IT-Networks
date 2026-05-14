@@ -1,21 +1,21 @@
 import HeroSub from "@/app/(ui)/components/Shared Component/HeroSub";
-import { CloudAndDataCentreConsultingPage } from "@/app/(ui)/components/Solutions/Cloud & Datacentre Consulting";
+import { SoftwareDefinedDataCentrePage } from "@/app/(ui)/components/Solutions/Software Defined Datacentre";
 export const dynamic = 'force-dynamic';
 
 const page = () => {
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
-    { href: "/solutions/cloud-datacentre-consulting", text: "Cloud & Datacentre Consulting" },
+    { href: "/solutions/software-defined-data-centre", text: "Software Defined Data Centre" },
   ];
   return (
     <>
       <HeroSub
-        title="Cloud & Datacentre Consulting"
+        title="Software Defined Data Centre"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
         imageSrc='partners/partners-banner.jpg'
       />
-      <CloudAndDataCentreConsultingPage />
+      <SoftwareDefinedDataCentrePage />
     </>
   );
 };

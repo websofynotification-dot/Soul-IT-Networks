@@ -4,6 +4,7 @@ export interface service {
     pageName?: string;
     description?: string;
     keySteps?: string[];
+    useCaseStep?: string[];
     image?: string;
     image_public_Id?: string | null;
 }

@@ -5,15 +5,16 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Ellipsis, KeySquare } from "lucide-react";
 import { useSidebar } from "@/app/context/SidebarContext";
-import { FaArrowCircleRight, FaPhoneAlt, FaRegFilePdf, FaRegUser, FaUserFriends } from "react-icons/fa";
+import { FaArrowCircleRight, FaPhoneAlt, FaRegUser, FaUserFriends } from "react-icons/fa";
 import { LuLayoutDashboard } from "react-icons/lu";
-import {  MdMiscellaneousServices, MdOutlineCategory, MdRateReview } from "react-icons/md";
+import {  MdMiscellaneousServices, MdOutlineCategory } from "react-icons/md";
 import { PiAlignTopBold } from "react-icons/pi";
 import { TbMessageCircleUser } from "react-icons/tb";
 import { IoHomeOutline } from "react-icons/io5";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { TiSupport } from "react-icons/ti";
 import { GiProgression } from "react-icons/gi";
+import { HiOutlineLightBulb } from "react-icons/hi2";
 
 type NavItem = {
   name: string;
@@ -85,12 +86,6 @@ const navItems: NavItem[] = [
       { name: "Job Opening", path: "/admin/careers/job-opening" },
     ],
   },
-
-  {
-    name: "Testimonials",
-    icon: <MdRateReview size={18} />,
-    path: "/admin/testimonials"
-  },
   {
     name: "Services",
     icon: <MdMiscellaneousServices size={18} />,
@@ -102,10 +97,13 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    name: "Brochure",
-    icon: <FaRegFilePdf size={18} />,
-    path: "/admin/brochure"
+    name: "Solutions",
+    icon: <HiOutlineLightBulb size={18} />,
+    subItems: [
+      { name: "Overview", path: "/admin/solutions/overview" },
+      { name: "Use Cases", path: "/admin/solutions/use-cases" },
 
+    ],
   },
   {
     name: "Contact Us",

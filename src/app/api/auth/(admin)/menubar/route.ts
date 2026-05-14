@@ -23,7 +23,7 @@ export const POST = async (req: NextRequest) => {
         if (!primaryMenu) {
             return NextResponse.json({ error: `Primary menu or primary menu url is required!` }, { status: 400 });
         }
-
+        
         const cleanedSecondaryMenu = (secondaryMenu || []).filter(
             (item: { label: string, href: string }) => item.label.trim() !== "" && item.href.trim() !== ""
         );

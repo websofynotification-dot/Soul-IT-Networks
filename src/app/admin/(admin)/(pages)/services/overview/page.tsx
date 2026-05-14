@@ -5,6 +5,6 @@ export const metadata: Metadata = {
     title: "Overview | SOul IT Networks"
 };
 
-const page = () => <Overview />;
+const page = () => <Overview/>;
 
 export default page

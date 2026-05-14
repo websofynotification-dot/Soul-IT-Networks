@@ -1,4 +1,4 @@
-import JoinUsRequest from '@/app/admin/components/join-us-request/JoinUsRequest';
+import JoinUsRequest from '@/app/admin/components/solutions/JoinUsRequest';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

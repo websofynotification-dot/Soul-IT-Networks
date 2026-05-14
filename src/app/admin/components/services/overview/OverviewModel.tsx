@@ -53,7 +53,7 @@ export const OverviewModel: React.FC<ModalProps & { initialData?: service } & { 
         onSave(form);
     };
 
-    const filterPageCategory = pageCategory.filter(item => item.categoryType === "Services");
+    const filterPageCategory = pageCategory.filter(item => item.categoryType === "Services" || item.categoryType === "Solutions") ;
 
     const addKeyStepsField = () => {
         setForm({ ...form, keySteps: [...form.keySteps!, ""] });

@@ -67,7 +67,7 @@ export const PUT = async (req: Request, context: RouteContext) => {
     }
 }
 
-export async function DELETE(req: Request, context: RouteContext) {
+export  const DELETE = async (req: Request, context: RouteContext) => {
     try {
         await dbConnect();
         const { id } = await context.params;

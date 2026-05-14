@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { OverviewModel } from "./OverviewModel";
-import { overview } from "@/types/overviewContext";
 import { Form, Mode } from "@/types/modelContext";
 import { TooltipProps } from "@/types/tooltipContext";
 import { searchKeys, SearchState, updateStateField } from "@/types/searchStateContext";
@@ -38,9 +37,6 @@ export const Overview: React.FC = () => {
         setData(overviewJson.data);
         setPageCategorydata(pageCategoryJson.data);
     };
-
-   
-
 
     const filteredData = data.filter(item => item.title?.toLowerCase().includes(search.title!.toLowerCase()) &&
         item.pageName?.toLowerCase().includes(search["page name"]!.toLowerCase())
