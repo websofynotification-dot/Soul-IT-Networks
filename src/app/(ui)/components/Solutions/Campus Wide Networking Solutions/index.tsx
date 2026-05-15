@@ -2,6 +2,8 @@ import { getData } from "@/lib/getData";
 import Overview from "@/models/admin-model/Services/Overview";
 import UseCase from "@/models/admin-model/Solutions/UseCase";
 import { Overviews } from "../../Shared Component/Overviews";
+import { ContactCta } from "../../Cta For Connect/ContactCta";
+import { Usecases } from "../../Shared Component/Usecases";
 
 export const CampusWideNetworkingSolutionsPage = async () => {
 
@@ -27,6 +29,13 @@ export const CampusWideNetworkingSolutionsPage = async () => {
                 </p>
             </div>
             <Overviews serviceData={overviewData} />
+            <Usecases
+                serviceData={usecaseData}
+                title="Use Cases"
+                subtitle="Smarter Campus Connectivity @ for Modern Organizations"
+                description="From structured cabling to enterprise routing and switching, discover how organizations @ improve operational efficiency with robust campus networks."
+            />
+            <ContactCta title="Modernize Your Network Infrastructure" description="Create a resilient and future-ready campus network with expert deployment and management services." buttonText="Request a Consultation" nevigateUrl="contact-us" />
         </div>
     );
 };

@@ -2,7 +2,8 @@ import { getData } from "@/lib/getData";
 import { Overviews } from "../../Shared Component/Overviews";
 import Overview from "@/models/admin-model/Services/Overview";
 import UseCase from "@/models/admin-model/Solutions/UseCase";
-
+import { ContactCta } from "../../Cta For Connect/ContactCta";
+import { Usecases } from "../../Shared Component/Usecases";
 
 export const AdvancedSecuritySolutionsPage = async () => {
 
@@ -28,6 +29,13 @@ export const AdvancedSecuritySolutionsPage = async () => {
                 </p>
             </div>
             <Overviews serviceData={overviewData} />
+            <Usecases
+                serviceData={usecaseData}
+                title="Use Cases"
+                subtitle="Cybersecurity That Stays @ Ahead of Threats"
+                description="Discover how our advanced security services help organizations defend against @ sophisticated attacks and minimize business disruption."
+            />
+            <ContactCta title="Protect Your Business Today" description="Secure your organization with advanced monitoring, threat prevention, and incident response capabilities." buttonText="Request a Consultation" nevigateUrl="contact-us" />
         </div>
     );
 };

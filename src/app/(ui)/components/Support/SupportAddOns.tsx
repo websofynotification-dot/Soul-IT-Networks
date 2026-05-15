@@ -15,7 +15,7 @@ export const SupportAddOns: React.FC<supportServiceProps> = ({ supportServiceDat
     (currentPage - 1) * recordsPerPage,
     currentPage * recordsPerPage
   );
-
+  
   return (
     <section>
       <div className="container">

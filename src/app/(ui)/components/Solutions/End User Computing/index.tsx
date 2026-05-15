@@ -2,7 +2,8 @@ import { getData } from "@/lib/getData";
 import Overview from "@/models/admin-model/Services/Overview";
 import UseCase from "@/models/admin-model/Solutions/UseCase";
 import { Overviews } from "../../Shared Component/Overviews";
-
+import { ContactCta } from "../../Cta For Connect/ContactCta";
+import { Usecases } from "../../Shared Component/Usecases";
 
 export const EndUserComputingPage = async () => {
 
@@ -28,6 +29,13 @@ export const EndUserComputingPage = async () => {
                 </p>
             </div>
             <Overviews serviceData={overviewData} />
+            <Usecases
+                serviceData={usecaseData}
+                title="Use Cases"
+                subtitle="Workplace Technology @ That Works Everywhere"
+                description="See how organizations improve workforce agility and simplify IT operations with modern @ workspace technologies and virtual computing environments."
+            />
+            <ContactCta title="Get a Customized EUC Solution" description="From VDI to endpoint management, we deliver tailored solutions that improve productivity and simplify IT operations." buttonText="Request a Consultation" nevigateUrl="contact-us" />
         </div>
     );
 };

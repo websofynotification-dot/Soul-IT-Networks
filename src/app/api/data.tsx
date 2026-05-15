@@ -1,11 +1,10 @@
-import {FaEnvelope, FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaWhatsapp, FaTwitter, FaBusinessTime, FaGraduationCap, FaUserFriends, FaBullseye, FaRegLightbulb, FaRunning, FaWifi, FaRegUser, FaSatelliteDish, FaRegFile} from "react-icons/fa";
+import {FaEnvelope, FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaWhatsapp, FaTwitter, FaGraduationCap, FaUserFriends, FaBullseye, FaRegLightbulb, FaRunning, FaWifi, FaRegUser, FaSatelliteDish, FaRegFile} from "react-icons/fa";
 import { MdCorporateFare, MdOutlinePolicy, MdOutlineRemoveRedEye, MdOutlineRocketLaunch, MdOutlineScale, MdOutlineSettingsRemote,MdPhoneIphone } from "react-icons/md";
 import { FaArrowTrendDown, FaCode, FaHandHoldingMedical, FaLink, FaRegCircle, FaRegCompass } from "react-icons/fa6";
 import { FiDatabase, FiYoutube } from "react-icons/fi";
 import { LuCctv, LuSquareMenu, LuTwitter } from "react-icons/lu";
-import { IoIosCamera, IoIosDesktop, IoIosPeople } from "react-icons/io";
-import { GrCloudSoftware, GrSettingsOption } from "react-icons/gr";
-import { GoRocket } from "react-icons/go";
+import { IoIosCamera, IoIosDesktop } from "react-icons/io";
+import { GrCloudSoftware } from "react-icons/gr";
 import { IoHardwareChipOutline, IoHome, IoTrendingUpOutline } from "react-icons/io5";
 import { HiArrowPathRoundedSquare, HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { CiCloud, CiGlobe, CiLock } from "react-icons/ci";
@@ -24,27 +23,27 @@ export const footer = {
     {
       icon: <FiYoutube />,
       title: "Youtube",
-      url: "https://www.youtube.com/watch?v=FFnPT7X8RI8"
+      url: "/"
     },
     {
       icon: <FaFacebook />,
       title: "Facebook",
-      url: "https://www.facebook.com/Rmlpathology/?rf=415157595197182"
+      url: "/"
     },
     {
       icon: <FaInstagram />,
       title: "Instagram",
-      url: "https://www.instagram.com/rml_pathology/"
+      url: "/"
     },
     {
       icon: <FaLinkedin />,
       title: "LinkedIn",
-      url: "https://www.linkedin.com/company/rml-mehrotra-pathology-pvt-ltd/"
+      url: "/"
     },
     {
       icon: <LuTwitter />,
       title: "Twitter",
-      url: "https://x.com/RmlPvt"
+      url: "/"
     },
   ],
   quickLinks: [

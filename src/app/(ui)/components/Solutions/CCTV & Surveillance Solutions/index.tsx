@@ -2,6 +2,8 @@ import { getData } from "@/lib/getData";
 import { Overviews } from "../../Shared Component/Overviews";
 import Overview from "@/models/admin-model/Services/Overview";
 import UseCase from "@/models/admin-model/Solutions/UseCase";
+import { ContactCta } from "../../Cta For Connect/ContactCta";
+import { Usecases } from "../../Shared Component/Usecases";
 
 export const CcTvAndSurveillanceSolutionsPage = async () => {
 
@@ -27,6 +29,13 @@ export const CcTvAndSurveillanceSolutionsPage = async () => {
                 </p>
             </div>
             <Overviews serviceData={overviewData} />
+            <Usecases
+                serviceData={usecaseData}
+                title="Use Cases"
+                subtitle="Advanced Surveillance @ Built for Protection"
+                description="Discover how enterprise-grade surveillance technologies help organizations @ safeguard assets and maintain operational control."
+            />
+            <ContactCta title="Protect Your Infrastructure Today" description="Deploy smart surveillance systems for complete security visibility and control." buttonText="Request a Consultation" nevigateUrl="contact-us" />
         </div>
     );
 };

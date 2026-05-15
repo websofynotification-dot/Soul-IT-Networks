@@ -13,7 +13,7 @@ const page = () => {
         title="Campus Wide WiFi Solutions"
         description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
         breadcrumbLinks={breadcrumbLinks}
-        imageSrc='solutions/campus-wide-wifI/campus-wide-wifi-banner.jpg'
+        imageSrc='solutions/campus-wide-wifi/campus-wide-wifi-banner.jpg'
       />
       <CampusWideWiFiSolutionsPage />
     </>

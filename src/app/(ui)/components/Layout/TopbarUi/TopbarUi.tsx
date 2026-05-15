@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { MdPhoneIphone } from "react-icons/md";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
@@ -10,7 +9,9 @@ export const TopbarUi: React.FC<{ topbarData: { _id: string, contactDetails: { c
   return (
     <div className="w-full flex fixed top-0 lg:h-12 sm:h-18 md:h-10 bg-primary text-sm z-50 transition-transform duration-300">
       {
-        topbarData?.length === 0 ? <div className="flex justify-center items-center w-full"><PreLoader flag={true} /></div> :
+        topbarData?.length === 0 ?
+
+          <div className="flex justify-center items-center w-full"><PreLoader flag={true} /></div> :
           <div className="container flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div className="overflow-hidden">
               {
@@ -28,7 +29,7 @@ export const TopbarUi: React.FC<{ topbarData: { _id: string, contactDetails: { c
                             </span>
                             <Link
                               href={`tel:+91${item.contactUrl}`}
-                              className="hover:text-black text-xs sm:text-sm text-white  whitespace-nowrap"
+                              className="hover:text-white/50 text-xs sm:text-sm text-white  whitespace-nowrap"
                             >
                               {item.contactUrl}
                             </Link>
@@ -40,7 +41,7 @@ export const TopbarUi: React.FC<{ topbarData: { _id: string, contactDetails: { c
                           <span className="text-white"><FaEnvelope className="sm:size-4 size-3" /></span>
                           <Link
                             href={`mailto:${item.contactUrl}`}
-                            className="hover:text-black text-xs sm:text-sm text-white whitespace-nowrap"
+                            className="hover:text-white/50 text-xs sm:text-sm text-white whitespace-nowrap"
                           >
                             {item.contactUrl}
                           </Link>
@@ -52,6 +53,7 @@ export const TopbarUi: React.FC<{ topbarData: { _id: string, contactDetails: { c
                 </div>
               }
             </div>
+
             <div className="hidden sm:flex items-center justify-center text-sm sm:justify-end gap-4">
               <p className="text-white">Trusted IT System Integrator Since 2017</p>
               <div className="h-5 w-px bg-white" />

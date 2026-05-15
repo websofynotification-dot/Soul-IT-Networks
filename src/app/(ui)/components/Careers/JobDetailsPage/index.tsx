@@ -119,7 +119,7 @@ export const JobDetailsPage = () => {
               <div className={`space-y-8 transition-all duration-200`}
               >
 
-                <div ref={sidebarRef} className={`bg-white flex flex-col gap-4 rounded-xl shadow-2xl shadow-secondary/50 border border-secondary ${isFixed ? "fixed top-[110px] w-[370px]" : "relative"} p-6 rounded-xl`}>
+                <div ref={sidebarRef} className={`bg-white flex flex-col gap-4 rounded-xl shadow-2xl  border border-secondary ${isFixed ? "fixed top-[0px] w-[370px]" : "relative"} p-6 rounded-xl`}>
 
                   <h3 className="text-lg font-semibold text-primary">
                     Apply{" "}<span className="text-MidnightNavyText">Now</span>
