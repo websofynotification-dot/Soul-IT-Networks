@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { endUserComputingMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "End User Computing | Soul IT Networks"
-};
+export const metadata: Metadata = endUserComputingMetaData;
 
 export default function EndUserComputingLayout({
     children,
@@ -13,9 +10,6 @@ export default function EndUserComputingLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

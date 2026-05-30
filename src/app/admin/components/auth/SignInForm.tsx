@@ -8,22 +8,21 @@ import { Eye, EyeOff, Key, Loader, MoveLeft, Send } from "lucide-react";
 import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Button from "../ui/button/Button";
+import { TooltipProps } from "@/types/tooltipContext";
 
 export default function SignInForm() {
   const [form, setForm] = useState({
     email: "",
     password: "",
   })
+
   const captchaRef = useRef<ReCAPTCHA | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
-    null
-  );
+  const [tooltip, setTooltip] = useState<TooltipProps | null>(null);
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState<boolean>(false)
   const router = useRouter()
 
   const showTooltip = (

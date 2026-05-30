@@ -221,10 +221,7 @@ export const sociaMediaBlogShearing = [
 ]
 
 
-
 export const icons = [<FiYoutube />, <FaFacebook />, <FaInstagram />, <FaLinkedin />, <LuTwitter />];
-
-
 
 export const projectsIcons = [<LuSquareMenu />, <IoHome />, <HiOutlineBuildingOffice2 />, <IoIosDesktop />];
 

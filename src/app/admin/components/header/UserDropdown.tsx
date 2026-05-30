@@ -47,7 +47,7 @@ export default function UserDropdown() {
     <div className="relative">
       <button
         onClick={toggleDropdown}
-        className="flex items-center cursor-pointer text-primary dropdown-toggle"
+        className="flex items-center cursor-pointer text-MidnightNavyText dropdown-toggle"
       >
         <span className="mr-3 overflow-hidden rounded-full h-11 w-11">
           <Image
@@ -59,7 +59,7 @@ export default function UserDropdown() {
         </span>
         
         <span className="block mr-1 font-medium text-16">{user.firstName} {user.lastName}  </span>
-        <IoChevronDownOutline size={25} className={`stroke-error transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+        <IoChevronDownOutline size={25} className={`stroke-primary transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
       <Dropdown

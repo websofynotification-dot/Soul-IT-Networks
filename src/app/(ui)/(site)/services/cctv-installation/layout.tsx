@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { cctvInstallationMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "CCTV Installation | Soul IT Networks"
-};
+export const metadata: Metadata = cctvInstallationMetaData;
 
 export default function CCTVInstallationLayout({
     children,
@@ -13,9 +10,6 @@ export default function CCTVInstallationLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

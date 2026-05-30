@@ -2,11 +2,13 @@ import { JobOpening } from '@/app/admin/components/careers/job-opening/JobOpenin
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Job Opening | Soul IT Networks",
+  title: "Current Job Openings | Soul IT Networks",
+  description:
+    "Explore exciting career opportunities in IT infrastructure, cybersecurity, cloud, networking, and software development.",
 };
 
 const page = () => {
-  return <JobOpening/>
+  return <JobOpening />
 }
 
 export default page

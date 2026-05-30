@@ -2,7 +2,9 @@ import { SupportService } from '@/app/admin/components/support/support-service/S
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Support | SPIT"
+  title: "Support Services | Soul IT Networks",
+  description:
+    "Get professional support services for IT infrastructure, networking, cybersecurity, cloud, and software solutions.",
 };
 
 const page = () => {

@@ -2,11 +2,13 @@ import { Journey } from '@/app/admin/components/about-us/journey/Journey';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Journey | SPIT"
+  title: "Our Journey | Soul IT Networks",
+  description:
+    "Explore the growth, milestones, and achievements that have shaped Soul IT Networks into a trusted technology partner.",
 };
 
 const page = () => {
-  return <Journey/>
+  return <Journey />
 }
 
 export default page

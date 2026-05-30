@@ -9,7 +9,7 @@ import Label from "../../form/Label";
 import { ModalProps } from "@/types/modelContext";
 import { card } from "@/types/cardContext";
 
-export const WhySPITModel: React.FC<ModalProps & { initialData?: card }> = ({ mode, onClose, onSave, initialData, loading, setLoading, showTooltip, tooltip }) => {
+export const WhySoulITModel: React.FC<ModalProps & { initialData?: card }> = ({ mode, onClose, onSave, initialData, loading, setLoading, showTooltip, tooltip }) => {
     const [form, setForm] = useState<card>(
         initialData || { title: "", description: "" });
 

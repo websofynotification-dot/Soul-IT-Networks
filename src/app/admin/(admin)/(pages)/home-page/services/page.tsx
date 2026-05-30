@@ -2,7 +2,9 @@ import { OurService } from '@/app/admin/components/home-page/our-services/OurSer
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Service | SPIT"
+  title: "Our Services | Soul IT Networks",
+  description:
+    "Discover comprehensive IT services including system integration, cybersecurity, cloud solutions, surveillance, networking, and software development.",
 };
 
 const page = () => {

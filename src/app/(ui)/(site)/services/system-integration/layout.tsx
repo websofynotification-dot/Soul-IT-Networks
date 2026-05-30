@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { systemIntegrationMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "System Integration | Soul IT Networks"
-};
+export const metadata: Metadata = systemIntegrationMetaData;
 
 export default function SystemIntegrationLayout({
     children,
@@ -13,9 +10,6 @@ export default function SystemIntegrationLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

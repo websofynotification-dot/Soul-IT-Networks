@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { enterpriseMessagingMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Enterprise Messaging & Collaboration | Soul IT Networks"
-};
+export const metadata: Metadata = enterpriseMessagingMetaData;
 
 export default function EnterpriseMessagingCollaborationLayout({
     children,
@@ -13,9 +10,6 @@ export default function EnterpriseMessagingCollaborationLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

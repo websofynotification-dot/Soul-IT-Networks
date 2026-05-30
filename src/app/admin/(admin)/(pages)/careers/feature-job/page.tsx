@@ -2,7 +2,9 @@ import { FeatureJob } from '@/app/admin/components/careers/feature-job/FeatureJo
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Feature Job | Soul IT Networks"
+  title: "Career Benefits | Soul IT Networks",
+  description:
+    "Discover the benefits, growth opportunities, and professional development offered at Soul IT Networks.",
 };
 
 const page = () => {

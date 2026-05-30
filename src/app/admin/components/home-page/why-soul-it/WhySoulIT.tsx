@@ -8,9 +8,9 @@ import { Form, Mode } from "@/types/modelContext";
 import { TooltipProps } from "@/types/tooltipContext";
 import { searchKeys, SearchState, updateStateField } from "@/types/searchStateContext";
 import { ApiResponseProps } from "@/types/ApiResponseContext";
-import { WhySPITModel } from "./WhySPITModel";
+import { WhySoulITModel } from "./WhySoulITModel";
 
-export const WhySPIT: React.FC = () => {
+export const WhySoulIT: React.FC = () => {
   const [data, setData] = useState<card[]>([]);
 
   const [modal, setModal] = useState<{ mode: Mode; item?: card } | null>(null);
@@ -137,7 +137,7 @@ export const WhySPIT: React.FC = () => {
       }
 
       {modal && (
-        <WhySPITModel
+        <WhySoulITModel
           mode={modal.mode}
           initialData={modal.item}
           onClose={() => setModal(null)}

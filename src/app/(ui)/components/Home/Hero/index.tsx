@@ -3,7 +3,7 @@ import HeroImage from '@/models/admin-model/HomePage/HeroImage';
 import { HeroSliderImage } from './HeroSliderImage';
 export const dynamic = 'force-dynamic';
 
-export const Hero = async () => {
+export const Hero: React.FC = async () => {
     const data = await getData(HeroImage);
-    return <HeroSliderImage carouselImages={data}/>
+    return <HeroSliderImage carouselImages={data} />
 }

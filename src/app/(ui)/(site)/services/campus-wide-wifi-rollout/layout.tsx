@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { campusWifiMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Campus Wide WiFi Rollout | Soul IT Networks"
-};
+export const metadata: Metadata = campusWifiMetaData;
 
 export default function CampusWideWiFiRolloutLayout({
     children,
@@ -13,15 +10,10 @@ export default function CampusWideWiFiRolloutLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );
 }
-
-
 
 
 

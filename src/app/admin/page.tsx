@@ -33,7 +33,7 @@ export default function HomePage() {
     <div className="flex flex-col h-screen items-center justify-center">
       <Link href="/">
         <Image
-          src="/images/logo/spit-logo.png"
+          src="/images/logo/soult-it-logo.png"
           alt="logo"
           width={160}
           height={50}
@@ -46,7 +46,7 @@ export default function HomePage() {
         visible={true}
         height="50"
         width="80"
-        color="#eb1f26"
+        color="#891503"
         radius="9"
         ariaLabel="three-dots-loading"
         wrapperStyle={{}}

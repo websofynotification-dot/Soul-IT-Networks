@@ -2,11 +2,13 @@ import { Foundation } from '@/app/admin/components/about-us/foundation/Foundatio
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Foundation | SPIT"
+  title: "Foundation | Soul IT Networks",
+  description:
+    "Discover the vision, values, and foundation that drive Soul IT Networks to deliver technology excellence.",
 };
 
 const page = () => {
-  return <Foundation/>
+  return <Foundation />
 }
 
 export default page

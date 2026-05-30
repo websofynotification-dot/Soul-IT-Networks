@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { managedITServicesMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Managed IT Services | Soul IT Networks"
-};
+export const metadata: Metadata = managedITServicesMetaData;
 
 export default function ManagedITServicesLayout({
     children,
@@ -13,9 +10,6 @@ export default function ManagedITServicesLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { businessContinuityMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Business Continuity & DR | Soul IT Networks"
-};
+export const metadata: Metadata = businessContinuityMetaData;
 
 export default function BusinessContinuityDRLayout({
     children,
@@ -13,9 +10,6 @@ export default function BusinessContinuityDRLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

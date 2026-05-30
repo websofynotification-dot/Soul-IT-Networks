@@ -7,6 +7,7 @@ import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Button from "../ui/button/Button";
 import { Loader, Send } from "lucide-react";
+import { TooltipProps } from "@/types/tooltipContext";
 
 function VerifyOtpPageContent() {
   const router = useRouter();
@@ -15,11 +16,7 @@ function VerifyOtpPageContent() {
 
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
-  
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
-    null
-  );
+  const [tooltip, setTooltip] = useState<TooltipProps | null>(null);
 
   const showTooltip = (
     message: string,

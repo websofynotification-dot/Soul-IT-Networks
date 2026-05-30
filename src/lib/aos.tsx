@@ -1,14 +1,12 @@
 "use client";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import "aos/dist/aos.css";
 
-export default function Aoscompo() {
+export const Aoscompo: FC = () => {
   useEffect(() => {
-  import("aos").then(AOS => {
-    AOS.init({ once: true });
-  });
-}, []);
-
-
+    import("aos").then(AOS => {
+      AOS.init({ once: true });
+    });
+  }, []);
   return null;
 }

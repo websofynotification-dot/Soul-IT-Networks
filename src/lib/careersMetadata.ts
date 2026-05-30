@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getJobBySlug } from "./getJobBySlug";
 
-export  const careersMetadata = async (
+export const careersMetadata = async (
   slug: string
 ): Promise<Metadata> => {
   const job = await getJobBySlug(slug);
@@ -14,6 +14,10 @@ export  const careersMetadata = async (
   }
 
   const { metaTitle, metaDescription, metaKeywords } = job;
+
+  console.log(job);
+  console.log(job.metaTitle);
+
   return {
     title: metaTitle,
     description: metaDescription,

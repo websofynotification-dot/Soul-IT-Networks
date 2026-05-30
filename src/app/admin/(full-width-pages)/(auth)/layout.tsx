@@ -22,12 +22,12 @@ export default function AuthLayout({
                 <Image
                   width={150}
                   height={200}
-                  src="/images/logo/spit-logo.png"
+                  src="/images/logo/soult-it-logo.png"
                   alt="Logo"
                 />
               </Link>
-              <p className="text-center uppercase font-semibold font-serif text-primary text-sm sm:text-[17px]">
-                SPIT | Shaurya Prabhat Infratech 
+              <p className="text-center uppercase font-semibold font-serif text-primary text-sm sm:text-xl">
+                SoUl IT Networks 
               </p>
             </div>
           </div>

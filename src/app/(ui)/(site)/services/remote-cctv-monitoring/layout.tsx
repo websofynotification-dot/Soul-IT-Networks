@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { remoteCctvMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Remote CCTV Monitoring | Soul IT Networks"
-};
+export const metadata: Metadata = remoteCctvMetaData;
 
 export default function RemoteCCTVMonitoringLayout({
     children,
@@ -13,9 +10,6 @@ export default function RemoteCCTVMonitoringLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

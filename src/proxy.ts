@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 
-export async function proxy(req: NextRequest) {
+export const proxy = async (req: NextRequest) => {
     const token = req.cookies.get("token")?.value;
     const secret = process.env.JWT_SECRET;
     if (!token || !secret) {
@@ -20,19 +20,18 @@ export async function proxy(req: NextRequest) {
 export const config = {
     matcher: [
         "/admin/dashboard/:path*",
-        "/admin/blogs/:path*",
+        "/admin/topbar/:path*",
+        "/admin/Menubar/:path*",
+        "/admin/home-page/:path*",
+        "/admin/about-us/:path*",
+        "/admin/customer/:path*",
+        "/admin/suport/:path*",
+        "/admin/careers/:path*",
+        "/admin/services/:path*",
+        "/admin/solutions/:path*",
         "/admin/category/:path*",
         "/admin/contact-us/:path*",
-        "/admin/success-story/:path*",
         "/admin/profile/:path*",
-        "/admin/internship/:path*",
-        "/admin/initiatives/:path*",
-        "/admin/activities/:path*",
-        "/admin/awards/:path*",
-        "/admin/perks/:path*",
-        "/admin/faq/:path*",
-        "/admin/join-us-request/:path*",
-        "/admin/Collaborator/:path*",
+        "/admin/footer/:path*",
     ],
 };
-

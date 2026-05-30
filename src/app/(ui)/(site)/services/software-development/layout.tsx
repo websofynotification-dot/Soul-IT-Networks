@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { softwareDevelopmentMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Software Development | Soul IT Networks"
-};
+export const metadata: Metadata = softwareDevelopmentMetaData;
 
 export default function SoftwareDevelopmentLayout({
     children,
@@ -13,15 +10,10 @@ export default function SoftwareDevelopmentLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );
 }
-
-
 
 
 

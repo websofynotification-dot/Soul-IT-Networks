@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { sddcMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Software Defined Datacentre | Soul IT Networks"
-};
+export const metadata: Metadata = sddcMetaData;
 
 export default function SoftwareDefinedDatacentreLayout({
     children,
@@ -13,9 +10,6 @@ export default function SoftwareDefinedDatacentreLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

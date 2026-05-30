@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { governmentTenderMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Government IT Tenders | Soul IT Networks"
-};
+export const metadata: Metadata = governmentTenderMetaData;
 
 export default function GovernmentITTendersLayout({
     children,
@@ -13,9 +10,6 @@ export default function GovernmentITTendersLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

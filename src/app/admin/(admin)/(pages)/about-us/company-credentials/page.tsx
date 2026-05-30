@@ -2,11 +2,13 @@ import { CompanyCredential } from '@/app/admin/components/about-us/company-crede
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Company Credential | SPIT"
+  title: "Company Credentials | Soul IT Networks",
+  description:
+    "Review our certifications, expertise, industry experience, and credentials that establish trust and reliability.",
 };
 
 const page = () => {
-  return <CompanyCredential/>
+  return <CompanyCredential />
 }
 
 export default page

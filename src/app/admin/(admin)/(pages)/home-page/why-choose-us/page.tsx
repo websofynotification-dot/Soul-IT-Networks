@@ -2,7 +2,9 @@ import { WhyChooseUs } from '@/app/admin/components/home-page/why-choose-us/WhyC
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Why Choose Us | RML"
+  title: "Why Choose Us | Soul IT Networks",
+  description:
+    "Learn why businesses trust Soul IT Networks for reliable IT infrastructure, security, cloud, and digital transformation solutions.",
 };
 
 const page = () => {

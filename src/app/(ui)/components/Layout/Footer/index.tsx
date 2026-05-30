@@ -1,10 +1,9 @@
 "use client";
 import Link from "next/link";
 import { footer } from "@/app/api/data";
-import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import Image from "next/image";
 
-const Footer = () => {
+export const Footer: React.FC = () => {
   return (
     <footer className="bg-primary pt-10 pb-4">
       <div className="container">
@@ -29,6 +28,7 @@ const Footer = () => {
                 SoUL IT Networks is a premier system integrator providing IT infrastructure, video conferencing, surveillance, network security, and customized software solutions.
               </p>
             </div>
+
             <div className="flex flex-wrap sm:justify-start justify-center gap-2 sm:gap-3 mt-4">
               {footer?.tag.map((item, index) => (
                 <span
@@ -199,5 +199,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

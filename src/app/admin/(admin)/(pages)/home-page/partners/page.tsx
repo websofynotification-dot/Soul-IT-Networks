@@ -2,11 +2,13 @@ import { OurPartners } from '@/app/admin/components/home-page/our-partners/OurPa
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Partners | SPIT"
+  title: "Our Partners | Soul IT Networks",
+  description:
+    "Meet our trusted technology partners and industry-leading vendors supporting innovative IT solutions.",
 };
 
 const page = () => {
-  return <OurPartners/>
+  return <OurPartners />
 }
 
 export default page

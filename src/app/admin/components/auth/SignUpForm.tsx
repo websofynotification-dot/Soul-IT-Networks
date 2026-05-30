@@ -9,6 +9,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import Tooltip from "../common/Tooltip";
 import Button from "../ui/button/Button";
 import { strongPasswordRegex } from "@/lib/strongPasswordRegex";
+import { TooltipProps } from "@/types/tooltipContext";
 
 export default function SignUpForm() {
   const [form, setForm] = useState({
@@ -19,10 +20,8 @@ export default function SignUpForm() {
   })
   const captchaRef = useRef<ReCAPTCHA | null>(null);
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false)
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
+  const [loading, setLoading] = useState(false);
+  const [tooltip, setTooltip] = useState<TooltipProps | null>(
     null
   );
   const [showPassword, setShowPassword] = useState(false);

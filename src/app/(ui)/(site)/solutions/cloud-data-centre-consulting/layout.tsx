@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { cloudConsultingMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Cloud & Datacentre Consulting | Soul IT Networks"
-};
+export const metadata: Metadata = cloudConsultingMetaData;
 
 export default function CloudDatacentreConsultingLayout({
     children,
@@ -13,9 +10,6 @@ export default function CloudDatacentreConsultingLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -10,7 +10,7 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { MdMiscellaneousServices, MdOutlineCategory } from "react-icons/md";
 import { PiAlignTopBold } from "react-icons/pi";
 import { TbMessageCircleUser } from "react-icons/tb";
-import { IoHomeOutline } from "react-icons/io5";
+import { IoFootstepsOutline, IoHomeOutline } from "react-icons/io5";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { TiSupport } from "react-icons/ti";
 import { GiProgression } from "react-icons/gi";
@@ -47,7 +47,7 @@ const navItems: NavItem[] = [
       { name: "Our Services", path: "/admin/home-page/services" },
       { name: "Why Choose Us", path: "/admin/home-page/why-choose-us" },
       { name: "Projects", path: "/admin/home-page/projects" },
-      { name: "Why SPIT", path: "/admin/home-page/why-spit" },
+      { name: "Why Soul It", path: "/admin/home-page/why-soul-it" },
       { name: "Our Certificates", path: "/admin/home-page/certificates" },
       { name: "Our Partners", path: "/admin/home-page/partners" },
     ],
@@ -116,6 +116,11 @@ const navItems: NavItem[] = [
     icon: <FaPhoneAlt size={15} />,
     path: "/admin/contact-us"
   },
+  // {
+  //   name: "Footer",
+  //   icon: <IoFootstepsOutline size={15} />,
+  //   path: "/admin/footer"
+  // },
   {
     icon: <FaRegUser size={18} />,
     name: "User Profile",
@@ -134,7 +139,8 @@ const othersItems: NavItem[] = [
   },
 ];
 
-const AppSidebar: React.FC = () => {
+
+export const AppSidebar: FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
   const pathname = usePathname();
 
@@ -326,7 +332,7 @@ const AppSidebar: React.FC = () => {
           {isExpanded || isHovered || isMobileOpen ? (
             <div className="w-64 flex justify-center items-center">
               <Image
-                src="/images/logo/spit-logo.png"
+                src="/images/logo/soult-it-logo.png"
                 alt="Logo"
                 width={100}
                 height={50}
@@ -335,7 +341,7 @@ const AppSidebar: React.FC = () => {
             </div>
           ) : (
             <Image
-              src="/images/logo/spit-logo.png"
+              src="/images/logo/soult-it-logo.png"
               alt="Logo"
               width={500}
               height={500}
@@ -349,7 +355,7 @@ const AppSidebar: React.FC = () => {
           <div className="flex flex-col gap-4">
             <div>
               <h2
-                className={`mb-4 text-xs uppercase flex leading-[20px] text-error font-semibold ${!isExpanded && !isHovered
+                className={`mb-4 text-xs uppercase flex leading-[20px] text-primary font-semibold ${!isExpanded && !isHovered
                   ? "lg:justify-center"
                   : "justify-start"
                   }`}
@@ -370,4 +376,3 @@ const AppSidebar: React.FC = () => {
   );
 };
 
-export default AppSidebar;

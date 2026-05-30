@@ -7,7 +7,7 @@ import React, { useState, useEffect, useRef } from "react";
 import UserDropdown from "../components/header/UserDropdown";
 import { LuChevronsRightLeft } from "react-icons/lu";
 
-const AppHeader: React.FC = () => {
+export const AppHeader: React.FC = () => {
   const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
   const { isMobileOpen, toggleSidebar, toggleMobileSidebar, isExpanded, isHovered } = useSidebar();
 
@@ -38,11 +38,11 @@ const AppHeader: React.FC = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 flex ${isExpanded || isHovered ? "w-[77.5vw]": "w-[93vw]"} bg-white  lg:border-b border-error/20`}>
+    <header className={`fixed top-0 flex ${isExpanded || isHovered ? "w-[77.5vw]" : "w-[93vw]"} bg-white  lg:border-b border-error/20`}>
       <div className="flex flex-col items-center justify-between grow lg:flex-row lg:px-6">
         <div className="flex items-center justify-between w-[120%] gap-2 px-3 py-3 border-b border-error/20 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4">
           <button
-            className="flex items-center justify-center cursor-pointer w-10 h-10 text-error border-error rounded-lg z-99999 lg:h-11 lg:w-11 lg:border"
+            className="flex items-center justify-center cursor-pointer w-10 h-10 text-primary border-secondary rounded-lg z-99999 lg:h-11 lg:w-11 lg:border"
             onClick={handleToggle}
             aria-label="Toggle Sidebar"
           >
@@ -57,28 +57,26 @@ const AppHeader: React.FC = () => {
             <Image
               width={50}
               height={50}
-              src="/images/logo/spit-logo.png"
+              src="/images/logo/soult-it-logo.png"
               alt="Logo"
             />
             <div className="w-full">
-              <h6 className="ml-2 text-center text-error font-semibold text-[5px]">SPIT | Shaurya Prabhat Infratech</h6>
+              <h6 className="ml-2 text-center text-primary font-semibold text-[5px]">Soul It Networks</h6>
             </div>
           </Link>
           <button
             onClick={toggleApplicationMenu}
             className="flex items-center justify-center w-10 h-10 text-MidnightNavyText rounded-lg z-99999 hover:bg-gray-100 lg:hidden"
           >
-            <Ellipsis color="#eb1f26"/>
+            <Ellipsis color="#eb1f26" />
           </button>
 
-          <div className="hidden lg:block w-[30em]">
-            <h1 className="ml-2 text-error text-center uppercase font-semibold text-2xl">
-              SPIT | Shaurya Prabhat Infratech</h1>
+          <div className="hidden lg:block">
+            <h1 className="ml-2 text-primary  text-center uppercase font-semibold text-2xl">Soul It Networks</h1>
           </div>
         </div>
-        <div
-          className={`${isApplicationMenuOpen ? "flex" : "hidden"
-            } items-center justify-between w-full gap-4 px-5 py-4 lg:flex shadow-theme-md lg:justify-end lg:px-0 lg:shadow-none`}
+        <div className={`${isApplicationMenuOpen ? "flex" : "hidden"
+          } items-center justify-between w-full gap-4 px-5 py-4 lg:flex shadow-theme-md lg:justify-end lg:px-0 lg:shadow-none`}
         >
           <UserDropdown />
         </div>
@@ -86,9 +84,6 @@ const AppHeader: React.FC = () => {
     </header>
   );
 };
-
-export default AppHeader;
-
 
 
 

@@ -9,6 +9,7 @@ import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Button from "../ui/button/Button";
 import { strongPasswordRegex } from "@/lib/strongPasswordRegex";
+import { TooltipProps } from "@/types/tooltipContext";
 
 export default function ResetPassword() {
     const [showPassword, setShowPassword] = useState(false);
@@ -21,10 +22,7 @@ export default function ResetPassword() {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
     const captchaRef = useRef<ReCAPTCHA | null>(null);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
-        null
-    );
+    const [tooltip, setTooltip] = useState<TooltipProps | null>(null);
 
     const showTooltip = (
         message: string,

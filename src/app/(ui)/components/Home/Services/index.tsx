@@ -3,7 +3,7 @@ import { OurServices } from './OurServices';
 import Service from '@/models/admin-model/HomePage/Service';
 export const dynamic = 'force-dynamic';
 
-export const Services = async () => {
+export const Services: React.FC = async () => {
     const data = await getData(Service);
-    return <OurServices cardData={data}/>
+    return <OurServices cardData={data} />
 }

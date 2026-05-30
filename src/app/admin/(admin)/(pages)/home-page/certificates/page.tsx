@@ -2,11 +2,13 @@ import { OurCerificates } from '@/app/admin/components/home-page/our-certificats
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Cerificates | SPIT"
+    title: "Our Certifications | Soul IT Networks",
+    description:
+        "View the certifications, credentials, and industry recognitions that demonstrate our commitment to excellence.",
 };
 
-const RmlWelcomeSection = () => {
+const page = () => {
     return <OurCerificates />
 }
 
-export default RmlWelcomeSection
+export default page

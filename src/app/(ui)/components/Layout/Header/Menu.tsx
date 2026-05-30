@@ -11,8 +11,8 @@ export const Menu: React.FC<MenuProps> = ({ headerData }) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [hideTopbar, setHideTopbar] = useState(false);
-
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+
   const handleScroll = () => {
     if (window.scrollY > 50) {
       setSticky(true);

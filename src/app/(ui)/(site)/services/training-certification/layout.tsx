@@ -1,10 +1,8 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
+import { trainingCertificationMetaData } from "@/app/api/metaData";
 import Script from "next/script";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Training & Certification | Soul IT Networks"
-};
+export const metadata: Metadata = trainingCertificationMetaData;
 
 export default function TrainingCertificationLayout({
     children,
@@ -13,9 +11,6 @@ export default function TrainingCertificationLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

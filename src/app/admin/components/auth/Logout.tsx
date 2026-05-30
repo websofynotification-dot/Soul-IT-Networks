@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react'
 import Tooltip from '../common/Tooltip';
 import { ThreeDots } from 'react-loader-spinner';
 import Link from 'next/link';
-import Image from 'next/image';
-import { TooltipProps } from '@/types/tooltipContext';
+import Image from 'next/image'
 
 const Logout = () => {
-    const [tooltip, setTooltip] = useState<TooltipProps | null>(null);
+     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(null);
     const router = useRouter();
     const showTooltip = (
         message: string,
@@ -17,6 +17,7 @@ const Logout = () => {
         setTooltip({ message, type });
         setTimeout(() => setTooltip(null), 3000);
     };
+
     const handleLogout = async () => {
         try {
             const res = await fetch("/api/auth/logout", { method: "POST" });
@@ -27,8 +28,7 @@ const Logout = () => {
                 }, 1000)
                 showTooltip(data.message, "success");
             }
-        }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        }  // eslint-disable-next-line @typescript-eslint/no-explicit-any
         catch (err: any) {
             showTooltip(err, "success");
         }
@@ -42,7 +42,7 @@ const Logout = () => {
             {tooltip && <Tooltip message={tooltip.message} type={tooltip.type} />}
             <Link href="/">
                 <Image
-                    src="/images/logo/spit-logo.png"
+                    src="/images/logo/soult-it-logo.png"
                     alt="logo"
                     width={160}
                     height={50}
@@ -55,7 +55,7 @@ const Logout = () => {
                 visible={true}
                 height="50"
                 width="80"
-                color="#eb1f26"
+                color="#891503"
                 radius="9"
                 ariaLabel="three-dots-loading"
                 wrapperStyle={{}}

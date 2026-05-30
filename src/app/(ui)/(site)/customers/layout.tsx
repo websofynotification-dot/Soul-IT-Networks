@@ -1,10 +1,7 @@
-import { aboutUsPageMetaData, aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { customersPageMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title:"Our Customers"
-};
+export const metadata: Metadata = customersPageMetaData;
 
 export default function AboutUsLayout({
     children,
@@ -13,9 +10,6 @@ export default function AboutUsLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
             {children}
         </>
     );

@@ -1,10 +1,8 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
+import { aboutUsPageProductSchema, networkSecurityMetaData } from "@/app/api/metaData";
 import Script from "next/script";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Network & Cyber Security | Soul IT Networks"
-};
+export const metadata: Metadata = networkSecurityMetaData;
 
 export default function NetworkCyberSecurityLayout({
     children,

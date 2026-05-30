@@ -1,10 +1,7 @@
-import { aboutUsPageProductSchema } from "@/app/api/metaData";
-import Script from "next/script";
+import { recruitmentMetaData } from "@/app/api/metaData";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Recruitment & Human Capital Solutions | Soul IT Networks"
-};
+export const metadata: Metadata = recruitmentMetaData;
 
 export default function RecruitmentHumanCapitalSolutionsLayout({
     children,
@@ -13,9 +10,7 @@ export default function RecruitmentHumanCapitalSolutionsLayout({
 }) {
     return (
         <>
-            <Script id="about-us-product-schema" type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutUsPageProductSchema) }}
-            />
+            
             {children}
         </>
     );
