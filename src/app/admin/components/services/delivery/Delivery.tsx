@@ -94,7 +94,7 @@ export const Delivery: React.FC = () => {
             {tooltip && <Tooltip message={tooltip.message} type={tooltip.type} />}
             <PageBreadcrumb pageTitle="Delivery" />
             <div className="flex justify-end items-center mb-4">
-                <button onClick={() => setModal({ mode: "create" })} className="bg-primary cursor-pointer text-white px-4 py-2 rounded-lg transition hover:bg-primary/90">
+                <button onClick={() => setModal({ mode: "create" })} className="bg-learning cursor-pointer text-white px-4 py-2 rounded-lg transition hover:bg-learning/90">
                     + Add Delivery
                 </button>
             </div>
@@ -105,7 +105,7 @@ export const Delivery: React.FC = () => {
                         key={key}
                         type="text"
                         placeholder={`Search by ${key}`}
-                        className="border px-2 py-1 rounded"
+                        className="border px-2 py-1 rounded border-secondary outline-none"
                         value={search[key] ?? ""}
                         onChange={(e) => updateStateField(setSearch, key, e.target.value)}
                     />
@@ -113,7 +113,7 @@ export const Delivery: React.FC = () => {
             </div>
             <table className="min-w-full bg-white rounded shadow">
                 <thead>
-                    <tr className="bg-herobg">
+                    <tr className="bg-primary text-white">
                         {["Title", "Page Name", "Actions"].map((item, index) => (
                             <th key={index} className="py-2 px-3 border">{item}</th>
                         ))}
@@ -123,9 +123,9 @@ export const Delivery: React.FC = () => {
                 <tbody>
                     {currentData.map((item) => (
                         <tr key={item._id} className="text-center">
-                            <td className="border border-border shadow-md shadow-skyBlue/20 p-2">{item.title}</td>
-                            <td className="border border-border shadow-md shadow-skyBlue/20 p-2">{item.pageName}</td>
-                            <td className="border border-border shadow-md shadow-skyBlue/20">
+                            <td className="border border-secondary shadow-md shadow-secondary/20 p-2">{item.title}</td>
+                            <td className="border border-secondary shadow-md shadow-secondary/20 p-2">{item.pageName}</td>
+                            <td className="border border-secondary shadow-md shadow-secondary/20">
                                 <div className="flex mx-1 gap-2 justify-center">
                                     <button onClick={() => setModal({ mode: "edit", item })} className="bg-success cursor-pointer text-white px-3 py-1 rounded">
                                         Edit

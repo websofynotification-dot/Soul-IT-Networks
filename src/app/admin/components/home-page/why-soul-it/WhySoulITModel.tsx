@@ -28,11 +28,11 @@ export const WhySoulITModel: React.FC<ModalProps & { initialData?: card }> = ({ 
         <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center z-[9999] bg-black/60" onClick={onClose}>
             {tooltip && <Tooltip message={tooltip.message} type={tooltip.type} />}
             <div
-                className={`bg-white p-6 rounded-lg w-[95%] ${mode === "delete" ? "max-w-[500px]" : "max-w-[850px]"} max-h-[90vh] shadow-lg 
+                className={`bg-white p-6 rounded-lg w-[95%] ${mode === "delete" ? "max-w-[500px]" : "max-w-[800px]"} max-h-[90vh] shadow-lg 
                    overflow-y-auto scroll-smooth hide-scrollbar`} onClick={(e) => e.stopPropagation()}
             >
                 <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-semibold">{mode === "edit" ? "Update" : mode === "delete" ? "Delete" : "Add"} Why SPIT Step</h2>
+                    <h2 className="text-xl font-semibold">{mode === "edit" ? "Update" : mode === "delete" ? "Delete" : "Add"} Why Soul It Step</h2>
                     <button
                         onClick={onClose}
                         className="cursor-pointer right-3 top-3 z-999 flex h-9.5 w-9.5 items-center justify-center rounded-full bg-primary/20 text-primary transition-colors hover:bg-transparent hover:text-secondary hover:border hover:border-secondary/30 sm:right-6 sm:top-6 sm:h-9 sm:w-9"
@@ -50,7 +50,7 @@ export const WhySoulITModel: React.FC<ModalProps & { initialData?: card }> = ({ 
                                 <input
                                     name="title"
                                     placeholder="Title"
-                                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                                     value={form.title}
                                     onChange={handleChange}
                                 />
@@ -65,7 +65,7 @@ export const WhySoulITModel: React.FC<ModalProps & { initialData?: card }> = ({ 
                                     placeholder="What about your step ?"
                                     rows={5}
                                     onChange={handleChange}
-                                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded resize-none"
+                                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded resize-none"
                                 />
                             </div>
                         </div>
@@ -81,7 +81,7 @@ export const WhySoulITModel: React.FC<ModalProps & { initialData?: card }> = ({ 
                     </button>
                     <button
                         className={`${mode === "delete"
-                            ? "bg-error"
+                            ? "bg-primary"
                             : "bg-primary"
                             } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
                         onClick={handleSubmit}

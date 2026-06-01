@@ -82,7 +82,7 @@ export const UseCaseModel: React.FC<ModalProps & { initialData?: service } & { p
                                     <Label>Page Name</Label>
                                     <select
                                         name="pageName"
-                                        className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                        className="border border-secondary shadow-secondary/20 shadow-md  cursor-pointer outline-none w-full p-2 rounded"
                                         value={form.pageName}
                                         onChange={handleChange}
                                     >
@@ -107,7 +107,7 @@ export const UseCaseModel: React.FC<ModalProps & { initialData?: service } & { p
                                                 type="text"
                                                 name="useCaseStep"
                                                 placeholder={`Usecase step ${index + 1}`}
-                                                className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  w-full p-2 rounded outline-none"
+                                                className="border border-secondary shadow-secondary/20 shadow-md  w-full p-2 rounded outline-none"
                                                 value={step}
                                                 onChange={(e) =>
                                                     handleChange(e, index)
@@ -154,7 +154,7 @@ export const UseCaseModel: React.FC<ModalProps & { initialData?: service } & { p
                     </button>
                     <button
                         className={`${mode === "delete"
-                            ? "bg-error"
+                            ? "bg-primary"
                             : "bg-primary"
                             } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
                         onClick={handleSubmit}

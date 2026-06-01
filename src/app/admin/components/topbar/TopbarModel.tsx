@@ -81,9 +81,9 @@ export const TopbarModel = ({ mode, onClose, onSave, initialData }: any) => {
         >
             {tooltip && <Tooltip message={tooltip.message} type={tooltip.type} />}
             <div
-                className="bg-white p-6 rounded-lg w-[95%] max-w-[800px] max-h-[90vh] shadow-lg overflow-y-auto"
+                className={`bg-white p-6 rounded-lg w-[95%] ${mode === "delete" ? "max-w-[500px]" : "max-w-[800px]"} max-h-[90vh] shadow-lg overflow-y-auto`}
                 onClick={(e) => e.stopPropagation()}
-            > 
+            >
                 <div className="flex items-center justify-between mb-4">
                     <h2 className="text-xl">
                         {mode === "edit" ? "Update" : "Add"} Topbar
@@ -91,109 +91,114 @@ export const TopbarModel = ({ mode, onClose, onSave, initialData }: any) => {
 
                     <button
                         onClick={onClose}
-                        className="h-9 w-9 flex items-center justify-center rounded-full bg-primary/20 text-primary"
+                        className="cursor-pointer right-3 top-3 z-999 flex h-9.5 w-9.5 items-center justify-center rounded-full bg-primary/20 text-primary transition-colors hover:bg-transparent hover:text-secondary hover:border hover:border-secondary/30 sm:right-6 sm:top-6 sm:h-9 sm:w-9"
                     >
                         <RxCross2 size={20} />
                     </button>
                 </div>
 
-                <div className="space-y-3">
-                    <Label>Contact Details</Label>
-                    {form.contactDetails.map((item: any, index: number) => (
-                        <div key={index} className="flex gap-2">
-                            <select
-                                className="border capitalize cursor-pointer border-MidnightNavyText shadow-md shadow-MidnightNavyText/50 outline-none w-[50%] p-2 rounded"
-                                value={item.contctType}
-                                onChange={(e) =>
-                                    handleContactChange(index, "contctType", e.target.value)
-                                }
-                            >
-                                <option value="">Select Contact Type</option>
-                                {
-                                    ["telephone", "phone", "email"].map((item, index) => (
-                                        <option key={index} value={item}>{item}</option>
-                                    ))
-                                }
-                            </select>
+                {mode === "delete" ? (
+                    <p>Are you sure you want to delete this topbar?</p>
+                ) :
+                    <>
+                        <div className="space-y-3">
+                            <Label>Contact Details</Label>
+                            {form.contactDetails.map((item: any, index: number) => (
+                                <div key={index} className="flex gap-2">
+                                    <select
+                                        className="border capitalize cursor-pointer border-secondary shadow-md shadow-secondary/20 outline-none w-[50%] p-2 rounded"
+                                        value={item.contctType}
+                                        onChange={(e) =>
+                                            handleContactChange(index, "contctType", e.target.value)
+                                        }
+                                    >
+                                        <option value="">Select Contact Type</option>
+                                        {
+                                            ["telephone", "phone", "email"].map((item, index) => (
+                                                <option key={index} value={item}>{item}</option>
+                                            ))
+                                        }
+                                    </select>
 
-                            <input
-                                type="text"
-                                placeholder="Contact Value"
-                                className="border border-MidnightNavyText shadow-md shadow-MidnightNavyText/50 outline-none w-[50%] p-2 rounded"
-                                value={item.contactUrl}
-                                onChange={(e) =>
-                                    handleContactChange(index, "contactUrl", e.target.value)
-                                }
-                            />
+                                    <input
+                                        type="text"
+                                        placeholder="Contact Value"
+                                        className="border capitalize border-secondary shadow-md shadow-secondary/20 outline-none w-[50%] p-2 rounded"
+                                        value={item.contactUrl}
+                                        onChange={(e) =>
+                                            handleContactChange(index, "contactUrl", e.target.value)
+                                        }
+                                    />
 
-                            {form.contactDetails.length > 1 && (
-                                <button
-                                    onClick={() => removeContactField(index)}
-                                    className="bg-error h-10 w-10 text-white px-3 py-1 rounded"
-                                >
-                                    <FiMinus />
-                                </button>
-                            )}
+                                    {form.contactDetails.length > 1 && (
+                                        <button
+                                            onClick={() => removeContactField(index)}
+                                            className="bg-error h-10 w-10 text-white px-3 py-1 rounded"
+                                        >
+                                            <FiMinus />
+                                        </button>
+                                    )}
 
-                            {index === form.contactDetails.length - 1 && (
-                                <button
-                                    onClick={addContactField}
-                                    className="bg-success h-10 w-10 text-white px-3 py-1 rounded"
-                                >
-                                    <IoIosAdd />
-                                </button>
-                            )}
+                                    {index === form.contactDetails.length - 1 && (
+                                        <button
+                                            onClick={addContactField}
+                                            className="bg-success h-10 w-10 text-white px-3 py-1 rounded"
+                                        >
+                                            <IoIosAdd />
+                                        </button>
+                                    )}
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
 
-                <div className="mt-5 space-y-3">
-                    <Label>Social Media</Label>
-                    {form.socialMedia.map((item: any, index: number) => (
-                        <div key={index} className="flex items-center gap-2">
-                            <select
-                                className="border capitalize cursor-pointer border-MidnightNavyText shadow-md shadow-MidnightNavyText/50 outline-none w-[50%] p-2 rounded"
-                                value={item.socialMediaType}
-                                onChange={(e) =>
-                                    handleSocialChange(index, "socialMediaType", e.target.value)
-                                }
-                            >
-                                <option value="">Select Social Media Type</option>
-                                {
-                                    ["youtube", "facebook", "instagram", "linkedin", "twitter"].map((item, index)=>(
-                                        <option key={index} value={item}>{item}</option> 
-                                    ))
-                                }
-                            </select>
-                            <input
-                                type="text"
-                                placeholder="Social Media URL"
-                                className="border border-MidnightNavyText shadow-md shadow-MidnightNavyText/50 outline-none w-[50%] p-2 rounded"
-                                value={item.socialMediaUrl}
-                                onChange={(e) =>
-                                    handleSocialChange(index, "socialMediaUrl", e.target.value)
-                                }
-                            />
-                            {form.socialMedia.length > 1 && (
-                                <button
-                                    onClick={() => removeSocialField(index)}
-                                    className="bg-error h-10 w-10 text-white px-3 py-1 rounded"
-                                >
-                                    <FiMinus />
-                                </button>
-                            )}
-                            {index === form.socialMedia.length - 1 && (
-                                <button
-                                    onClick={addSocialField}
-                                    className="bg-success h-10 w-10 text-white px-3 py-1 rounded"
-                                >
-                                    <IoIosAdd />
-                                </button>
-                            )}
+                        <div className="mt-5 space-y-3">
+                            <Label>Social Media</Label>
+                            {form.socialMedia.map((item: any, index: number) => (
+                                <div key={index} className="flex items-center gap-2">
+                                    <select
+                                        className="border capitalize cursor-pointer border-secondary shadow-md shadow-secondary/20 outline-none w-[50%] p-2 rounded"
+                                        value={item.socialMediaType}
+                                        onChange={(e) =>
+                                            handleSocialChange(index, "socialMediaType", e.target.value)
+                                        }
+                                    >
+                                        <option value="">Select Social Media Type</option>
+                                        {
+                                            ["youtube", "facebook", "instagram", "linkedin", "twitter"].map((item, index) => (
+                                                <option key={index} value={item}>{item}</option>
+                                            ))
+                                        }
+                                    </select>
+                                    <input
+                                        type="text"
+                                        placeholder="Social Media URL"
+                                        className="border capitalize border-secondary shadow-md shadow-secondary/20 outline-none w-[50%] p-2 rounded"
+                                        value={item.socialMediaUrl}
+                                        onChange={(e) =>
+                                            handleSocialChange(index, "socialMediaUrl", e.target.value)
+                                        }
+                                    />
+                                    {form.socialMedia.length > 1 && (
+                                        <button
+                                            onClick={() => removeSocialField(index)}
+                                            className="bg-error h-10 w-10 text-white px-3 py-1 rounded"
+                                        >
+                                            <FiMinus />
+                                        </button>
+                                    )}
+                                    {index === form.socialMedia.length - 1 && (
+                                        <button
+                                            onClick={addSocialField}
+                                            className="bg-success h-10 w-10 text-white px-3 py-1 rounded"
+                                        >
+                                            <IoIosAdd />
+                                        </button>
+                                    )}
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
-
+                    </>
+                }
                 <div className="flex justify-end gap-3 mt-6">
                     <button
                         className="bg-SlateBlueText/30 text-MidnightNavyText cursor-pointer flex items-center gap-2 px-3 py-1 rounded hover:opacity-80"
@@ -204,7 +209,7 @@ export const TopbarModel = ({ mode, onClose, onSave, initialData }: any) => {
                     </button>
                     <button
                         className={`${mode === "delete"
-                            ? "bg-error"
+                            ? "bg-primary"
                             : "bg-primary"
                             } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
                         onClick={handleSubmit}

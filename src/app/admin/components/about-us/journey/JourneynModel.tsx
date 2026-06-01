@@ -33,7 +33,7 @@ export const JourneyModel: React.FC<ModalProps & { initialData?: journey }> = ({
         <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center z-[9999] bg-black/60" onClick={onClose}>
             {tooltip && <Tooltip message={tooltip.message} type={tooltip.type} />}
             <div
-                className={`bg-white p-6 rounded-lg w-[95%] ${mode === "delete" ? "max-w-[500px]" : "max-w-[850px]"} max-h-[90vh] shadow-lg 
+                className={`bg-white p-6 rounded-lg w-[95%] ${mode === "delete" ? "max-w-[500px]" : "max-w-[800px]"} max-h-[90vh] shadow-lg 
                    overflow-y-auto scroll-smooth hide-scrollbar`} onClick={(e) => e.stopPropagation()}
             >
                 <div className="flex items-center justify-between mb-4">
@@ -56,7 +56,7 @@ export const JourneyModel: React.FC<ModalProps & { initialData?: journey }> = ({
                                 <input
                                     name="title"
                                     placeholder="Title"
-                                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                                     value={form.title}
                                     onChange={handleChange}
                                 />
@@ -68,7 +68,7 @@ export const JourneyModel: React.FC<ModalProps & { initialData?: journey }> = ({
                                     value={form.journey_year}
                                     placeholder="Journey Year"
                                     onChange={handleChange}
-                                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                                 />
                             </div>
                         </div>
@@ -82,7 +82,7 @@ export const JourneyModel: React.FC<ModalProps & { initialData?: journey }> = ({
                                     placeholder="What about your journey ?"
                                     rows={5}
                                     onChange={handleChange}
-                                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded resize-none"
+                                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded resize-none"
                                 />
                             </div>
                         </div>
@@ -99,7 +99,7 @@ export const JourneyModel: React.FC<ModalProps & { initialData?: journey }> = ({
                     </button>
                     <button
                         className={`${mode === "delete"
-                            ? "bg-error"
+                            ? "bg-primary"
                             : "bg-primary"
                             } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
                         onClick={handleSubmit}

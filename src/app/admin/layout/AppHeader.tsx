@@ -38,7 +38,7 @@ export const AppHeader: React.FC = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 flex ${isExpanded || isHovered ? "w-[77.5vw]" : "w-[93vw]"} bg-white  lg:border-b border-error/20`}>
+    <header className={`fixed top-0 flex ${isExpanded || isHovered ? "w-[77.5vw]" : "w-[93vw]"} bg-white  lg:border-b border-secondary`}>
       <div className="flex flex-col items-center justify-between grow lg:flex-row lg:px-6">
         <div className="flex items-center justify-between w-[120%] gap-2 px-3 py-3 border-b border-error/20 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4">
           <button

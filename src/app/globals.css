@@ -290,11 +290,11 @@ body {
 }
 
 .menu-item-active {
-  @apply bg-formbg text-MidnightNavyText;
+  @apply bg-primary text-white;
 }
 
 .menu-item-inactive {
-  @apply text-gray-700 hover:bg-gray-100 group-hover:text-gray-700;
+  @apply text-MidnightNavyText hover:bg-secondary/15 group-hover:text-gray-700;
 }
 
 .menu-item-icon {
@@ -302,8 +302,23 @@ body {
 }
 
 .menu-item-icon-active {
-  @apply text-MidnightNavyText;
+  @apply text-white;
 }
+
+.menu-item-icon-inactive{
+  @apply text-primary;
+}
+
+.menu-dropdown-item-icon-active {
+  @apply text-secondary;
+}
+
+.menu-dropdown-item-active{
+  @apply text-secondary
+}
+
+
+
 
 .menu-item-arrow {
   @apply relative;

@@ -11,7 +11,6 @@ import { searchKeys, SearchState, updateStateField } from "@/types/searchStateCo
 import { ApiResponseProps } from "@/types/ApiResponseContext";
 
 export const OurService: React.FC = () => {
-
     const [data, setData] = useState<card[]>([]);
     const [modal, setModal] = useState<{ mode: Mode; item?: card } | null>(null);
     const [tooltip, setTooltip] = useState<TooltipProps | null>(null);
@@ -102,7 +101,7 @@ export const OurService: React.FC = () => {
                         key={key}
                         type="text"
                         placeholder={`Search by ${key}`}
-                        className="border px-2 py-1 rounded"
+                        className="border border-secondary outline-none px-2 py-1 rounded"
                         value={search[key] ?? ""}
                         onChange={(e) => updateStateField(setSearch, key, e.target.value)}
                     />
@@ -110,7 +109,7 @@ export const OurService: React.FC = () => {
             </div>
             <table className="min-w-full bg-white border rounded shadow">
                 <thead>
-                    <tr className="bg-formbg/30">
+                    <tr className="bg-secondary text-white">
                         <th className="py-2 px-3 border">Title</th>
                         <th className="py-2 px-3 border">Actions</th>
                     </tr>
@@ -118,9 +117,8 @@ export const OurService: React.FC = () => {
                 <tbody>
                     {currentData.map((item) => (
                         <tr key={item._id} className="text-center">
-                            <td className="border text-center border-formbg shadow-md shadow-formbg/50 p-2">{item.title}</td>
-
-                            <td className="border text-center border-formbg shadow-md shadow-formbg/50">
+                            <td className="border text-center border-secondary shadow-md shadow-secondary/20 p-2">{item.title}</td>
+                            <td className="border text-center border-secondary shadow-md shadow-secondary/20 p-2">
                                 <div className="flex mx-1 gap-2 justify-center">
                                     <button onClick={() => setModal({ mode: "edit", item })} className="bg-success cursor-pointer text-white px-3 py-1 rounded">
                                         Edit

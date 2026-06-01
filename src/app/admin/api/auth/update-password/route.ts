@@ -15,12 +15,16 @@ export async function POST(req: NextRequest) {
     const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
     const { payload } = await jwtVerify(token, secret);
     const email = payload.email as string;
+
     const { oldPassword, newPassword, confirmPassword, captcha } = await req.json();
     
     const captchaVerify = await fetch(
-      `${process.env.RECAPTCHA_BASE_URL! + process.env.RECAPTCHA_SECRET_KEY!}&response=${captcha}`,
-      { method: "POST" }
+      `${process.env.RECAPTCHA_BASE_URL}?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captcha}`,
+      {
+        method: "POST",
+      }
     );
+
     const captchaData = await captchaVerify.json();
     if (!captchaData.success) {
       return NextResponse.json({ message: "Captcha verification failed" }, { status: 400 });

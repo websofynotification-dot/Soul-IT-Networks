@@ -159,7 +159,7 @@ export default function ContactUs() {
                 setSearchTerm(e.target.value);
                 setCurrentPage(1);
               }}
-              className="border px-3 py-2 rounded-lg w-full sm:w-[15em] focus:ring focus:ring-formbg/80 outline-none"
+              className="border px-2 py-1 rounded  w-full sm:w-[15em] border-secondary outline-none"
             />
           </div>
 
@@ -174,7 +174,7 @@ export default function ContactUs() {
                   setFromDate(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="border px-3 py-2 rounded-lg focus:ring focus:ring-formbg/80 outline-none cursor-pointer"
+                className="border px-2 py-1 rounded  w-full border-secondary outline-none cursor-pointer"
               />
             </div>
 
@@ -188,7 +188,7 @@ export default function ContactUs() {
                   setToDate(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="border px-3 py-2 rounded-lg focus:ring focus:ring-formbg/80 outline-none cursor-pointer"
+                className="border px-2 py-1 rounded border-secondary outline-none cursor-pointer"
               />
             </div>
           </div>
@@ -196,7 +196,7 @@ export default function ContactUs() {
 
         <button
           onClick={exportToCSV}
-          className="bg-learning cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-learning/80 transition"
+          className="bg-learning cursor-pointer text-white px-4 py-2 rounded hover:bg-learning/80 transition"
         >
           Export CSV
         </button>
@@ -208,7 +208,7 @@ export default function ContactUs() {
             visible={true}
             height="150"
             width="150"
-            colors={["#3c3c30", "#727057", "#727057"]}
+            colors={["#942916", "#891503", "#891503"]}
             ariaLabel="radio-loading"
             wrapperStyle={{}}
             wrapperClass=""
@@ -219,40 +219,40 @@ export default function ContactUs() {
       ) :
 
         (
-          <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
-            <table className="min-w-full divide-y divide-formbg">
-              <thead className="bg-formbg/30">
+          <div className="overflow-x-auto bg-white shadow-lg">
+            <table className="min-w-full">
+              <thead className="bg-primary text-white">
                 <tr>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-black">
+                  <th className="px-3 py-3 text-center border text-sm font-semibold">
                     Sn. No.
                   </th>
                   <th
                     onClick={() => handleSort("name")}
-                    className="px-6 py-3 text-left text-sm font-semibold text-black cursor-pointer select-none"
+                    className="px-3 py-3 text-sm border font-semibold cursor-pointer select-none"
                   >
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center justify-center gap-1">
                       Name
                       <ArrowUpDown
                         className={`w-4 h-4 transition-transform ${sortField === "name"
                           ? sortOrder === "asc"
                             ? "rotate-180 text-learning"
                             : "text-learning"
-                          : "text-primary"
+                          : "text-white"
                           }`}
                       />
                     </div>
                   </th>
                   <th
-                    className="px-6 py-3 text-left text-sm font-semibold text-black cursor-pointer select-none"
+                    className="px-3 py-3 text-sm border font-semibold cursor-pointer select-none"
                   >
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center justify-center gap-1">
                       Phone
                       <ArrowUpDown
                         className={`w-4 h-4 transition-transform ${sortField === "phone"
                           ? sortOrder === "asc"
                             ? "rotate-180 text-learning"
                             : "text-learning"
-                          : "text-primary"
+                          : "text-white"
                           }`}
                       />
                     </div>
@@ -260,37 +260,37 @@ export default function ContactUs() {
 
                   <th
                     onClick={() => handleSort("email")}
-                    className="px-6 py-3 text-left text-sm font-semibold text-black cursor-pointer select-none"
+                    className="px-3 py-3 text-sm font-semibold border cursor-pointer select-none"
                   >
                     <div
-                      className="flex items-center gap-1">
+                      className="flex items-center justify-center gap-1">
                       Email
                       <ArrowUpDown
                         className={`w-4 h-4 transition-transform ${sortField === "email"
                           ? sortOrder === "asc"
                             ? "rotate-180 text-learning"
                             : "text-learning"
-                          : "text-primary"
+                          : "text-white"
                           }`}
                       />
                     </div>
                   </th>
 
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-black select-none">
-                    <div className="flex items-center gap-1">Message</div>
+                  <th className="px-3 py-3 text-sm border font-semibold">
+                    <div className="flex items-center justify-center gap-1">Message</div>
                   </th>
                   <th
                     onClick={() => handleSort("date")}
-                    className="px-6 py-3 text-left text-sm font-semibold text-black cursor-pointer select-none"
+                    className="px-3 py-3 text-sm font-semibold border cursor-pointer select-none"
                   >
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center justify-center gap-1">
                       Date
                       <ArrowUpDown
                         className={`w-4 h-4 transition-transform ${sortField === "date"
                           ? sortOrder === "asc"
                             ? "rotate-180 text-learning"
                             : "text-learning"
-                          : "text-primary"
+                          : "text-white"
                           }`}
                       />
                     </div>
@@ -301,18 +301,16 @@ export default function ContactUs() {
               <tbody className="divide-y divide-black">
                 {currentRecords.map((record, index) => (
                   <tr key={record._id} className="hover:bg-formbg/10 transition-colors">
-                    <td className="px-6 py-4 text-sm text-SlateBlueText">
+                    <td className="p-2 border border-secondary shadow-md shadow-secondary/20">
                       {(currentPage - 1) * recordsPerPage + index + 1}.
                     </td>
                     <td
-                      className="px-6 py-4 text-sm text-SlateBlueText">{record.name}</td>
-                    <td className="px-6 py-4 text-sm text-SlateBlueText">{record.phone}</td>
-                    <td className="px-6 py-4 text-sm text-SlateBlueText">{record.email}</td>
-                    <td
+                      className="px-3 py-4 border border-secondary shadow-md shadow-secondary/20">{record.name}</td>
+                    <td className="p-2 border border-secondary shadow-md shadow-secondary/20">{record.phone}</td>
+                    <td className="p-2 border border-secondary shadow-md shadow-secondary/20">{record.email}</td>
+                    <td className="py-4 px-2  w-68  items-center justify-center flex gap-1 border border-secondary shadow-md shadow-secondary/20">
 
-                      className="py-4 text-sm w-48 items-center justify-center flex gap-1 text-SlateBlueText">
-
-                      <span className="w-[32em]">{record.message.substring(0, 20)}...</span>
+                      <span className="w-[15em]">{record.message.substring(0, 20)}...</span>
                       <span onClick={() => {
                         handleOnChange(record.name, record.phone, record.message, new Date(record?.createdAt).toLocaleDateString("en-IN"), record.email,);
                         setShowMessage(!showMessage);
@@ -323,17 +321,14 @@ export default function ContactUs() {
                           <IoEyeOffOutline size={17} className="text-primary cursor-pointer" />
                         )}
                       </span>
-
                     </td>
-                    <td className="px-6 py-4 text-sm text-SlateBlueText">{
+                    <td className="p-2 border border-secondary shadow-md shadow-secondary/20">{
                       new Date(record?.createdAt).toLocaleDateString("en-IN")
                     }</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-
-
           </div>
         )}
 

@@ -23,9 +23,7 @@ const DashboardPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [contactRes] = await Promise.all([
-          fetch("/api/auth/contact-us")
-        ]);
+        const [contactRes] = await Promise.all([fetch("/api/auth/contact-us")]);
         const contactResData = await contactRes.json();
         setContacts(contactResData.data);
       } catch (err) {
@@ -69,14 +67,14 @@ const DashboardPage = () => {
           :
           <div className="space-y-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              
-              <div className="bg-primary shadow rounded-lg p-6 cursor-pointer col-span-2" onClick={()=>router.push("/admin/contact-us")}>
-                 <p className="text-white font-semibold">Total Contacts Request</p>
+
+              <div className="bg-primary shadow rounded-lg p-6 cursor-pointer col-span-2" onClick={() => router.push("/admin/contact-us")}>
+                <p className="text-white font-semibold">Total Contacts Request</p>
                 <h2 className="text-3xl text-white font-bold">{contacts.length}</h2>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">           
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
               <div className="bg-white shadow rounded-lg p-4 col-span-2">
                 <h3 className="text-lg text-primary font-semibold mb-3">
@@ -90,7 +88,7 @@ const DashboardPage = () => {
                     <Line
                       type="monotone"
                       dataKey="count"
-                      stroke="#ef914e"
+                      stroke="#891503"
                       strokeWidth={3}
                     />
                   </LineChart>

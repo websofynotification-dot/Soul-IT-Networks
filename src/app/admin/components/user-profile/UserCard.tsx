@@ -205,7 +205,6 @@ export default function UserCard() {
       );
     }
 
-
     try {
       const res = await fetch("/admin/api/auth/update-password", {
         method: "POST",
@@ -257,14 +256,14 @@ export default function UserCard() {
               visible={true}
               height="150"
               width="150"
-              colors={["#3c3c30", "#727057", "#727057"]}
+              colors={["#942916", "#891503", "#891503"]}
               ariaLabel="radio-loading"
               wrapperStyle={{}}
               wrapperClass=""
             />
           </div>
           :
-          <div className="p-5 border border-gray-200 rounded-2xl lg:p-6">
+          <div className="p-5 border border-secondary rounded-2xl lg:p-6">
             <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
 
               <div className="flex flex-col items-center w-full gap-6 xl:flex-row">

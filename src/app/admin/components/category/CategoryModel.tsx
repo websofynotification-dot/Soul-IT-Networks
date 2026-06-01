@@ -4,6 +4,9 @@ import Label from "../form/Label";
 import { ModalProps } from "@/types/modelContext";
 import { category } from "@/types/categoryContext";
 import { RxCross2 } from "react-icons/rx";
+import { FiLoader } from "react-icons/fi";
+import { LiaCheckCircle } from "react-icons/lia";
+import { GiCancel } from "react-icons/gi";
 
 export const CategoryModel: React.FC<ModalProps & { initialData?: category }> = ({ mode, onClose, onSave, initialData, loading, setLoading, showTooltip, tooltip }) => {
   const [form, setForm] = useState<category>(initialData || { category: "", categoryType: "" });
@@ -47,7 +50,7 @@ export const CategoryModel: React.FC<ModalProps & { initialData?: category }> = 
                   <Label>Category Type</Label>
                   <select
                     name="categoryType"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md cursor-pointer  outline-none w-full p-2 rounded"
                     value={form.categoryType}
                     onChange={handleChange}
                   >
@@ -65,7 +68,7 @@ export const CategoryModel: React.FC<ModalProps & { initialData?: category }> = 
                   <input
                     name="category"
                     placeholder="Category"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                     value={form.category}
                     onChange={handleChange}
                   />
@@ -76,17 +79,27 @@ export const CategoryModel: React.FC<ModalProps & { initialData?: category }> = 
         )}
         <div className="flex justify-end gap-3 mt-6">
           <button
-            className="bg-gray-300 cursor-pointer px-3 py-1 rounded hover:bg-gray-400"
+            className="bg-SlateBlueText/30 text-MidnightNavyText cursor-pointer flex items-center gap-2 px-3 py-1 rounded hover:opacity-80"
             onClick={onClose}
           >
-            Cancel
+            <span>Cancel</span>
+            <GiCancel className="text-midnight_text" />
           </button>
           <button
-            className={`${mode === "delete" ? "bg-red-600" : "bg-blue-600"
-              } text-white px-3 py-1 cursor-pointer rounded hover:opacity-90`}
+            className={`${mode === "delete"
+              ? "bg-primary"
+              : "bg-primary"
+              } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
             onClick={handleSubmit}
           >
-            {mode === "delete" ? "Delete" : "Save"}
+            <span>
+              {mode === "delete" ? "Delete" : "Save"}
+            </span>
+            {loading ? (
+              <FiLoader size={15} className="animate-spin" />
+            ) : (
+              <LiaCheckCircle size={18} />
+            )}
           </button>
         </div>
       </div>

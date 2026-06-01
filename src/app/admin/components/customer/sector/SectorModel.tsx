@@ -79,7 +79,7 @@ export const SectorModel: React.FC<ModalProps & { initialData?: sector }> = ({ m
                   <input
                     name="title"
                     placeholder="Title"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                     value={form.title}
                     onChange={handleChange}
                   />
@@ -97,7 +97,7 @@ export const SectorModel: React.FC<ModalProps & { initialData?: sector }> = ({ m
                       type="text"
                       name="description"
                       placeholder={`Step ${index + 1}`}
-                      className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                      className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                       value={item}
                       onChange={(e) =>
                         handleChange(e, index)
@@ -141,7 +141,7 @@ export const SectorModel: React.FC<ModalProps & { initialData?: sector }> = ({ m
           </button>
           <button
             className={`${mode === "delete"
-              ? "bg-error"
+              ? "bg-primary"
               : "bg-primary"
               } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
             onClick={handleSubmit}

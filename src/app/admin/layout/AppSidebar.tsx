@@ -36,7 +36,7 @@ const navItems: NavItem[] = [
   },
   {
     icon: <TfiMenuAlt size={18} />,
-    name: "Menubar",
+    name: "Menu",
     path: "/admin/menubar"
   },
   {
@@ -231,7 +231,7 @@ export const AppSidebar: FC = () => {
                     >
                       <span
                         className={`${isActive(subItem.path)
-                          ? "menu-item-icon-active"
+                          ? "menu-dropdown-item-icon-active"
                           : "menu-item-icon-inactive"
                           }`}
                       >
@@ -312,7 +312,7 @@ export const AppSidebar: FC = () => {
 
   return (
     <aside
-      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-error/20 
+      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-secondary 
         ${isExpanded || isMobileOpen
           ? "w-[290px]"
           : isHovered

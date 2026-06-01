@@ -80,7 +80,7 @@ export const SupportServiceModel: React.FC<ModalProps & { initialData?: supportS
                   <input
                     name="title"
                     placeholder="Title"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                     value={form.title}
                     onChange={handleChange}
                   />
@@ -96,7 +96,7 @@ export const SupportServiceModel: React.FC<ModalProps & { initialData?: supportS
                     placeholder="About your support service ?"
                     rows={5}
                     onChange={handleChange}
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded resize-none"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded resize-none"
                   />
                 </div>
               </div>
@@ -112,7 +112,7 @@ export const SupportServiceModel: React.FC<ModalProps & { initialData?: supportS
                       type="text"
                       name="supportStep"
                       placeholder={`Step ${index + 1}`}
-                      className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                      className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                       value={item}
                       onChange={(e) =>
                         handleChange(e, index)
@@ -160,7 +160,7 @@ export const SupportServiceModel: React.FC<ModalProps & { initialData?: supportS
           </button>
           <button
             className={`${mode === "delete"
-              ? "bg-error"
+              ? "bg-primary"
               : "bg-primary"
               } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
             onClick={handleSubmit}

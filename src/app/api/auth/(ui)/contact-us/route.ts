@@ -6,9 +6,12 @@ export async function POST(req: Request) {
   try {
     await dbConnect();
     const { name, phone, email, subject, message, captcha } = await req.json();
-    const captchaVerify = await fetch(
-      `${process.env.RECAPTCHA_BASE_URL! + process.env.RECAPTCHA_SECRET_KEY!}&response=${captcha}`,
-      { method: "POST" }
+
+     const captchaVerify = await fetch(
+      `${process.env.RECAPTCHA_BASE_URL}?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captcha}`,
+      {
+        method: "POST",
+      }
     );
 
     const captchaData = await captchaVerify.json();

@@ -106,7 +106,7 @@ export const Menubar = () => {
 
             <table className="min-w-full bg-white rounded shadow">
                 <thead>
-                    <tr className="bg-formbg/30">
+                    <tr className="bg-primary text-white">
                         {["Menu", "Actions"].map((item, index) => (
                             <th key={index} className="py-2 px-3 border">
                                 {item}
@@ -118,10 +118,10 @@ export const Menubar = () => {
                 <tbody>
                     {currentData.map((item) => (
                         <tr key={item._id}>
-                            <td className="border text-center border-formbg shadow-md shadow-formbg/50 p-2 gap-1">
+                            <td className="border text-center border-secondary shadow-md shadow-secondary/20 p-2">
                                 {item.primaryMenu}
                             </td>
-                            <td className="border text-center border-formbg shadow-md shadow-formbg/50">
+                            <td className="border text-center border-secondary shadow-md shadow-secondary/20">
                                 <div className="flex mx-1 gap-2 justify-center">
                                     <button onClick={() => setModal({ mode: "edit", item })} className="bg-success cursor-pointer text-white px-3 py-1 rounded">
                                         Edit
@@ -138,6 +138,7 @@ export const Menubar = () => {
             {
                 totalPages > 1 && <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
             }
+            
             {modal && (
                 <MenubarModel
                     mode={modal.mode}

@@ -103,7 +103,7 @@ export const UseCase: React.FC = () => {
                         key={key}
                         type="text"
                         placeholder={`Search by ${key}`}
-                        className="border px-2 py-1 rounded"
+                        className="border px-2 py-1 rounded border-secondary outline-none"
                         value={search[key] ?? ""}
                         onChange={(e) => updateStateField(setSearch, key, e.target.value)}
                     />
@@ -111,7 +111,7 @@ export const UseCase: React.FC = () => {
             </div>
             <table className="min-w-full bg-white border rounded shadow">
                 <thead>
-                    <tr className="bg-formbg/30">
+                    <tr className="bg-primary text-white">
                         {
                             ["Page Name", "Actions"].map((item, index) => (
                                 <th key={index} className="py-2 px-3 border">{item}</th>
@@ -123,9 +123,9 @@ export const UseCase: React.FC = () => {
                 <tbody>
                     {currentData.map((item) => (
                         <tr key={item._id}>
-                            <td className="border text-center border-formbg shadow-md shadow-formbg/50 p-2">{item.pageName}</td>
+                            <td className="border text-center border-secondary shadow-md shadow-secondary/20 p-2">{item.pageName}</td>
 
-                            <td className="border text-center border-formbg shadow-md shadow-formbg/50">
+                            <td className="border text-center border-secondary shadow-md shadow-secondary/20">
                                 <div className="flex mx-1 gap-2 justify-center">
                                     <button onClick={() => setModal({ mode: "edit", item })} className="bg-success cursor-pointer text-white px-3 py-1 rounded">
                                         Edit

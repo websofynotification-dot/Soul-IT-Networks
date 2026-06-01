@@ -15,7 +15,7 @@ export default function PhotoModal({ mode, onClose, onSave, initialData, flag }:
     const handleChange = (e: any) => setForm({ ...form, [e.target.name]: e.target.value });
 
     const handleSubmit = () => {
-         setLoading(true);
+        setLoading(true);
         if (!form.title || !form.subtitle || !form.image || !form.public_Id) {
             alert("Please fill all fields!");
             setLoading(false);
@@ -26,7 +26,7 @@ export default function PhotoModal({ mode, onClose, onSave, initialData, flag }:
 
     return (
         <div onClick={onClose} className="fixed inset-0 bg-opacity-50  flex bg-black/60 items-center justify-center z-50">
-            <div onClick={(e) => e.stopPropagation()} className="bg-white p-6 rounded-lg w-[95%] max-w-[800px] max-h-[90vh] space-y-4 overflow-y-auto scroll-smooth hide-scrollbar">
+            <div onClick={(e) => e.stopPropagation()} className={`bg-white p-6 rounded-lg w-[95%] ${mode === "delete" ? "max-w-[500px]" : "max-w-[800px]"} max-h-[90vh] space-y-4 overflow-y-auto scroll-smooth hide-scrollbar`}>
                 <div className="flex items-center justify-between">
 
                     <h2 className="text-xl font-semibold">{mode === "edit" ? "Update" : mode === "delete" ? "Delete" : "Upload"}{" "}
@@ -48,8 +48,8 @@ export default function PhotoModal({ mode, onClose, onSave, initialData, flag }:
                 ) :
                     (
                         <>
-                            <input name="title" placeholder="Title" className="border border-MidnightNavyText shadow-md shadow-MidnightNavyText/50 outline-none w-full p-2 rounded" value={form.title} onChange={handleChange} />
-                            <input name="subtitle" placeholder="Subtitle" className="border border-MidnightNavyText shadow-md shadow-MidnightNavyText/50 outline-none w-full p-2 rounded" value={form.subtitle} onChange={handleChange} />
+                            <input name="title" placeholder="Title" className="border border-secondary shadow-md shadow-secondary/20 outline-none w-full p-2 rounded" value={form.title} onChange={handleChange} />
+                            <input name="subtitle" placeholder="Subtitle" className="border border-secondary shadow-md shadow-secondary/20 outline-none w-full p-2 rounded" value={form.subtitle} onChange={handleChange} />
 
                             <ImageUploader label={` ${flag ? "Hero Image" : "Photo"}`} folder={` ${flag ? "Hero-Image" : "Gallery-Photo"}`}
                                 onUpload={(url, public_Id) => setForm({ ...form, image: url || "", public_Id: public_Id || null })}
@@ -68,7 +68,7 @@ export default function PhotoModal({ mode, onClose, onSave, initialData, flag }:
                     </button>
                     <button
                         className={`${mode === "delete"
-                            ? "bg-error"
+                            ? "bg-primary"
                             : "bg-primary"
                             } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
                         onClick={handleSubmit}

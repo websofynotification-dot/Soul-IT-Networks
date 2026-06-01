@@ -5,7 +5,6 @@ import Tooltip from "../common/Tooltip";
 import { TopbarModel } from "./TopbarModel";
 
 export const Topbar = () => {
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [data, setData] = useState<any[]>([]);
 
@@ -24,7 +23,6 @@ export const Topbar = () => {
         setTooltip({ message, type });
         setTimeout(() => setTooltip(null), 3000);
     };
-
 
     const fetchData = async () => {
         const res = await fetch("/api/auth/topbar");
@@ -55,7 +53,7 @@ export const Topbar = () => {
                 res = await fetch(`/api/auth/topbar/${modal.item._id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(form), 
+                    body: JSON.stringify(form),
                 });
             } else if (modal.mode === "delete") {
                 res = await fetch(`/api/auth/topbar/${modal.item._id}`, {
@@ -90,9 +88,9 @@ export const Topbar = () => {
 
             <table className="min-w-full bg-white rounded shadow">
                 <thead>
-                    <tr className="bg-formbg/30">
+                    <tr className="bg-primary text-white">
                         {["Topbar Record", "Actions"].map((item, index) => (
-                            <th key={index} className="py-2 px-3 border">
+                            <th key={index} className="py-2 px-3 border border-white">
                                 {item}
                             </th>
                         ))}
@@ -108,28 +106,24 @@ export const Topbar = () => {
                                 _id: string;
                             }) => (
                                 <tr key={item._id} className="text-center">
-
-                                    {/* DATA COLUMN */}
-                                    <td className="border border-formbg text-left shadow-md shadow-formbg/50 p-2">
-                                        <div className="flex gap-2 items-center">
+                                    <td className="border border-secondary shadow-md shadow-secondary/20 p-2">
+                                        <div className="flex gap-2 justify-center items-center">
                                             <p className="font-medium">{item.contctType}</p>
-                                            <p className="text-sm text-gray-500">{item.contactUrl}</p>
+                                            <p className="text-sm text-SlateBlueText">{item.contactUrl}</p>
                                         </div>
                                     </td>
-                                    
-                                    {/* ACTION COLUMN */}
-                                    <td className="border border-formbg shadow-md shadow-formbg/50">
+                                    <td className="border border-secondary shadow-md shadow-secondary/20">
                                         <div className="flex mx-1 gap-2 justify-center">
                                             <button
                                                 onClick={() => setModal({ mode: "edit", item: data[0] })}
-                                                className="bg-green-600 text-white px-3 py-1 rounded"
+                                                className="bg-success text-white px-3 py-1 rounded"
                                             >
                                                 Edit
                                             </button>
 
                                             <button
                                                 onClick={() => setModal({ mode: "delete", item: data[0] })}
-                                                className="bg-red-600 text-white px-3 py-1 rounded"
+                                                className="bg-error text-white px-3 py-1 rounded"
                                             >
                                                 Delete
                                             </button>
@@ -147,6 +141,8 @@ export const Topbar = () => {
                     )}
                 </tbody>
             </table>
+
+
 
             {modal && (
                 <TopbarModel

@@ -19,14 +19,14 @@ const PageBreadcrumb: React.FC<BreadcrumbProps> = ({ pageTitle }) => {
         <ol className="flex items-center justify-center gap-1.5">
           <li>
             <Link
-              className="inline-flex items-center gap-1.5 text-sm text-MidnightNavyText"
+              className="inline-flex items-center gap-1.5 text-sm text-primary"
               href="/admin/dashboard"
             >
               Home
               <ChevronRight size={17} />
             </Link>
           </li>
-          <li className="text-sm text-MidnightNavyText">
+          <li className="text-sm text-secondary">
             {pageTitle}
           </li>
         </ol>

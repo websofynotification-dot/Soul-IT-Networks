@@ -137,7 +137,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
                   <input
                     name="title"
                     placeholder="Job Title"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                     value={form.title}
                     onChange={handleChange}
                   />
@@ -147,7 +147,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
                   <input
                     name="subTitle"
                     placeholder="Subtitle"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                     value={form.subTitle}
                     onChange={handleChange}
                   />
@@ -158,7 +158,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
                   <Label>Job Category</Label>
                   <select
                     name="category"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md cursor-pointer  outline-none w-full p-2 rounded"
                     value={form.category}
                     onChange={handleChange}
                   >
@@ -174,7 +174,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
                   <Label>Job Type</Label>
                   <select
                     name="type"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md cursor-pointer  outline-none w-full p-2 rounded"
                     value={form.type}
                     onChange={handleChange}
                   >
@@ -193,7 +193,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
                   <input
                     type="text"
                     name="location"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                     value={form.location}
                     onChange={handleChange}
                   />
@@ -204,7 +204,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
                   <input
                     type="text"
                     name="experience"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                     value={form.experience}
                     onChange={handleChange}
                   />
@@ -214,7 +214,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
                   <input
                     name="slug"
                     placeholder="Slug"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                     value={form.slug}
                     onChange={handleChange}
                   />
@@ -227,7 +227,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
                   <input
                     name="metaTitle"
                     placeholder="Meta Title"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                     value={form.metaTitle}
                     onChange={handleChange}
                   />
@@ -237,7 +237,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
                   <input
                     name="metaDescription"
                     placeholder="Meta Description"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                     value={form.metaDescription}
                     onChange={handleChange}
                   />
@@ -257,7 +257,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
                           type="text"
                           name="metaKeywords"
                           placeholder={`Meta Keywords ${index + 1}`}
-                          className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                          className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                           value={meta}
                           onChange={(e) =>
                             handleChange(e, index)
@@ -299,7 +299,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
                   placeholder="Write your schema markup..."
                   rows={15}
                   onChange={handleChange}
-                  className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md outline-none w-full p-2 rounded resize-none"
+                  className="border border-secondary shadow-secondary/20 shadow-md outline-none w-full p-2 rounded resize-none"
                 />
               </div>
 
@@ -328,7 +328,7 @@ export const JobOpeningModel: React.FC<ModalProps & { initialData?: job } & { jo
           </button>
           <button
             className={`${mode === "delete"
-              ? "bg-error"
+              ? "bg-primary"   
               : "bg-primary"
               } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
             onClick={handleSubmit}

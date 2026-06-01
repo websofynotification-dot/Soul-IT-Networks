@@ -82,7 +82,6 @@ export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
                 className={`bg-white p-6 rounded-lg w-[95%] ${mode === "delete" ? "max-w-[500px]" : "max-w-[800px]"}  max-h-[90vh] shadow-lg overflow-y-auto `}
                 onClick={(e) => e.stopPropagation()}
             >
-                {/* Header */}
                 <div className="flex items-center justify-between mb-4">
                     <h2 className="text-xl">
                         {mode === "edit" ? "Update" : mode === "delete" ? "Delete" : "Add"} Menu
@@ -90,7 +89,7 @@ export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
 
                     <button
                         onClick={onClose}
-                        className="h-9 w-9 flex items-center justify-center rounded-full bg-primary/20 text-primary"
+                        className="cursor-pointer right-3 top-3 z-999 flex h-9.5 w-9.5 items-center justify-center rounded-full bg-primary/20 text-primary transition-colors hover:bg-transparent hover:text-secondary hover:border hover:border-secondary/30 sm:right-6 sm:top-6 sm:h-9 sm:w-9"
                     >
                         <RxCross2 size={20} />
                     </button>
@@ -107,7 +106,7 @@ export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
                                 placeholder="Label"
                                 value={form.primaryMenu}
                                 onChange={handleChange}
-                                className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                             />
                         </div>
 
@@ -153,7 +152,7 @@ export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
                                     value={form.href}
                                     placeholder="Primary menu url"
                                     onChange={handleChange}
-                                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                                 />
                             </div>
                         )}
@@ -172,7 +171,7 @@ export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
                                                 updated[index].label = e.target.value;
                                                 setForm({ ...form, secondaryMenu: updated });
                                             }}
-                                            className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                            className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                                         />
 
                                         <input
@@ -183,7 +182,7 @@ export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
                                                 updated[index].href = e.target.value;
                                                 setForm({ ...form, secondaryMenu: updated });
                                             }}
-                                            className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                            className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                                         />
                                         {form.secondaryMenu.length > 1 && (
                                             <button
@@ -209,26 +208,29 @@ export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
                     </div>
                 </>
                 }
-
-                {/* Footer Buttons */}
                 <div className="flex justify-end gap-3 mt-6">
                     <button
-                        className="bg-gray-300 px-3 py-1 rounded flex items-center gap-2"
+                        className="bg-SlateBlueText/30 text-MidnightNavyText cursor-pointer flex items-center gap-2 px-3 py-1 rounded hover:opacity-80"
                         onClick={onClose}
                     >
-                        Cancel <GiCancel />
+                        <span>Cancel</span>
+                        <GiCancel className="text-midnight_text" />
                     </button>
-
                     <button
-                        className="bg-primary text-white px-3 py-1 flex items-center gap-2 rounded"
+                        className={`${mode === "delete"
+                            ? "bg-primary"
+                            : "bg-primary"
+                            } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
                         onClick={handleSubmit}
                     >
+                        <span>
+                            {mode === "delete" ? "Delete" : "Save"}
+                        </span>
                         {loading ? (
-                            <FiLoader className="animate-spin" />
+                            <FiLoader size={15} className="animate-spin" />
                         ) : (
-                            <LiaCheckCircle />
+                            <LiaCheckCircle size={18} />
                         )}
-                        Save
                     </button>
                 </div>
             </div>

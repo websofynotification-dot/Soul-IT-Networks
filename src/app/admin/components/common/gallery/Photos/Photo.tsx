@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import PhotoModel from "./PhotoModel";
 import Image from "next/image";
@@ -110,7 +109,7 @@ export default function Photo({ flag = false }: { flag?: boolean }) {
             key={key}
             type="text"
             placeholder={`Search by ${key}`}
-            className="border px-2 py-1 rounded"
+            className="border border-secondary outline-none px-2 py-1 rounded"
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             value={(search as any)[key]}
             onChange={(e) => setSearch({ ...search, [key]: e.target.value })}
@@ -121,24 +120,24 @@ export default function Photo({ flag = false }: { flag?: boolean }) {
       <div className="grid grid-cols-1 gap-5">
         {
           currentData.map((item) => (
-            <div key={item._id} className="bg-gray-100 h-full  border border-gray-200 rounded-xl">
+            <div key={item._id} className="h-full border border-secondary rounded-xl">
               <Image
                 src={item.image}
-                alt=" grid"
-                className="w-full h-72 border border-gray-200 rounded-t-xl"
+                alt="grid"
+                className="w-full h-72  rounded-t-xl"
                 width={500}
                 height={500}
 
               />
               <div className="m-3">
-                <h1>{item.title}</h1>
-                <p>{item.subtitle}</p>
+                <h1 className="text-MidnightNavyText">{item.title}</h1>
+                <p className="text-SlateBlueText">{item.subtitle}</p>
               </div>
               <div className=" flex gap-2 justify-end m-3">
-                <button onClick={() => setModal({ mode: "edit", item })} className="bg-green-600 cursor-pointer text-white px-3 py-1 rounded">
+                <button onClick={() => setModal({ mode: "edit", item })} className="bg-success cursor-pointer text-white px-3 py-1 rounded">
                   Edit
                 </button>
-                <button onClick={() => setModal({ mode: "delete", item })} className="bg-red-600 cursor-pointer text-white px-3 py-1 rounded">
+                <button onClick={() => setModal({ mode: "delete", item })} className="bg-error cursor-pointer text-white px-3 py-1 rounded">
                   Delete
                 </button>
               </div>

@@ -54,7 +54,7 @@ export const FeatureJobModel: React.FC<ModalProps & { initialData?: card }> = ({
                   <input
                     name="title"
                     placeholder="Title"
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                     value={form.title}
                     onChange={handleChange}
                   />
@@ -69,7 +69,7 @@ export const FeatureJobModel: React.FC<ModalProps & { initialData?: card }> = ({
                     placeholder="What about your job feature ?"
                     rows={5}
                     onChange={handleChange}
-                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded resize-none"
+                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded resize-none"
                   />
                 </div>
               </div>
@@ -87,7 +87,7 @@ export const FeatureJobModel: React.FC<ModalProps & { initialData?: card }> = ({
           </button>
           <button
             className={`${mode === "delete"
-              ? "bg-error"
+              ? "bg-primary"
               : "bg-primary"
               } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
             onClick={handleSubmit}

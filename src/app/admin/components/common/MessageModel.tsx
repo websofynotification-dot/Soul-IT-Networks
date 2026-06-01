@@ -40,39 +40,39 @@ export default function MessageModel({ closedModel, data, mode }: any) {
             <div className="flex flex-col justify-center items-center gap-2">
               <div className="w-full flex gap-6">
                 <h3 className="font-semibold w-32">Phone :</h3>
-                <p className="text-primary">{data.phone}</p>
+                <p className="text-SlateBlueText">{data.phone}</p>
               </div>
               <div className="w-full flex gap-6 ">
                 <h3 className="font-semibold w-32">{mode === "contact" || mode === "collab" ? "Email" : "Department"} :</h3>
-                <p className="text-primary">{mode === "contact" || mode === "collab" ? data.email : data.department}</p>
+                <p className="text-SlateBlueText">{mode === "contact" || mode === "collab" ? data.email : data.department}</p>
               </div>
               {
                 mode === "collab" &&
                 <>
                   <div className="w-full flex gap-6">
                     <h3 className="font-semibold w-32">Collaboration Type :</h3>
-                    <p className="text-primary">{data.collaborationsType}</p>
+                    <p className="text-SlateBlueText">{data.collaborationsType}</p>
                   </div>
                   <div className="w-full flex gap-6">
                     <h3 className="font-semibold w-32">Verified :</h3>
-                    <p className="text-primary">{data.isVerified ? "Yes ✅" : "No ❌"}</p>
+                    <p className="text-SlateBlueText">{data.isVerified ? "Yes ✅" : "No ❌"}</p>
                   </div>
                 </>
               }
               <div className="w-full flex gap-6 ">
                 <h3 className="font-semibold w-32">Date :</h3>
-                <p className="text-primary">{data.date}</p>
+                <p className="text-SlateBlueText">{data.date}</p>
               </div>
               <div className="w-full flex  gap-6">
                 <h3 className="font-semibold w-32">Message :</h3>
-                <p className="w-96 text-primary text-justify">{data.message}</p>
+                <p className="w-96 text-SlateBlueText text-justify">{data.message}</p>
               </div>
             </div>
           </div>
           <div className="flex justify-end gap-3 mt-6 h-8
           ">
             <button
-              className="bg-primary/20 cursor-pointer px-3 py-1 rounded text-primary transition-colors hover:bg-transparent hover:text-secondary hover:border hover:border-secondary/30 "
+              className="bg-primary cursor-pointer px-3 py-1 rounded text-white hover:bg-transparent hover:text-secondary hover:border hover:border-secondary/20 "
               onClick={() => closedModel(false)}
             >
               Close
@@ -87,7 +87,7 @@ export default function MessageModel({ closedModel, data, mode }: any) {
                    overflow-y-auto scroll-smooth hide-scrollbar" onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold">Blog Description</h2>
+            <h2 className="text-xl font-semibold">Job Description</h2>
             <button
               onClick={() => closedModel(false)}
               className="cursor-pointer right-3 top-3 z-999 flex h-9.5 w-9.5 items-center justify-center rounded-full bg-primary/20 text-primary transition-colors hover:bg-transparent hover:text-secondary hover:border hover:border-secondary/30 sm:right-6 sm:top-6 sm:h-9 sm:w-9"

@@ -44,7 +44,7 @@ export const WhoWeAreModel: React.FC<ModalProps & { initialData?: card }> = ({ m
                 </div>
 
                 {mode === "delete" ? (
-                    <p>Are you sure want to delete this who are are ?</p>
+                    <p>Are you sure want to delete this who are are?</p>
                 ) : (
                     <div className="space-y-4">
                         <div className="flex flex-col md:flex-row justify-center items-center gap-3">
@@ -53,7 +53,7 @@ export const WhoWeAreModel: React.FC<ModalProps & { initialData?: card }> = ({ m
                                 <input
                                     name="title"
                                     placeholder="Title"
-                                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded"
+                                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
                                     value={form.title}
                                     onChange={handleChange}
                                 />
@@ -68,7 +68,7 @@ export const WhoWeAreModel: React.FC<ModalProps & { initialData?: card }> = ({ m
                                     placeholder="Who we are ?"
                                     rows={10}
                                     onChange={handleChange}
-                                    className="border border-MidnightNavyText shadow-MidnightNavyText/50 shadow-md  outline-none w-full p-2 rounded resize-none"
+                                    className="border  border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded resize-none"
                                 />
                             </div>
                         </div>
@@ -91,7 +91,7 @@ export const WhoWeAreModel: React.FC<ModalProps & { initialData?: card }> = ({ m
                     </button>
                     <button
                         className={`${mode === "delete"
-                            ? "bg-error"
+                            ? "bg-primary"
                             : "bg-primary"
                             } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
                         onClick={handleSubmit}

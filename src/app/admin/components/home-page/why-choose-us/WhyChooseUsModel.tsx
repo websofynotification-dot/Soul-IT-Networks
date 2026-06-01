@@ -84,7 +84,7 @@ export const WhyChooseUsModel: React.FC<ModalProps & { initialData?: card }> = (
                     </button>
                     <button
                         className={`${mode === "delete"
-                            ? "bg-error"
+                            ? "bg-primary"
                             : "bg-primary"
                             } text-white px-3 py-1 flex items-center gap-2 cursor-pointer rounded hover:opacity-80`}
                         onClick={handleSubmit}
