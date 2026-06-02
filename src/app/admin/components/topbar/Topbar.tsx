@@ -1,25 +1,20 @@
 "use client";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import PageBreadcrumb from "../common/PageBreadCrumb";
 import Tooltip from "../common/Tooltip";
 import { TopbarModel } from "./TopbarModel";
+import { topbar } from "@/types/topbarContext";
+import { TooltipProps } from "@/types/tooltipContext";
+import { Form, Mode } from "@/types/modelContext";
+import { ApiResponseProps } from "@/types/ApiResponseContext";
 
-export const Topbar = () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const [data, setData] = useState<any[]>([]);
+export const Topbar: FC = () => {
+    const [data, setData] = useState<topbar[]>([]);
+    const [modal, setModal] = useState<{ mode: Mode; item?: topbar } | null>(null);
+    const [tooltip, setTooltip] = useState<TooltipProps | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const [modal, setModal] = useState<{ mode: string; item?: any } | null>(null);
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
-        null
-    );
-
-    const showTooltip = (
-        message: string,
-        type: "success" | "error" | "info" = "info"
-    ) => {
+    const showTooltip = ({ message, type = "info" }: TooltipProps) => {
         setTooltip({ message, type });
         setTimeout(() => setTooltip(null), 3000);
     };
@@ -34,13 +29,11 @@ export const Topbar = () => {
         fetchData();
     }, []);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleSave = async (form: any) => {
+    const handleSave = async (form: Form) => {
         if (!modal) return;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let res: any = null;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let data: any = null;
+        setLoading(true);
+        let res: Response;
+        let data: ApiResponseProps<topbar>;
 
         try {
             if (modal.mode === "create") {
@@ -50,27 +43,28 @@ export const Topbar = () => {
                     body: JSON.stringify(form)
                 });
             } else if (modal.mode === "edit") {
-                res = await fetch(`/api/auth/topbar/${modal.item._id}`, {
+                res = await fetch(`/api/auth/topbar/${modal.item?._id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(form),
                 });
-            } else if (modal.mode === "delete") {
-                res = await fetch(`/api/auth/topbar/${modal.item._id}`, {
+            } else {
+                res = await fetch(`/api/auth/topbar/${modal.item?._id}`, {
                     method: "DELETE",
                 });
             }
-            data = await res.json();
+            data = (await res.json()) as ApiResponseProps<topbar>;
+
             if (res.ok) {
-                showTooltip(data?.message, "success");
+                showTooltip({ message: data.message ?? "Success", type: "success" });
             } else {
-                showTooltip(data.message || "Something went wrong", "error");
+                showTooltip({ message: data.message ?? "Something went wrong", type: "error" });
             }
         } catch (error) {
-            const err = error as Error;
-            console.log("Internal Server Error ", err)
-            showTooltip("Internal Server Error", "error");
+            console.log("Internal Server Error ", error)
+            showTooltip({ message: "Internal Server Error", type: "error" });
         } finally {
+            setLoading(false);
             setModal(null);
             fetchData();
         }
@@ -86,70 +80,128 @@ export const Topbar = () => {
                 </button>
             </div>
 
-            <table className="min-w-full bg-white rounded shadow">
-                <thead>
-                    <tr className="bg-primary text-white">
-                        {["Topbar Record", "Actions"].map((item, index) => (
-                            <th key={index} className="py-2 px-3 border border-white">
-                                {item}
-                            </th>
-                        ))}
-                    </tr>
-                </thead>
+            <div className="grid grid-cols-1 gap-6">
+                {data?.map((item: any) => (
+                    <div
+                        key={item._id}
+                        className="bg-white rounded-xl shadow-lg border border-secondary overflow-hidden"
+                    >
+                        <div className="bg-primary text-white p-4 flex justify-between items-center">
+                            <h2 className="text-lg font-semibold">
+                                Topbar Information
+                            </h2>
 
-                <tbody>
-                    {data?.length > 0 ? (
-                        data[0]?.contactDetails?.map(
-                            (item: {
-                                contactUrl: string;
-                                contctType: string;
-                                _id: string;
-                            }) => (
-                                <tr key={item._id} className="text-center">
-                                    <td className="border border-secondary shadow-md shadow-secondary/20 p-2">
-                                        <div className="flex gap-2 justify-center items-center">
-                                            <p className="font-medium">{item.contctType}</p>
-                                            <p className="text-sm text-SlateBlueText">{item.contactUrl}</p>
-                                        </div>
-                                    </td>
-                                    <td className="border border-secondary shadow-md shadow-secondary/20">
-                                        <div className="flex mx-1 gap-2 justify-center">
-                                            <button
-                                                onClick={() => setModal({ mode: "edit", item: data[0] })}
-                                                className="bg-success text-white px-3 py-1 rounded"
+                            <div className="flex mx-1 gap-2 justify-center">
+                                <button
+                                    onClick={() => setModal({ mode: "edit", item: data[0] })}
+                                    className="bg-success text-white px-3 py-1 rounded"
+                                >
+                                    Edit
+                                </button>
+
+                                <button
+                                    onClick={() => setModal({ mode: "delete", item: data[0] })}
+                                    className="bg-error text-white px-3 py-1 rounded"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                        <div className="p-6 space-y-6">
+                            <div>
+                                <h3 className="font-semibold text-lg mb-2">
+                                    Location
+                                </h3>
+
+                                <p className="text-SlateBlueText">
+                                    {item.location}
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="font-semibold text-lg mb-3">
+                                    Contact Details
+                                </h3>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    {item.contactDetails?.map(
+                                        (contact: any, index: number) => (
+                                            <div
+                                                key={index}
+                                                className="border border-secondary/20 rounded-lg p-3 bg-gray-50"
                                             >
-                                                Edit
-                                            </button>
+                                                <p className="font-medium capitalize">
+                                                    {contact.contctType}
+                                                </p>
 
-                                            <button
-                                                onClick={() => setModal({ mode: "delete", item: data[0] })}
-                                                className="bg-error text-white px-3 py-1 rounded"
+                                                <p className="text-sm text-SlateBlueText break-all">
+                                                    {contact.contactUrl}
+                                                </p>
+                                            </div>
+                                        )
+                                    )}
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 className="font-semibold text-lg mb-3">
+                                    Social Media
+                                </h3>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    {item.socialMedia?.map(
+                                        (social: any, index: number) => (
+                                            <div
+                                                key={index}
+                                                className="border border-secondary/20 rounded-lg p-3 bg-gray-50"
                                             >
-                                                Delete
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            )
-                        )
-                    ) : (
-                        <tr>
-                            <td colSpan={2} className="text-center p-4">
-                                No Data Found
-                            </td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
+                                                <p className="font-medium capitalize">
+                                                    {social.socialMediaType}
+                                                </p>
 
+                                                <p className="text-sm text-SlateBlueText break-all">
+                                                    {social.socialMediaUrl}
+                                                </p>
+                                            </div>
+                                        )
+                                    )}
+                                </div>
+                            </div>
 
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="bg-primary/10 rounded-lg p-4 text-center">
+                                    <p className="text-sm text-gray-500">
+                                        Contact Records
+                                    </p>
 
+                                    <p className="text-2xl font-bold">
+                                        {item.contactDetails?.length || 0}
+                                    </p>
+                                </div>
+
+                                <div className="bg-primary/10 rounded-lg p-4 text-center">
+                                    <p className="text-sm text-gray-500">
+                                        Social Records
+                                    </p>
+
+                                    <p className="text-2xl font-bold">
+                                        {item.socialMedia?.length || 0}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
             {modal && (
                 <TopbarModel
                     mode={modal.mode}
                     initialData={modal.item}
                     onClose={() => setModal(null)}
                     onSave={handleSave}
+                    loading={loading}
+                    setLoading={setLoading}
+                    showTooltip={showTooltip}
+                    tooltip={tooltip}
                 />
             )}
         </div>

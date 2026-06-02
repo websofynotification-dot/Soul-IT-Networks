@@ -1,8 +1,12 @@
+import { getData } from "@/lib/getData";
 import { ContactForm } from "./ContactForm";
-import { GoogleMap } from "./GoogleMap";
 import { SocialMedialCta } from "./SocialMedialCta";
+import Topbar from "@/models/admin-model/Topbar";
+export const dynamic = 'force-dynamic';
 
-export const Contact = () => {
+export const Contact = async () => {
+    const topbarData = await getData(Topbar);
+
     return (
         <div className="mt-10">
             <div className="text-center container"
@@ -14,8 +18,8 @@ export const Contact = () => {
                     Let’s discuss your infrastructure needs and build a solution that works for you
                 </p>
             </div>
-            <ContactForm />
-            <SocialMedialCta />
+            <ContactForm topbarData={topbarData} />
+            <SocialMedialCta topbarData={topbarData}/>
         </div>
     )
 }

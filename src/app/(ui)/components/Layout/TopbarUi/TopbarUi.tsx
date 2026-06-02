@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { MdPhoneIphone } from "react-icons/md";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
-import { icons } from "@/app/api/data";
+import { socialMediaIcon } from "@/app/api/data";
 import { PreLoader } from "../../Common/PreLoader";
+import { topbarProps } from "@/types/topbarContext";
 
-export const TopbarUi: React.FC<{ topbarData: { _id: string, contactDetails: { contctType: string, contactUrl: string, _id: string }[], socialMedia: { socialMediaType: string, socialMediaUrl: string, _id: string }[] }[] }> = async ({ topbarData }) => {
+export const TopbarUi: React.FC<topbarProps> = ({ topbarData }) => {
 
   return (
     <div className="w-full flex fixed top-0 lg:h-12 sm:h-18 md:h-10 bg-primary text-sm z-50 transition-transform duration-300">
@@ -53,7 +54,6 @@ export const TopbarUi: React.FC<{ topbarData: { _id: string, contactDetails: { c
                 </div>
               }
             </div>
-
             <div className="hidden sm:flex items-center justify-center text-sm sm:justify-end gap-4">
               <p className="text-white">Trusted IT System Integrator Since 2017</p>
               <div className="h-5 w-px bg-white" />
@@ -61,12 +61,11 @@ export const TopbarUi: React.FC<{ topbarData: { _id: string, contactDetails: { c
                 topbarData &&
                 [...topbarData[0]?.socialMedia].map((item, index) => (
                   <Link key={item._id} href={item.socialMediaUrl} target="_blank" className="w-7 h-7 flex items-center justify-center bg-white rounded-full shadow hover:bg-transparent hover:border hover:border-white hover:text-white hover:animate-pulse transition">
-                    {icons[index % icons.length]}
+                    {socialMediaIcon[index % socialMediaIcon.length]}
                   </Link>
                 ))
               }
             </div>
-
           </div>
       }
     </div>

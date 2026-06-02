@@ -1,5 +1,6 @@
 import { card } from "./cardContext";
 import { category } from "./categoryContext";
+import { footer } from "./footerContext";
 import { foundation } from "./foundationContext";
 import { job } from "./jobContext";
 import { overview } from "./overviewContext";
@@ -8,10 +9,11 @@ import { sector } from "./sectorContext";
 import { service } from "./serviceContext";
 import { supportService } from "./supportServiceContext";
 import { TooltipProps } from "./tooltipContext";
+import { topbar } from "./topbarContext";
 
 
 export type Mode = "create" | "edit" | "delete";
-export type Form = card | foundation | project | sector |  supportService | job | category | overview | service
+export type Form = card | foundation | project | sector |  supportService | job | category | overview | service | footer | topbar
 
 export interface ModalProps {
     mode: Mode;

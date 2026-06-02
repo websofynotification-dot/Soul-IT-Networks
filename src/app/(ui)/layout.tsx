@@ -1,10 +1,10 @@
 import NextTopLoader from "nextjs-toploader";
 import { Aoscompo } from "@/lib/aos";
-import { Footer } from "./components/Layout/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { DataProvider } from "../context/DataContext";
 import { Header } from "./components/Layout/Header";
 import { Topbars } from "./components/Layout/TopbarUi";
+import { Footers } from "./components/Layout/Footer";
 
 export default function RootLayout({ children }: Readonly<{
     children: React.ReactNode;
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: Readonly<{
             <Topbars />
             <Header />
             {children}
-            <Footer />
+            <Footers />
             <ScrollToTop />
         </DataProvider>
     );

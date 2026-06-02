@@ -20,13 +20,13 @@ export const GET = async () => {
 export const POST = async (req: NextRequest) => {
     try {
         await dbConnect();
-        const { contactDetails, socialMedia } = await req.json();
+        const { contactDetails, socialMedia, location } = await req.json();
 
-        if (!contactDetails || !socialMedia) {
+        if (!contactDetails || !socialMedia || !location) {
             return NextResponse.json({ error: `All fields are required!` }, { status: 400 });
         }
 
-        const newTopbar = await Topbar.create({ contactDetails, socialMedia })
+        const newTopbar = await Topbar.create({ contactDetails, socialMedia, location })
         return NextResponse.json({ message: "Topbar added successfully.", success: true, data: newTopbar })
 
     } catch (error) {

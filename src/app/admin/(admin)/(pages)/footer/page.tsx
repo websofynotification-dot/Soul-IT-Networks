@@ -1,4 +1,4 @@
-import { FooterModel } from '@/app/admin/components/footer/FooterModel';
+import { Footer } from '@/app/admin/components/footer/Footer';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const page = () => {
-  return <FooterModel/>
+  return <Footer/>
 }
 
 export default page

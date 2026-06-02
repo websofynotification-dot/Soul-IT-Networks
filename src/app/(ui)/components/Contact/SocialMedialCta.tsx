@@ -1,11 +1,10 @@
-import { footer } from '@/app/api/data'
+import { socialMediaIcon } from '@/app/api/data'
+import { topbarProps } from '@/types/topbarContext';
 import Link from 'next/link'
-import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
-import { FiYoutube } from 'react-icons/fi';
-import { LuTwitter } from 'react-icons/lu';
+import React from 'react';
+import { PreLoader } from '../Common/PreLoader';
 
-export const SocialMedialCta = () => {
-    const icons = [<FiYoutube />, <FaFacebook />, <FaInstagram />, <FaLinkedin />, <LuTwitter />];
+export const SocialMedialCta: React.FC<topbarProps> = ({ topbarData }) => {
 
     return (
         <section className='bg-gray-50'>
@@ -15,17 +14,20 @@ export const SocialMedialCta = () => {
                         <h3 className="text-lg font-medium">
                             Follow our journey. Spread awareness.
                         </h3>
-                        <div className="flex gap-5">
-                            {(Array.isArray(footer?.socialMedia) ? footer.socialMedia : []).map((item, index) => (
-                                <Link key={index}
-                                    title={item.title}
-                                    href={item.url}
-                                    target="_blank"
-                                    className="w-12 h-12 text-MidnightNavyText flex items-center justify-center bg-white hover:text-white rounded-full shadow hover:bg-secondary  hover:border transition">
-                                    {icons[index % icons.length]}
-                                </Link>
-                            ))}
-                        </div>
+                        {
+                            topbarData.length === 0 ? <PreLoader /> :
+                                <div className="flex gap-5">
+                                    {(Array.isArray(topbarData[0]?.socialMedia) ? topbarData[0]?.socialMedia : []).map((item, index) => (
+                                        <Link key={index}
+                                            href={item.socialMediaUrl}
+                                            target="_blank"
+                                            className="w-12 h-12 text-MidnightNavyText flex items-center justify-center bg-white hover:text-white rounded-full shadow hover:bg-secondary  hover:border transition">
+                                            {socialMediaIcon[index % socialMediaIcon.length]}
+                                        </Link>
+                                    ))}
+                                </div>
+                        }
+
                     </div>
                 </div>
             </div>

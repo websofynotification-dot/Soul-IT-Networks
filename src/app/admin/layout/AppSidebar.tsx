@@ -116,11 +116,11 @@ const navItems: NavItem[] = [
     icon: <FaPhoneAlt size={15} />,
     path: "/admin/contact-us"
   },
-  // {
-  //   name: "Footer",
-  //   icon: <IoFootstepsOutline size={15} />,
-  //   path: "/admin/footer"
-  // },
+  {
+    name: "Footer",
+    icon: <IoFootstepsOutline size={15} />,
+    path: "/admin/footer"
+  },
   {
     icon: <FaRegUser size={18} />,
     name: "User Profile",

@@ -1,16 +1,18 @@
 "use client";
-import { contactPageDetails } from "@/app/api/data";
 import { RiLoader2Fill } from "react-icons/ri";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRef, useState } from "react";
 import { FiSend } from "react-icons/fi";
 import Link from "next/link";
 import Toast from "../Common/Toast";
-import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
 import { GoogleMap } from "./GoogleMap";
+import { topbarProps } from "@/types/topbarContext";
+import { PreLoader } from "../Common/PreLoader";
 
-export const ContactForm = () => {
+export const ContactForm: React.FC<topbarProps> = ({ topbarData }) => {
+
     const [toast, setToast] = useState<{
         message: string;
         type: "success" | "error";
@@ -200,73 +202,54 @@ export const ContactForm = () => {
                         Contact{" "}
                         <span className="text-MidnightNavyText">Information</span>
                     </h2>
-                    <div className="space-y-6">
-                        {
-                            (Array.isArray(contactPageDetails) ? contactPageDetails : []).map((item, i) => (
-                                <div key={i} className="bg-white border shadow-md shadow-MidnightNavyText/50  p-6 rounded-2xl">
-                                    <div className="flex flex-col items-center gap-2  justify-center">
-                                        {
-                                            item.locationUrl &&
+                    {
+                        topbarData.length === 0 ? <PreLoader /> :
+                            <div className="space-y-6">
+                                {
+                                    <div className="bg-white border shadow-md shadow-MidnightNavyText/50  p-6 rounded-2xl">
+                                        <div className="flex flex-col items-center gap-2  justify-center">
                                             <div className="flex w-full gap-3 items-center">
-
                                                 <FaMapMarkerAlt size={20} className="text-primary" />
                                                 <Link
                                                     target="_blank"
-                                                    href={item.locationUrl}
+                                                    href={`https://www.google.com/maps?q=${encodeURIComponent(`${topbarData[0].location}`)}`}
                                                     className="rounded-2xl">
-                                                    <div className={`${i !== 3 ? "flex-col" : "flex-col"} text-justify`}>
+                                                    <div className={`text-justify`}>
                                                         <p className="text-SlateBlueText break-all sm:break-normal">
-                                                            {item.location}
+                                                            {topbarData[0].location}
                                                         </p>
                                                     </div>
                                                 </Link>
                                             </div>
-                                        }
+                                            <div className="flex flex-col w-full gap-3">
+                                                {
+                                                    (Array.isArray(topbarData[0]?.contactDetails) ? topbarData[0]?.contactDetails : []).map((item, ind) => (
+                                                        <div key={ind} className="flex gap-2 items-center">
+                                                            {
+                                                                item.contctType === "phone" ? <MdPhoneIphone size={18} className="text-primary" /> : <FaEnvelope className="text-primary" />
+                                                            }
+                                                            <Link
 
-                                        <div className="flex w-full gap-3">
-                                            {
-                                                (Array.isArray(item?.phone) ? item.phone : []).map((ph, ind) => (
-                                                    <div key={ind} className="flex gap-2 items-center">
-                                                        {
-                                                            ph.includes("0522") ? <FaPhoneAlt size={13} className="text-primary" /> : <MdPhoneIphone size={20} className="text-primary" />
-                                                        }
-                                                        <Link
-
-                                                            href={`tel:${ph.includes("0522") ? `${ph}` : `+91${ph}`}`}
-                                                            className="rounded-2xl">
-                                                            <div className={`gap-5 text-center`}>
-                                                                <p className="text-SlateBlueText break-all sm:break-normal">
-                                                                    {ph}
-                                                                </p>
-                                                            </div>
-                                                        </Link>
-                                                    </div>
-                                                ))
-                                            }
-                                        </div>
-
-                                        <div className="flex items-center w-full gap-3">
-                                            <FaEnvelope size={18} className="text-primary" />
-                                            <Link
-                                                href={`mailto:${item.email}`}
-                                                className="items-center gap-4 rounded-2xl">
-                                                <div className={`flex justify-center ${i !== 3 ? "flex-col" : "flex-col"} items-center gap-5 text-center`}>
-                                                    <p className="text-SlateBlueText break-all sm:break-normal">
-                                                        {item.email}
-                                                    </p>
-                                                </div>
-                                            </Link>
+                                                                href={`${item.contctType === "phone" ? `tel:+91${item.contactUrl}` : `mailto:${item.contactUrl}`}`}
+                                                                className="rounded-2xl">
+                                                                <div className={`gap-5 text-center`}>
+                                                                    <p className="text-SlateBlueText break-all sm:break-normal">
+                                                                        {item.contactUrl}
+                                                                    </p>
+                                                                </div>
+                                                            </Link>
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        <GoogleMap />
-                    </div>
-
+                                }
+                                <GoogleMap />
+                            </div>
+                    }
                 </div>
-
             </div>
-
             {toast && (
                 <Toast
                     message={toast.message}

@@ -7,22 +7,21 @@ import { FiLoader, FiMinus } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import { GiCancel } from "react-icons/gi";
 import { IoIosAdd } from "react-icons/io";
+import { ModalProps } from "@/types/modelContext";
+import { topbar } from "@/types/topbarContext";
 
-export const TopbarModel = ({ mode, onClose, onSave, initialData }: any) => {
-    const [tooltip, setTooltip] = useState<any>(null);
-    const [loading, setLoading] = useState(false);
+export const TopbarModel: React.FC<ModalProps & { initialData?: topbar }> = ({ mode, onClose, onSave, initialData, loading, setLoading, showTooltip, tooltip }) => {
 
-    const [form, setForm] = useState(
+    const [form, setForm] = useState<any>(
         initialData || {
+            location: "",
             contactDetails: [{ contctType: "", contactUrl: "" }],
             socialMedia: [{ socialMediaType: "", socialMediaUrl: "" }],
         }
     );
 
-    const showTooltip = (message: string, type: any = "info") => {
-        setTooltip({ message, type });
-        setTimeout(() => setTooltip(null), 3000);
-    };
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setForm({ ...form, [e.target.name]: e.target.value });
+
 
     const handleContactChange = (index: number, field: string, value: string) => {
         const updated = [...form.contactDetails];
@@ -66,7 +65,7 @@ export const TopbarModel = ({ mode, onClose, onSave, initialData }: any) => {
             form.contactDetails.some((c: any) => !c.contctType || !c.contactUrl) ||
             form.socialMedia.some((s: any) => !s.socialMediaType || !s.socialMediaUrl)
         ) {
-            showTooltip("Please fill all fields!", "error");
+            showTooltip({ message: "Please fill all fields!", type: "error" });
             setLoading(false);
             return;
         }
@@ -102,6 +101,21 @@ export const TopbarModel = ({ mode, onClose, onSave, initialData }: any) => {
                 ) :
                     <>
                         <div className="space-y-3">
+
+                            <div className="flex flex-col md:flex-row justify-center items-center gap-3">
+                                <div className="w-full">
+                                    <Label>Location</Label>
+                                    <textarea
+                                        name="location"
+                                        placeholder="About your website..."
+                                        rows={3}
+                                        className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded resize-none"
+                                        value={form.location}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
+
                             <Label>Contact Details</Label>
                             {form.contactDetails.map((item: any, index: number) => (
                                 <div key={index} className="flex gap-2">

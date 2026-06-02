@@ -9,7 +9,7 @@ const footerSchema = new Schema(
                 required: true,
                 trim: true,
             },
-
+            logo_publicId: { type: String, required: true },
             description: {
                 type: String,
                 required: true,
@@ -21,11 +21,16 @@ const footerSchema = new Schema(
                 required: true,
                 trim: true,
             },
+            altTag: {
+                type: String,
+                required: true,
+                trim: true,
+            },
         },
 
-        certifications: [
+        tag: [
             {
-                title: {
+                label: {
                     type: String,
                     required: true,
                     trim: true,
@@ -57,7 +62,7 @@ const footerSchema = new Schema(
 
         services: [
             {
-                title: {
+                label: {
                     type: String,
                     required: true,
                     trim: true,
@@ -71,75 +76,75 @@ const footerSchema = new Schema(
             },
         ],
 
-        contactInfo: {
-            address: [
-                {
-                    label: {
-                        type: String,
-                        required: true,
-                        trim: true,
-                    },
+        // contactInfo: {
+        //     address: [
+        //         {
+        //             label: {
+        //                 type: String,
+        //                 required: true,
+        //                 trim: true,
+        //             },
 
-                    path: {
-                        type: String,
-                        required: true,
-                        trim: true,
-                    },
-                },
-            ],
+        //             path: {
+        //                 type: String,
+        //                 required: true,
+        //                 trim: true,
+        //             },
+        //         },
+        //     ],
 
-            phone: [
-                {
-                    label: {
-                        type: String,
-                        required: true,
-                        trim: true,
-                    },
+        //     phone: [
+        //         {
+        //             label: {
+        //                 type: String,
+        //                 required: true,
+        //                 trim: true,
+        //             },
 
-                    path: {
-                        type: String,
-                        required: true,
-                        trim: true,
-                    },
-                },
-            ],
+        //             path: {
+        //                 type: String,
+        //                 required: true,
+        //                 trim: true,
+        //             },
+        //         },
+        //     ],
 
-            emails: [
-                {
-                    label: {
-                        type: String,
-                        required: true,
-                        trim: true,
-                    },
+        //     emails: [
+        //         {
+        //             label: {
+        //                 type: String,
+        //                 required: true,
+        //                 trim: true,
+        //             },
 
-                    path: {
-                        type: String,
-                        required: true,
-                        trim: true,
-                    },
-                },
-            ],
-        },
+        //             path: {
+        //                 type: String,
+        //                 required: true,
+        //                 trim: true,
+        //             },
+        //         },
+        //     ],
+        // },
 
-        socialLinks: [
+        // socialLinks: [
+        //     {
+        //         platform: {
+        //             type: String,
+        //             required: true,
+        //             trim: true,
+        //         },
+
+        //         url: {
+        //             type: String,
+        //             required: true,
+        //             trim: true,
+        //         },
+        //     },
+        // ],
+
+        otherLinks: [
             {
-                platform: {
-                    type: String,
-                    required: true,
-                    trim: true,
-                },
-
-                url: {
-                    type: String,
-                    required: true,
-                    trim: true,
-                },
-            },
-        ],
-
-        policies: [
-            {
-                title: {
+                label: {
                     type: String,
                     required: true,
                     trim: true,
@@ -165,6 +170,11 @@ const footerSchema = new Schema(
                 required: true,
                 trim: true,
             },
+            path: {
+                type: String,
+                required: true,
+                trim: true,
+            },
         },
 
         designedBy: {
@@ -173,8 +183,12 @@ const footerSchema = new Schema(
                 required: true,
                 trim: true,
             },
-
             website: {
+                type: String,
+                required: true,
+                trim: true,
+            },
+            path: {
                 type: String,
                 required: true,
                 trim: true,
