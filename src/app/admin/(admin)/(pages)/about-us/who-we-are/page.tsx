@@ -1,5 +1,5 @@
-import { WhoWeAre } from '@/app/admin/components/about-us/who-we-are/WhoWeAre';
-import { Metadata } from 'next';
+import { WhoWeAre } from "@/app/admin/components/soul-it/about-us/who-we-are/WhoWeAre";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Who We Are | Soul IT Networks",
@@ -7,8 +7,6 @@ export const metadata: Metadata = {
     "Learn about Soul IT Networks, a trusted provider of IT infrastructure, cybersecurity, cloud, and software solutions.",
 };
 
-const page = () => {
-  return <WhoWeAre />
-}
+const page = () => <WhoWeAre />;
 
-export default page
+export default page;

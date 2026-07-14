@@ -8,12 +8,13 @@ import { project } from "./projectContext";
 import { sector } from "./sectorContext";
 import { service } from "./serviceContext";
 import { supportService } from "./supportServiceContext";
+import { teams } from "./teamsContext";
 import { TooltipProps } from "./tooltipContext";
 import { topbar } from "./topbarContext";
 
 
 export type Mode = "create" | "edit" | "delete";
-export type Form = card | foundation | project | sector |  supportService | job | category | overview | service | footer | topbar
+export type Form = card | foundation | project | sector |  supportService | job | category | overview | service | footer | topbar | teams
 
 export interface ModalProps {
     mode: Mode;

@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 import { FaRegFileArchive } from "react-icons/fa";
 
 
-import { PreLoader } from "../Common/PreLoader";
+import { PreLoader } from "../../Common/PreLoader";
 
 export const CompanyCredentials: React.FC<cardProps> = ({ cardData }) => {
 

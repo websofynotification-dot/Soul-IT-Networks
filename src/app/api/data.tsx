@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp, FaTwitter, FaGraduationCap, FaUserFriends, FaBullseye, FaRegLightbulb, FaRunning, FaWifi, FaRegUser, FaSatelliteDish, FaRegFile } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp, FaTwitter, FaGraduationCap, FaUserFriends, FaBullseye, FaRegLightbulb, FaRunning, FaWifi, FaRegUser, FaSatelliteDish, FaRegFile, FaBuilding } from "react-icons/fa";
 import { MdCorporateFare, MdOutlinePolicy, MdOutlineRemoveRedEye, MdOutlineRocketLaunch, MdOutlineScale, MdOutlineSettingsRemote } from "react-icons/md";
 import { FaArrowTrendDown, FaCode, FaHandHoldingMedical, FaLink, FaRegCircle, FaRegCompass } from "react-icons/fa6";
 import { FiDatabase, FiYoutube } from "react-icons/fi";
@@ -15,7 +15,7 @@ import { VscLaw } from "react-icons/vsc";
 import { TbWindElectricity } from "react-icons/tb";
 import { CgWebsite } from "react-icons/cg";
 import { TiMessages } from "react-icons/ti";
-import { RiCustomerService2Fill } from "react-icons/ri";
+import { RiCustomerService2Fill, RiTeamFill } from "react-icons/ri";
 
 export const socialMediaIcon = [
   <FaFacebook />,
@@ -73,3 +73,5 @@ export const featureJobIcons = [<FaRegLightbulb />, <FaGraduationCap />, <FaUser
 export const submenuServiceIcons = [<LuSquareMenu />, <IoIosDesktop />, <CiLock />, <CiCloud />, <FiDatabase />, <FaGraduationCap />, <FaUserFriends />, <GiHumanTarget />, <LuCctv />, <FaSatelliteDish />, <FaWifi />, <GrCloudSoftware />, <CgWebsite />, <SiBmcsoftware />, <FaRegFile />, <MdOutlineSettingsRemote />];
 
 export const submenuSolutionIcons = [<FaRegUser />, <TiMessages />, <CiLock />, <CiGlobe />, <CiCloud />, <FiDatabase />, <RiCustomerService2Fill />, <HiArrowPathRoundedSquare />, <LuCctv />, <FaSatelliteDish />, <FaWifi />, <GrCloudSoftware />, <CgWebsite />, <SiBmcsoftware />];
+
+export const submenuSoulItIcons = [<HiOutlineBuildingOffice2 />, <RiTeamFill/>];

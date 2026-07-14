@@ -1,6 +1,6 @@
 import { journeyIcons } from '@/app/api/data'
 import { journeyProps } from '@/types/journeyContext';
-import { PreLoader } from '../Common/PreLoader';
+import { PreLoader } from '../../Common/PreLoader';
 
 export const OurJourney: React.FC<journeyProps> = ({ journeyData }) => {
 

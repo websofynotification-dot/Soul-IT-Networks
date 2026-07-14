@@ -4,6 +4,8 @@ import PageBreadcrumb from "../common/PageBreadCrumb";
 import Tooltip from "../common/Tooltip";
 import { MenubarModel } from "./MenubarModel";
 import Pagination from "../common/Pagination";
+import { Mode } from "@/types/modelContext";
+import { TooltipProps } from "@/types/tooltipContext";
 
 export const Menubar = () => {
 
@@ -11,12 +13,13 @@ export const Menubar = () => {
     const [data, setData] = useState<any[]>([]);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const [modal, setModal] = useState<{ mode: string; item?: any } | null>(null);
+    const [modal, setModal] = useState<{ mode: Mode; item?: any } | null>(null);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
+    const [tooltip, setTooltip] = useState<TooltipProps | null>(
         null
     );
+    
     const [search, setSearch] = useState({ menu: "" });
     const [currentPage, setCurrentPage] = useState(1);
     const recordsPerPage = 10;
@@ -93,6 +96,8 @@ export const Menubar = () => {
             fetchData();
         }
     };
+
+    console.log(data);
 
     return (
         <div className="p-4">

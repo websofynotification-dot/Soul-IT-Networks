@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { HeaderItem } from '@/types/HeaderItem';
-import { submenuServiceIcons, submenuSolutionIcons } from '@/app/api/data';
+import { submenuServiceIcons, submenuSolutionIcons, submenuSoulItIcons } from '@/app/api/data';
 
 const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
   const [submenuOpen, setSubmenuOpen] = useState(false);
@@ -57,7 +57,12 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
                 }`}
             >
               {
-                item.primaryMenu === "Services" ? <span className={`text-16 ${path === subItem.href ? "text-white":"text-primary"}`}>{submenuServiceIcons[index % submenuServiceIcons.length]}</span> : <span className={`text-16 ${path === subItem.href ? "text-white":"text-primary"}`}>{submenuSolutionIcons[index % submenuSolutionIcons.length]}</span>
+                item.primaryMenu === "Soul It" ?  <span className={`text-16 ${path === subItem.href ? "text-white":"text-primary"}`}>{submenuSoulItIcons[index % submenuSoulItIcons.length]}</span>:
+
+                item.primaryMenu === "Services" ?        
+                <span className={`text-16 ${path === subItem.href ? "text-white":"text-primary"}`}>{submenuServiceIcons[index % submenuServiceIcons.length]}</span> : 
+                
+                <span className={`text-16 ${path === subItem.href ? "text-white":"text-primary"}`}>{submenuSolutionIcons[index % submenuSolutionIcons.length]}</span>
               }
               <span>{subItem.label}</span>
             </Link>

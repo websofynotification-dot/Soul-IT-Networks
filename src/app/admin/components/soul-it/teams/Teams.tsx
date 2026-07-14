@@ -3,20 +3,20 @@ import { useEffect, useState } from "react";
 import PageBreadcrumb from "../../common/PageBreadCrumb";
 import Tooltip from "../../common/Tooltip";
 import Pagination from "../../common/Pagination";
-import { foundation } from "@/types/foundationContext";
 import { Form, Mode } from "@/types/modelContext";
 import { TooltipProps } from "@/types/tooltipContext";
 import { searchKeys, SearchState, updateStateField } from "@/types/searchStateContext";
 import { ApiResponseProps } from "@/types/ApiResponseContext";
-import { FoundationModel } from "./FoundationModel";
+import { TeamsModel } from "./TeamsModel";
+import { teams } from "@/types/teamsContext";
 
-export const Foundation : React.FC = () => {
-  const [data, setData] = useState<foundation[]>([]);
-  const [modal, setModal] = useState<{ mode: Mode; item?: foundation } | null>(null);
+export const Teams: React.FC = () => {
+  const [data, setData] = useState<teams[]>([]);
+  const [modal, setModal] = useState<{ mode: Mode; item?: teams } | null>(null);
   const [tooltip, setTooltip] = useState<TooltipProps | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [search, setSearch] = useState<SearchState>({ title: "" });
+  const [search, setSearch] = useState<SearchState>({ name: "", designation: "" });
   const recordsPerPage = 10;
 
   const showTooltip = ({ message, type = "info" }: TooltipProps) => {
@@ -24,17 +24,18 @@ export const Foundation : React.FC = () => {
     setTimeout(() => setTooltip(null), 3000);
   };
 
-  const fetchData = async () => {
-    const internshipRes = await fetch("/api/auth/about-us/foundation");
-    const internshipJson = await internshipRes.json();
-    setData(internshipJson.data);
+  const fetchData = async () => {   
+    const res = await fetch("/api/auth/soul-it/teams");
+    const json = await res.json();
+    setData(json.data);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const filteredData = data.filter(item => item.title?.toLowerCase().includes(search.title!.toLowerCase())
+  const filteredData = data.filter(item =>
+    item.name?.toLowerCase().includes(search.name!.toLowerCase()) && item.designation?.toLowerCase().includes(search.designation!.toLowerCase())
   );
 
   const totalPages = Math.ceil(filteredData.length / recordsPerPage);
@@ -47,27 +48,27 @@ export const Foundation : React.FC = () => {
     if (!modal) return;
     setLoading(true);
     let res: Response;
-    let data: ApiResponseProps<foundation>;
+    let data: ApiResponseProps<teams>;
 
     try {
       if (modal.mode === "create") {
-        res = await fetch("/api/auth/about-us/foundation", {
+        res = await fetch("/api/auth/soul-it/teams", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form)
         });
       } else if (modal.mode === "edit") {
-        res = await fetch(`/api/auth/about-us/foundation/${modal.item?._id}`, {
+        res = await fetch(`/api/auth/soul-it/teams/${modal.item?._id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),
         });
       } else {
-        res = await fetch(`/api/auth/about-us/foundation/${modal.item?._id}`, {
+        res = await fetch(`/api/auth/soul-it/teams/${modal.item?._id}`, {
           method: "DELETE",
         });
       }
-      data = (await res.json()) as ApiResponseProps<foundation>;
+      data = (await res.json()) as ApiResponseProps<teams>;
 
       if (res.ok) {
         showTooltip({ message: data.message ?? "Success", type: "success" });
@@ -87,14 +88,14 @@ export const Foundation : React.FC = () => {
   return (
     <div className="p-4">
       {tooltip && <Tooltip message={tooltip.message} type={tooltip.type} />}
-      <PageBreadcrumb pageTitle="Foundation" />
+      <PageBreadcrumb pageTitle="Teams" />
       <div className="flex justify-end items-center mb-4">
         <button onClick={() => setModal({ mode: "create" })} className="bg-learning cursor-pointer text-white px-4 py-2 rounded-lg transition hover:bg-learning/90">
-          + Add Foundation
+          + Add Team Member
         </button>
       </div>
       <div className="flex gap-3 mb-4">
-        {[searchKeys[1]].map((key) => (
+        {[searchKeys[0], searchKeys[6]].map((key) => (
           <input
             key={key}
             type="text"
@@ -109,7 +110,7 @@ export const Foundation : React.FC = () => {
         <thead>
           <tr className="bg-primary text-white">
             {
-              ["Title", "Actions"].map((item, index) => (
+              ["Name", "Designation", "Actions"].map((item, index) => (
                 <th key={index} className="py-2 px-3 border">{item}</th>
               ))
             }
@@ -118,9 +119,9 @@ export const Foundation : React.FC = () => {
         <tbody>
           {currentData.map((item) => (
             <tr key={item._id} className="text-center">
-              <td className="border text-center border-secondary shadow-md shadow-secondary/20 p-2">{item.title}</td>
-
-              <td className="border text-center border-secondary shadow-md shadow-secondary/20">
+              <td className="border text-center border-secondary shadow-md shadow-seconborder-secondary/20 p-2">{item.name}</td>
+              <td className="border text-center border-secondary shadow-md shadow-seconborder-secondary/20 p-2">{item.designation}</td>
+              <td className="border text-center border-secondary shadow-md shadow-seconborder-secondary/20">
                 <div className="flex mx-1 gap-2 justify-center">
                   <button onClick={() => setModal({ mode: "edit", item })} className="bg-success cursor-pointer text-white px-3 py-1 rounded">
                     Edit
@@ -134,13 +135,12 @@ export const Foundation : React.FC = () => {
           ))}
         </tbody>
       </table>
-
       {
         totalPages > 1 && <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
       }
 
       {modal && (
-        <FoundationModel
+        <TeamsModel
           mode={modal.mode}
           initialData={modal.item}
           onClose={() => setModal(null)}
@@ -151,7 +151,7 @@ export const Foundation : React.FC = () => {
           tooltip={tooltip}
         />
       )}
+
     </div>
   );
 }
-

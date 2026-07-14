@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import Tooltip from "../../common/Tooltip";
-import PageBreadcrumb from "../../common/PageBreadCrumb";
-import Pagination from "../../common/Pagination";
+import Tooltip from "../../../common/Tooltip";
+import PageBreadcrumb from "../../../common/PageBreadCrumb";
+import Pagination from "../../../common/Pagination";
 import { JourneyModel } from "./JourneynModel";
 import { journey } from "@/types/journeyContext";
 import { Form, Mode } from "@/types/modelContext";
@@ -25,7 +25,7 @@ export const Journey: React.FC = () => {
     };
 
     const fetchData = async () => {
-        const initiativesRes = await fetch("/api/auth/about-us/journey")
+        const initiativesRes = await fetch("/api/auth/soul-it/about-us/journey")
         const initiativesJson = await initiativesRes.json();
         setData(initiativesJson.data);
     };
@@ -51,19 +51,19 @@ export const Journey: React.FC = () => {
 
         try {
             if (modal.mode === "create") {
-                res = await fetch("/api/auth/about-us/journey", {
+                res = await fetch("/api/auth/soul-it/about-us/journey", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(form)
                 });
             } else if (modal.mode === "edit") {
-                res = await fetch(`/api/auth/about-us/journey/${modal.item?._id}`, {
+                res = await fetch(`/api/auth/soul-it/about-us/journey/${modal.item?._id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(form),
                 });
             } else {
-                res = await fetch(`/api/auth/about-us/journey/${modal.item?._id}`, {
+                res = await fetch(`/api/auth/soul-it/about-us/journey/${modal.item?._id}`, {
                     method: "DELETE",
                 });
             }

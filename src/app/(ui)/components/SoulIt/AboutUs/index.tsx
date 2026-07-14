@@ -6,11 +6,11 @@ import PolicyAndCoreValues from "@/models/admin-model/Customer/Sector";
 import WhoWeAre from "@/models/admin-model/AboutUs/WhoWeAre";
 import { WeBelieve } from "./WeBelieve";
 import Foundation from "@/models/admin-model/AboutUs/Foundation";
-import { Certifications } from "../Home/Certifications";
+import { Certifications } from "../../Home/Certifications";
 import CompanyCredential from "@/models/admin-model/AboutUs/CompanyCredential";
 import { OurJourney } from "./OurJourney";
 import Journey from "@/models/admin-model/AboutUs/Journey";
-import { ContactCta } from "../Cta For Connect/ContactCta";
+import { ContactCta } from "../../Cta For Connect/ContactCta";
 
 
 export const AboutUs = async () => {

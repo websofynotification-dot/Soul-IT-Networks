@@ -1,7 +1,7 @@
 
 import { foundationIcons } from "@/app/api/data";
 import { foundation, foundationProps } from "@/types/foundationContext";;
-import { PreLoader } from "../Common/PreLoader";
+import { PreLoader } from "../../Common/PreLoader";
 
 import { RiExpandRightFill } from "react-icons/ri";
 

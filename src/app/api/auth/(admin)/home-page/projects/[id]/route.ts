@@ -59,7 +59,7 @@ export const DELETE = async (req: NextRequest, context: RouteContext) => {
 
         if (!deleted) {
             return NextResponse.json(
-                { success: false, message: "Award not found." },
+                { success: false, message: "Projects not found." },
                 { status: 404 }
             );
         }

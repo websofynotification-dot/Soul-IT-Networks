@@ -1,7 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Label from "../../form/Label";
-import Tooltip from "../../common/Tooltip";
 import { RxCross2 } from "react-icons/rx";
 import { LiaCheckCircle } from "react-icons/lia";
 import { FiLoader, FiMinus } from "react-icons/fi";
@@ -9,6 +7,8 @@ import { GiCancel } from "react-icons/gi";
 import { IoIosAdd } from "react-icons/io";
 import { ModalProps } from "@/types/modelContext";
 import { foundation } from "@/types/foundationContext";
+import Tooltip from "../../../common/Tooltip";
+import Label from "../../../form/Label";
 
 export const FoundationModel: React.FC<ModalProps & { initialData?: foundation }> = ({ mode, onClose, onSave, initialData, loading, setLoading, showTooltip, tooltip }) => {
 

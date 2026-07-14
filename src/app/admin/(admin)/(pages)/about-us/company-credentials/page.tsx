@@ -1,4 +1,4 @@
-import { CompanyCredential } from '@/app/admin/components/about-us/company-credential/CompanyCredential';
+import { CompanyCredential } from '@/app/admin/components/soul-it/about-us/company-credential/CompanyCredential';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -7,8 +7,5 @@ export const metadata: Metadata = {
     "Review our certifications, expertise, industry experience, and credentials that establish trust and reliability.",
 };
 
-const page = () => {
-  return <CompanyCredential />
-}
-
+const page = () => <CompanyCredential />;
 export default page

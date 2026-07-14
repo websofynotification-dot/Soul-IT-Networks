@@ -11,7 +11,9 @@ import Image from "next/image";
 
 export const Footer: React.FC = () => {
   const [data, setData] = useState<footer[]>([]);
-  const [modal, setModal] = useState<{ mode: Mode; item?: footer } | null>(null);
+  const [modal, setModal] = useState<{ mode: Mode; item?: footer } | null>(
+    null,
+  );
   const [tooltip, setTooltip] = useState<TooltipProps | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -30,7 +32,6 @@ export const Footer: React.FC = () => {
     fetchData();
   }, []);
 
-
   const handleSave = async (form: Form) => {
     if (!modal) return;
     setLoading(true);
@@ -42,7 +43,7 @@ export const Footer: React.FC = () => {
         res = await fetch("/api/auth/footer", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form)
+          body: JSON.stringify(form),
         });
       } else if (modal.mode === "edit") {
         res = await fetch(`/api/auth/footer/${modal.item?._id}`, {
@@ -60,10 +61,13 @@ export const Footer: React.FC = () => {
       if (res.ok) {
         showTooltip({ message: data.message ?? "Success", type: "success" });
       } else {
-        showTooltip({ message: data.message ?? "Something went wrong", type: "error" });
+        showTooltip({
+          message: data.message ?? "Something went wrong",
+          type: "error",
+        });
       }
     } catch (error) {
-      console.log("Internal Server Error ", error)
+      console.log("Internal Server Error ", error);
       showTooltip({ message: "Internal Server Error", type: "error" });
     } finally {
       setLoading(false);
@@ -76,11 +80,16 @@ export const Footer: React.FC = () => {
     <div className="p-4">
       {tooltip && <Tooltip message={tooltip.message} type={tooltip.type} />}
       <PageBreadcrumb pageTitle="Footer" />
-      <div className="flex justify-end items-center mb-4">
-        <button onClick={() => setModal({ mode: "create" })} className="bg-learning cursor-pointer text-white px-4 py-2 rounded-lg transition hover:bg-learning/90">
-          + Add Footer Info
-        </button>
-      </div>
+      {data.length === 0 && (
+        <div className="flex justify-end items-center mb-4">
+          <button
+            onClick={() => setModal({ mode: "create" })}
+            className="bg-learning cursor-pointer text-white px-4 py-2 rounded-lg transition hover:bg-learning/80"
+          >
+            + Add Footer Info
+          </button>
+        </div>
+      )}
       <div className="grid grid-cols-1 gap-6">
         {data?.map((item: footer) => (
           <div
@@ -88,15 +97,19 @@ export const Footer: React.FC = () => {
             className="bg-white rounded-xl shadow-lg border border-secondary overflow-hidden"
           >
             <div className="bg-primary text-white p-4 flex justify-between items-center">
-              <h2 className="text-lg font-semibold">
-                Footer Information
-              </h2>
+              <h2 className="text-lg font-semibold">Footer Information</h2>
 
               <div className="flex gap-2">
-                <button onClick={() => setModal({ mode: "edit", item })} className="bg-success cursor-pointer text-white px-3 py-1 rounded">
+                <button
+                  onClick={() => setModal({ mode: "edit", item })}
+                  className="bg-success cursor-pointer text-white px-3 py-1 rounded"
+                >
                   Edit
                 </button>
-                <button onClick={() => setModal({ mode: "delete", item })} className="bg-error cursor-pointer text-white px-3 py-1 rounded">
+                <button
+                  onClick={() => setModal({ mode: "delete", item })}
+                  className="bg-error cursor-pointer text-white px-3 py-1 rounded"
+                >
                   Delete
                 </button>
               </div>
@@ -125,36 +138,28 @@ export const Footer: React.FC = () => {
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="bg-primary/10 p-3 rounded-lg">
-                      <p className="text-sm text-gray-500">
-                        Tags
-                      </p>
+                      <p className="text-sm text-gray-500">Tags</p>
                       <p className="font-bold text-xl">
                         {item.tag?.length || 0}
                       </p>
                     </div>
 
                     <div className="bg-primary/10 p-3 rounded-lg">
-                      <p className="text-sm text-gray-500">
-                        Quick Links
-                      </p>
+                      <p className="text-sm text-gray-500">Quick Links</p>
                       <p className="font-bold text-xl">
                         {item.quickLinks?.length || 0}
                       </p>
                     </div>
 
                     <div className="bg-primary/10 p-3 rounded-lg">
-                      <p className="text-sm text-gray-500">
-                        Services
-                      </p>
+                      <p className="text-sm text-gray-500">Services</p>
                       <p className="font-bold text-xl">
                         {item.services?.length || 0}
                       </p>
                     </div>
 
                     <div className="bg-primary/10 p-3 rounded-lg">
-                      <p className="text-sm text-gray-500">
-                        Other Links
-                      </p>
+                      <p className="text-sm text-gray-500">Other Links</p>
                       <p className="font-bold text-xl">
                         {item.otherLinks?.length || 0}
                       </p>
@@ -163,9 +168,7 @@ export const Footer: React.FC = () => {
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <p className="font-semibold">
-                        Copyright
-                      </p>
+                      <p className="font-semibold">Copyright</p>
                       <p>{item.copyrightText?.name}</p>
                       <p className="text-sm text-SlateBlueText">
                         {item.copyrightText?.website}
@@ -173,9 +176,7 @@ export const Footer: React.FC = () => {
                     </div>
 
                     <div>
-                      <p className="font-semibold">
-                        Designed By
-                      </p>
+                      <p className="font-semibold">Designed By</p>
                       <p>{item.designedBy?.name}</p>
                       <p className="text-sm text-SlateBlueText">
                         {item.designedBy?.website}
@@ -203,4 +204,4 @@ export const Footer: React.FC = () => {
       )}
     </div>
   );
-}
+};

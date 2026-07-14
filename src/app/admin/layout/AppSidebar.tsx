@@ -5,7 +5,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Ellipsis, KeySquare } from "lucide-react";
 import { useSidebar } from "@/app/context/SidebarContext";
-import { FaArrowCircleRight, FaPhoneAlt, FaRegUser, FaUserFriends } from "react-icons/fa";
+import {
+  FaArrowCircleRight,
+  FaPhoneAlt,
+  FaRegUser,
+  FaUserFriends,
+} from "react-icons/fa";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { MdMiscellaneousServices, MdOutlineCategory } from "react-icons/md";
 import { PiAlignTopBold } from "react-icons/pi";
@@ -15,6 +20,7 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { TiSupport } from "react-icons/ti";
 import { GiProgression } from "react-icons/gi";
 import { HiOutlineLightBulb } from "react-icons/hi2";
+import { RiTeamFill } from "react-icons/ri";
 
 type NavItem = {
   name: string;
@@ -27,17 +33,17 @@ const navItems: NavItem[] = [
   {
     icon: <LuLayoutDashboard size={18} />,
     name: "Dashboard",
-    path: "/admin/dashboard"
+    path: "/admin/dashboard",
   },
   {
     icon: <PiAlignTopBold size={18} />,
     name: "Topbar",
-    path: "/admin/topbar"
+    path: "/admin/topbar",
   },
   {
     icon: <TfiMenuAlt size={18} />,
     name: "Menu",
-    path: "/admin/menubar"
+    path: "/admin/menubar",
   },
   {
     icon: <IoHomeOutline size={18} />,
@@ -59,15 +65,21 @@ const navItems: NavItem[] = [
       { name: "Who We Are", path: "/admin/about-us/who-we-are" },
       { name: "Our Journey", path: "/admin/about-us/journey" },
       { name: "Foundation", path: "/admin/about-us/foundation" },
-      { name: "Company Credentials", path: "/admin/about-us/company-credentials" },
+      {
+        name: "Company Credentials",
+        path: "/admin/about-us/company-credentials",
+      },
     ],
+  },
+  {
+    name: "Team Member",
+    icon: <RiTeamFill size={18} />,
+    path: "/admin/teams",
   },
   {
     icon: <FaUserFriends size={18} />,
     name: "Customer Page",
-    subItems: [
-      { name: "Sectors", path: "/admin/customer/sectors" },
-    ],
+    subItems: [{ name: "Sectors", path: "/admin/customer/sectors" }],
   },
   {
     icon: <TiSupport size={18} />,
@@ -91,7 +103,10 @@ const navItems: NavItem[] = [
     icon: <MdMiscellaneousServices size={18} />,
     subItems: [
       { name: "Overview", path: "/admin/services/overview" },
-      { name: "Why Choose Sout It", path: "/admin/services/why-choose-soul-it" },
+      {
+        name: "Why Choose Sout It",
+        path: "/admin/services/why-choose-soul-it",
+      },
       { name: "Approach", path: "/admin/services/approach" },
       { name: "Deliver", path: "/admin/services/delivery" },
     ],
@@ -102,24 +117,22 @@ const navItems: NavItem[] = [
     subItems: [
       { name: "Overview", path: "/admin/solutions/overview" },
       { name: "Use Cases", path: "/admin/solutions/use-cases" },
-
     ],
   },
   {
     name: "Category",
     icon: <MdOutlineCategory size={18} />,
-    path: "/admin/category"
-
+    path: "/admin/category",
   },
   {
     name: "Contact Us",
     icon: <FaPhoneAlt size={15} />,
-    path: "/admin/contact-us"
+    path: "/admin/contact-us",
   },
   {
     name: "Footer",
     icon: <IoFootstepsOutline size={15} />,
-    path: "/admin/footer"
+    path: "/admin/footer",
   },
   {
     icon: <FaRegUser size={18} />,
@@ -139,14 +152,13 @@ const othersItems: NavItem[] = [
   },
 ];
 
-
 export const AppSidebar: FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
   const pathname = usePathname();
 
   const renderMenuItems = (
     navItems: NavItem[],
-    menuType: "main" | "others"
+    menuType: "main" | "others",
   ) => (
     <ul className="flex flex-col gap-4">
       {navItems.map((nav, index) => (
@@ -154,19 +166,22 @@ export const AppSidebar: FC = () => {
           {nav.subItems ? (
             <button
               onClick={() => handleSubmenuToggle(index, menuType)}
-              className={`menu-item group  ${openSubmenu?.type === menuType && openSubmenu?.index === index
-                ? "menu-item-active"
-                : "menu-item-inactive"
-                } cursor-pointer ${!isExpanded && !isHovered
+              className={`menu-item group  ${
+                openSubmenu?.type === menuType && openSubmenu?.index === index
+                  ? "menu-item-active"
+                  : "menu-item-inactive"
+              } cursor-pointer ${
+                !isExpanded && !isHovered
                   ? "lg:justify-center"
                   : "lg:justify-start"
-                }`}
+              }`}
             >
               <span
-                className={` ${openSubmenu?.type === menuType && openSubmenu?.index === index
-                  ? "menu-item-icon-active"
-                  : "menu-item-icon-inactive"
-                  }`}
+                className={` ${
+                  openSubmenu?.type === menuType && openSubmenu?.index === index
+                    ? "menu-item-icon-active"
+                    : "menu-item-icon-inactive"
+                }`}
               >
                 {nav.icon}
               </span>
@@ -177,11 +192,12 @@ export const AppSidebar: FC = () => {
 
               {(isExpanded || isHovered || isMobileOpen) && (
                 <ChevronDown
-                  className={`ml-auto w-5 h-5 transition-transform duration-200  ${openSubmenu?.type === menuType &&
+                  className={`ml-auto w-5 h-5 transition-transform duration-200  ${
+                    openSubmenu?.type === menuType &&
                     openSubmenu?.index === index
-                    ? "rotate-180 text-brand-500"
-                    : ""
-                    }`}
+                      ? "rotate-180 text-brand-500"
+                      : ""
+                  }`}
                 />
               )}
             </button>
@@ -189,14 +205,16 @@ export const AppSidebar: FC = () => {
             nav.path && (
               <Link
                 href={nav.path}
-                className={`menu-item group ${isActive(nav.path) ? "menu-item-active" : "menu-item-inactive"
-                  }`}
+                className={`menu-item group ${
+                  isActive(nav.path) ? "menu-item-active" : "menu-item-inactive"
+                }`}
               >
                 <span
-                  className={`${isActive(nav.path)
-                    ? "menu-item-icon-active"
-                    : "menu-item-icon-inactive"
-                    }`}
+                  className={`${
+                    isActive(nav.path)
+                      ? "menu-item-icon-active"
+                      : "menu-item-icon-inactive"
+                  }`}
                 >
                   {nav.icon}
                 </span>
@@ -224,22 +242,23 @@ export const AppSidebar: FC = () => {
                   <li key={subItem.name}>
                     <Link
                       href={subItem.path}
-                      className={`menu-dropdown-item ${isActive(subItem.path)
-                        ? "menu-dropdown-item-active"
-                        : "menu-dropdown-item-inactive"
-                        } flex items-center gap-2`}
+                      className={`menu-dropdown-item ${
+                        isActive(subItem.path)
+                          ? "menu-dropdown-item-active"
+                          : "menu-dropdown-item-inactive"
+                      } flex items-center gap-2`}
                     >
                       <span
-                        className={`${isActive(subItem.path)
-                          ? "menu-dropdown-item-icon-active"
-                          : "menu-item-icon-inactive"
-                          }`}
+                        className={`${
+                          isActive(subItem.path)
+                            ? "menu-dropdown-item-icon-active"
+                            : "menu-item-icon-inactive"
+                        }`}
                       >
                         <FaArrowCircleRight size={15} />
                       </span>
 
                       {subItem.name}
-
                     </Link>
                   </li>
                 ))}
@@ -256,7 +275,7 @@ export const AppSidebar: FC = () => {
     index: number;
   } | null>(null);
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
-    {}
+    {},
   );
   const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
@@ -313,11 +332,12 @@ export const AppSidebar: FC = () => {
   return (
     <aside
       className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-secondary 
-        ${isExpanded || isMobileOpen
-          ? "w-[290px]"
-          : isHovered
+        ${
+          isExpanded || isMobileOpen
             ? "w-[290px]"
-            : "w-[90px]"
+            : isHovered
+              ? "w-[290px]"
+              : "w-[90px]"
         }
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
         lg:translate-x-0`}
@@ -325,8 +345,9 @@ export const AppSidebar: FC = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`py-4 flex  ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
-          }`}
+        className={`py-4 flex  ${
+          !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
+        }`}
       >
         <Link href="/admin/logout">
           {isExpanded || isHovered || isMobileOpen ? (
@@ -355,10 +376,11 @@ export const AppSidebar: FC = () => {
           <div className="flex flex-col gap-4">
             <div>
               <h2
-                className={`mb-4 text-xs uppercase flex leading-[20px] text-primary font-semibold ${!isExpanded && !isHovered
-                  ? "lg:justify-center"
-                  : "justify-start"
-                  }`}
+                className={`mb-4 text-xs uppercase flex leading-[20px] text-primary font-semibold ${
+                  !isExpanded && !isHovered
+                    ? "lg:justify-center"
+                    : "justify-start"
+                }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
                   "Menu"
@@ -368,11 +390,9 @@ export const AppSidebar: FC = () => {
               </h2>
               {renderMenuItems(navItems, "main")}
             </div>
-
           </div>
         </nav>
       </div>
     </aside>
   );
 };
-

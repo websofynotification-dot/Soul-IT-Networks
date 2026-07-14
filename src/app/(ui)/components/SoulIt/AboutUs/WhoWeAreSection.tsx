@@ -1,6 +1,6 @@
 import { cardProps } from '@/types/cardContext'
 import Image from 'next/image'
-import { PreLoader } from '../Common/PreLoader';
+import { PreLoader } from '../../Common/PreLoader';
 
 export const WhoWeAreSection: React.FC<cardProps> = ({ cardData }) => {
 

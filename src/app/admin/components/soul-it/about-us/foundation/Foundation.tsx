@@ -1,19 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
-import PageBreadcrumb from "../../common/PageBreadCrumb";
-import Tooltip from "../../common/Tooltip";
-import Pagination from "../../common/Pagination";
-import { card } from "@/types/cardContext";
+import { foundation } from "@/types/foundationContext";
 import { Form, Mode } from "@/types/modelContext";
 import { TooltipProps } from "@/types/tooltipContext";
 import { searchKeys, SearchState, updateStateField } from "@/types/searchStateContext";
 import { ApiResponseProps } from "@/types/ApiResponseContext";
-import { WhoWeAreModel } from "./WhoWeAreModel";
+import { FoundationModel } from "./FoundationModel";
+import Tooltip from "../../../common/Tooltip";
+import PageBreadcrumb from "../../../common/PageBreadCrumb";
+import Pagination from "../../../common/Pagination";
 
-export const WhoWeAre: React.FC = () => {
-  const [data, setData] = useState<card[]>([]);
-
-  const [modal, setModal] = useState<{ mode: Mode; item?: card } | null>(null);
+export const Foundation : React.FC = () => {
+  const [data, setData] = useState<foundation[]>([]);
+  const [modal, setModal] = useState<{ mode: Mode; item?: foundation } | null>(null);
   const [tooltip, setTooltip] = useState<TooltipProps | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -26,17 +25,16 @@ export const WhoWeAre: React.FC = () => {
   };
 
   const fetchData = async () => {
-    const awardRes = await fetch("/api/auth/about-us/who-we-are");
-    const awardJson = await awardRes.json();
-    setData(awardJson.data);
+    const internshipRes = await fetch("/api/auth/soul-it/about-us/foundation");
+    const internshipJson = await internshipRes.json();
+    setData(internshipJson.data);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const filteredData = data.filter(
-    (item) => item.title?.toLowerCase().includes(search.title!.toLowerCase())
+  const filteredData = data.filter(item => item.title?.toLowerCase().includes(search.title!.toLowerCase())
   );
 
   const totalPages = Math.ceil(filteredData.length / recordsPerPage);
@@ -49,27 +47,27 @@ export const WhoWeAre: React.FC = () => {
     if (!modal) return;
     setLoading(true);
     let res: Response;
-    let data: ApiResponseProps<card>;
+    let data: ApiResponseProps<foundation>;
 
     try {
       if (modal.mode === "create") {
-        res = await fetch("/api/auth/about-us/who-we-are", {
+        res = await fetch("/api/auth/soul-it/about-us/foundation", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form)
         });
       } else if (modal.mode === "edit") {
-        res = await fetch(`/api/auth/about-us/who-we-are/${modal.item?._id}`, {
+        res = await fetch(`/api/auth/soul-it/about-us/foundation/${modal.item?._id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),
         });
       } else {
-        res = await fetch(`/api/auth/about-us/who-we-are/${modal.item?._id}`, {
+        res = await fetch(`/api/auth/soul-it/about-us/foundation/${modal.item?._id}`, {
           method: "DELETE",
         });
       }
-      data = (await res.json()) as ApiResponseProps<card>;
+      data = (await res.json()) as ApiResponseProps<foundation>;
 
       if (res.ok) {
         showTooltip({ message: data.message ?? "Success", type: "success" });
@@ -89,10 +87,10 @@ export const WhoWeAre: React.FC = () => {
   return (
     <div className="p-4">
       {tooltip && <Tooltip message={tooltip.message} type={tooltip.type} />}
-      <PageBreadcrumb pageTitle="Who We Are" />
+      <PageBreadcrumb pageTitle="Foundation" />
       <div className="flex justify-end items-center mb-4">
         <button onClick={() => setModal({ mode: "create" })} className="bg-learning cursor-pointer text-white px-4 py-2 rounded-lg transition hover:bg-learning/90">
-          + Add Who We Are
+          + Add Foundation
         </button>
       </div>
       <div className="flex gap-3 mb-4">
@@ -121,6 +119,7 @@ export const WhoWeAre: React.FC = () => {
           {currentData.map((item) => (
             <tr key={item._id} className="text-center">
               <td className="border text-center border-secondary shadow-md shadow-secondary/20 p-2">{item.title}</td>
+
               <td className="border text-center border-secondary shadow-md shadow-secondary/20">
                 <div className="flex mx-1 gap-2 justify-center">
                   <button onClick={() => setModal({ mode: "edit", item })} className="bg-success cursor-pointer text-white px-3 py-1 rounded">
@@ -135,12 +134,13 @@ export const WhoWeAre: React.FC = () => {
           ))}
         </tbody>
       </table>
+
       {
         totalPages > 1 && <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
       }
 
       {modal && (
-        <WhoWeAreModel
+        <FoundationModel
           mode={modal.mode}
           initialData={modal.item}
           onClose={() => setModal(null)}
@@ -154,3 +154,4 @@ export const WhoWeAre: React.FC = () => {
     </div>
   );
 }
+

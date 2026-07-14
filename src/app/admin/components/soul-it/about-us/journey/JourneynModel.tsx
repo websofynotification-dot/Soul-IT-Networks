@@ -4,28 +4,31 @@ import { RxCross2 } from "react-icons/rx";
 import { GiCancel } from "react-icons/gi";
 import { FiLoader } from "react-icons/fi";
 import { LiaCheckCircle } from "react-icons/lia";
-import Tooltip from "../../common/Tooltip";
-import Label from "../../form/Label";
 import { ModalProps } from "@/types/modelContext";
-import { card } from "@/types/cardContext";
-import ImageUploader from "../../common/ImageUploader";
+import { journey } from "@/types/journeyContext";
+import Tooltip from "../../../common/Tooltip";
+import Label from "../../../form/Label";
 
-export const CompanyCredentialModel: React.FC<ModalProps & { initialData?: card }> = ({ mode, onClose, onSave, initialData, loading, setLoading, showTooltip, tooltip }) => {
-    const [form, setForm] = useState<card>(
-        initialData || { title: "", description: "", image: "",
-      image_publicId: "", });
+export const JourneyModel: React.FC<ModalProps & { initialData?: journey }> = ({ mode, onClose, onSave, initialData, loading, setLoading, showTooltip, tooltip }) => {
+
+    const [form, setForm] = useState<journey>(
+        initialData || {
+            title: "",
+            description: "",
+            journey_year: ""
+        }
+    );
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setForm({ ...form, [e.target.name]: e.target.value });
     const handleSubmit = () => {
         setLoading(true);
-        if (!form.title || !form.description) {
+        if (!form.title || !form.description || !form.journey_year) {
             showTooltip({ message: "Please fill all fields!", type: "error" });
             setLoading(false);
             return;
         }
         onSave(form);
     };
-
     return (
         <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center z-[9999] bg-black/60" onClick={onClose}>
             {tooltip && <Tooltip message={tooltip.message} type={tooltip.type} />}
@@ -34,7 +37,7 @@ export const CompanyCredentialModel: React.FC<ModalProps & { initialData?: card 
                    overflow-y-auto scroll-smooth hide-scrollbar`} onClick={(e) => e.stopPropagation()}
             >
                 <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-semibold">{mode === "edit" ? "Update" : mode === "delete" ? "Delete" : "Add"} Company credential</h2>
+                    <h2 className="text-xl font-semibold">{mode === "edit" ? "Update" : mode === "delete" ? "Delete" : "Add"} Journey</h2>
                     <button
                         onClick={onClose}
                         className="cursor-pointer right-3 top-3 z-999 flex h-9.5 w-9.5 items-center justify-center rounded-full bg-primary/20 text-primary transition-colors hover:bg-transparent hover:text-secondary hover:border hover:border-secondary/30 sm:right-6 sm:top-6 sm:h-9 sm:w-9"
@@ -44,7 +47,7 @@ export const CompanyCredentialModel: React.FC<ModalProps & { initialData?: card 
                 </div>
 
                 {mode === "delete" ? (
-                    <p>Are you sure want to delete this company credential?</p>
+                    <p>Are you sure want to delete this journey?</p>
                 ) : (
                     <div className="space-y-4">
                         <div className="flex flex-col md:flex-row justify-center items-center gap-3">
@@ -58,14 +61,25 @@ export const CompanyCredentialModel: React.FC<ModalProps & { initialData?: card 
                                     onChange={handleChange}
                                 />
                             </div>
+                            <div className="w-full">
+                                <Label>Journey Year</Label>
+                                <input
+                                    name="journey_year"
+                                    value={form.journey_year}
+                                    placeholder="Journey Year"
+                                    onChange={handleChange}
+                                    className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
+                                />
+                            </div>
                         </div>
+
                         <div className="flex flex-col md:flex-row justify-center items-center gap-3">
                             <div className="w-full">
                                 <Label>Description</Label>
                                 <textarea
                                     name="description"
                                     value={form.description}
-                                    placeholder="What about your company credential?"
+                                    placeholder="What about your journey ?"
                                     rows={5}
                                     onChange={handleChange}
                                     className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded resize-none"
@@ -74,11 +88,12 @@ export const CompanyCredentialModel: React.FC<ModalProps & { initialData?: card 
                         </div>
                     </div>
                 )}
+
                 <div className="flex justify-end gap-3 mt-6">
                     <button
                         className="bg-SlateBlueText/30 text-MidnightNavyText cursor-pointer flex items-center gap-2 px-3 py-1 rounded hover:opacity-80"
                         onClick={onClose}
-                    >
+                    >  
                         <span>Cancel</span>
                         <GiCancel className="text-midnight_text" />
                     </button>

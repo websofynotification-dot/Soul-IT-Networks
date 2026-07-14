@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 export const GET = async () => {
     try {
         await dbConnect();
-        const topbarData = await Topbar.find().sort({ createdAt: -1 });
+        const topbarData = await Topbar.find().sort({ createdAt: -1 }).lean();
         return NextResponse.json({ success: true, data: topbarData }, { status: 200 })
     } catch (error) {
         const err = error as Error;
@@ -20,13 +20,13 @@ export const GET = async () => {
 export const POST = async (req: NextRequest) => {
     try {
         await dbConnect();
-        const { contactDetails, socialMedia, location } = await req.json();
+        const { contactDetails, socialMedia, headOfficeLocation, branchOfficeLocation} = await req.json();
 
-        if (!contactDetails || !socialMedia || !location) {
+        if (!contactDetails || !socialMedia || !headOfficeLocation || !branchOfficeLocation) {
             return NextResponse.json({ error: `All fields are required!` }, { status: 400 });
         }
-
-        const newTopbar = await Topbar.create({ contactDetails, socialMedia, location })
+        
+        const newTopbar = await Topbar.create({ contactDetails, socialMedia, headOfficeLocation, branchOfficeLocation })
         return NextResponse.json({ message: "Topbar added successfully.", success: true, data: newTopbar })
 
     } catch (error) {

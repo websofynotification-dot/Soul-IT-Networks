@@ -5,9 +5,10 @@ export interface SearchState {
     "year"?: string;
     question?: string;
     "page name"?: string;
+    designation?: string;
 }
 
-export const searchKeys: (keyof SearchState)[] = ["name", "title", "category", "year", "question", "page name"];
+export const searchKeys: (keyof SearchState)[] = ["name", "title", "category", "year", "question", "page name", "designation"];
 
 export const updateStateField = <T, K extends keyof T>(
     setState: React.Dispatch<React.SetStateAction<T>>, key: K, value: T[K]) => {

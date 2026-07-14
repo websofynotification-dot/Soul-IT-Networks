@@ -1,11 +1,11 @@
-import { AboutUs } from '../../components/AboutUs';
-import HeroSub from '../../components/Shared Component/HeroSub';
+import { AboutUs } from '@/app/(ui)/components/SoulIt/AboutUs';
+import HeroSub from '../../../components/Shared Component/HeroSub';
 export const dynamic = 'force-dynamic';
 
 const page = () => {
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
-    { href: "/about-us", text: "About Us" },
+    { href: "/sout-it/about-us", text: "About Us" },
   ];
   return (
     <>

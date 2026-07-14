@@ -1,7 +1,8 @@
 import { model, models, Schema } from "mongoose";
 
 const topbarSchema = new Schema({
-    location: { type: String, required: true, trim: true },
+    headOfficeLocation: { type: String, required: true, trim: true },
+    branchOfficeLocation: { type: String, required: true, trim: true },
     contactDetails: {
         type: [{
             contctType: { type: String, required: true },

@@ -1,4 +1,4 @@
-import { Foundation } from '@/app/admin/components/about-us/foundation/Foundation';
+import { Foundation } from '@/app/admin/components/soul-it/about-us/foundation/Foundation';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -7,8 +7,6 @@ export const metadata: Metadata = {
     "Discover the vision, values, and foundation that drive Soul IT Networks to deliver technology excellence.",
 };
 
-const page = () => {
-  return <Foundation />
-}
+const page = () => <Foundation />
 
 export default page

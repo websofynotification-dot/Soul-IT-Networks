@@ -24,6 +24,7 @@ export const config = {
         "/admin/Menubar/:path*",
         "/admin/home-page/:path*",
         "/admin/about-us/:path*",
+        "/admin/teams/:path*",
         "/admin/customer/:path*",
         "/admin/suport/:path*",
         "/admin/careers/:path*",

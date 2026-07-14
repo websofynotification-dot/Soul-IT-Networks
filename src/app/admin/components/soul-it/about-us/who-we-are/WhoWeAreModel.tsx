@@ -4,11 +4,12 @@ import { RxCross2 } from "react-icons/rx";
 import { GiCancel } from "react-icons/gi";
 import { FiLoader } from "react-icons/fi";
 import { LiaCheckCircle } from "react-icons/lia";
-import Tooltip from "../../common/Tooltip";
-import Label from "../../form/Label";
 import { ModalProps } from "@/types/modelContext";
 import { card } from "@/types/cardContext";
-import ImageUploader from "../../common/ImageUploader";
+import Tooltip from "../../../common/Tooltip";
+import Label from "../../../form/Label";
+import ImageUploader from "../../../common/ImageUploader";
+
 
 export const WhoWeAreModel: React.FC<ModalProps & { initialData?: card }> = ({ mode, onClose, onSave, initialData, loading, setLoading, showTooltip, tooltip }) => {
     const [form, setForm] = useState<card>(

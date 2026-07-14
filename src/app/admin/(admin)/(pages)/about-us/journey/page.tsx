@@ -1,4 +1,4 @@
-import { Journey } from '@/app/admin/components/about-us/journey/Journey';
+import { Journey } from '@/app/admin/components/soul-it/about-us/journey/Journey';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -7,8 +7,6 @@ export const metadata: Metadata = {
     "Explore the growth, milestones, and achievements that have shaped Soul IT Networks into a trusted technology partner.",
 };
 
-const page = () => {
-  return <Journey />
-}
+const page = () => <Journey />;
 
 export default page

@@ -1,14 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
-import PageBreadcrumb from "../../common/PageBreadCrumb";
-import Tooltip from "../../common/Tooltip";
-import Pagination from "../../common/Pagination";
 import { card } from "@/types/cardContext";
 import { Form, Mode } from "@/types/modelContext";
 import { TooltipProps } from "@/types/tooltipContext";
 import { searchKeys, SearchState, updateStateField } from "@/types/searchStateContext";
 import { ApiResponseProps } from "@/types/ApiResponseContext";
 import { CompanyCredentialModel } from "./CompanyCredentialModel";
+import Tooltip from "../../../common/Tooltip";
+import PageBreadcrumb from "../../../common/PageBreadCrumb";
+import Pagination from "../../../common/Pagination";
 
 export const CompanyCredential: React.FC = () => {
     const [data, setData] = useState<card[]>([]);
@@ -25,7 +25,7 @@ export const CompanyCredential: React.FC = () => {
     };
 
     const fetchData = async () => {
-        const awardRes = await fetch("/api/auth/about-us/company-credential");
+        const awardRes = await fetch("/api/auth/soul-it/about-us/company-credential");
         const awardJson = await awardRes.json();
         setData(awardJson.data);
     };
@@ -52,19 +52,19 @@ export const CompanyCredential: React.FC = () => {
 
         try {
             if (modal.mode === "create") {
-                res = await fetch("/api/auth/about-us/company-credential", {
+                res = await fetch("/api/auth/soul-it/about-us/company-credential", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(form)
                 });
             } else if (modal.mode === "edit") {
-                res = await fetch(`/api/auth/about-us/company-credential/${modal.item?._id}`, {
+                res = await fetch(`/api/auth/soul-it/about-us/company-credential/${modal.item?._id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(form),
                 });
             } else {
-                res = await fetch(`/api/auth/about-us/company-credential/${modal.item?._id}`, {
+                res = await fetch(`/api/auth/soul-it/about-us/company-credential/${modal.item?._id}`, {
                     method: "DELETE",
                 });
             }

@@ -22,7 +22,32 @@ export const CertificationCard: React.FC<cardProps> = ({ cardData }) => {
                         <div className="overflow-hidden py-5" data-aos="fade-up">
                             <div className="group flex w-max animate-scroll gap-6 hover:[animation-play-state:paused]">
 
-                                {[...cardData, ...cardData].map((item, index) => (
+                                {[...cardData, ...cardData,].map((item, index) => (
+                                    <div
+                                        key={index}
+                                        data-aos="zoom-in"
+                                        data-aos-delay={index * 50}
+                                        data-aos-once="true"
+                                        className="relative min-w-[220px] bg-white rounded-xl shadow-md p-5 text-center cursor-pointer transition hover:shadow-xl hover:-translate-y-1"
+                                    >
+                                        <div className="relative w-20 h-20 mx-auto">
+                                            <Image
+                                                src={item.image!}
+                                                alt={item.title!}
+                                                fill
+                                                className="object-contain transition-transform duration-300 group-hover:scale-110"
+                                                sizes="64px"
+                                                priority={index < 4}
+                                            />
+                                        </div>
+                                        <h3 className="mt-3 font-semibold text-MidnightNavyText text-sm">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-xs text-SlateBlueText">{item.description}</p>
+                                    </div>
+                                ))}
+
+                                {[...cardData, ...cardData,].map((item, index) => (
                                     <div
                                         key={index}
                                         data-aos="zoom-in"
