@@ -16,7 +16,6 @@ export const JobOpeningCta = () => {
             </p>
 
             <Link href={`mailto:anubhav@soulitnetworks.com?subject=General Application - Soul IT Careers`}
-
               className="mt-10 w-auto px-10 py-4 bg-white  font-semibold rounded-md
                      hover:text-white transition duration-300 shadow-lg justify-center 
                      items-center gap-2 text-primary border border-secondary  hover:bg-primary">

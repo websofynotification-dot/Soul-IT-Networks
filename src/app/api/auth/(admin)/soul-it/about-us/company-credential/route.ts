@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect"
-import CompanyCredential from "@/models/admin-model/AboutUs/CompanyCredential";
+import CompanyCredential from "@/models/admin-model/SoulIt/AboutUs/CompanyCredential";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async () => {

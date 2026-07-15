@@ -3,13 +3,13 @@ import { WhoWeAreSection } from "./WhoWeAreSection";
 import { MissionVision } from "./MissionAndVision";
 import { getData } from "@/lib/getData";
 import PolicyAndCoreValues from "@/models/admin-model/Customer/Sector";
-import WhoWeAre from "@/models/admin-model/AboutUs/WhoWeAre";
+import WhoWeAre from "@/models/admin-model/SoulIt/AboutUs/WhoWeAre";
 import { WeBelieve } from "./WeBelieve";
-import Foundation from "@/models/admin-model/AboutUs/Foundation";
+import Foundation from "@/models/admin-model/SoulIt/AboutUs/Foundation";
 import { Certifications } from "../../Home/Certifications";
-import CompanyCredential from "@/models/admin-model/AboutUs/CompanyCredential";
+import CompanyCredential from "@/models/admin-model/SoulIt/AboutUs/CompanyCredential";
 import { OurJourney } from "./OurJourney";
-import Journey from "@/models/admin-model/AboutUs/Journey";
+import Journey from "@/models/admin-model/SoulIt/AboutUs/Journey";
 import { ContactCta } from "../../Cta For Connect/ContactCta";
 
 

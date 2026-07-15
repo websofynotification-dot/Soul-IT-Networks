@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect"
-import Journey from "@/models/admin-model/AboutUs/Journey";
+import Journey from "@/models/admin-model/SoulIt/AboutUs/Journey";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async () => {

@@ -6,6 +6,7 @@ import { Certifications } from "./components/Home/Certifications";
 import { Partners } from "./components/Home/Partners";
 import { Services } from "./components/Home/Services";
 import { ContactCta } from "./components/Cta For Connect/ContactCta";
+export const dynamic = 'force-dynamic';
 
 export default function Home() {
   return (

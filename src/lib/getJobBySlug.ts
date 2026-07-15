@@ -1,5 +1,3 @@
-
-
 export const getJobBySlug = async (slug: string) => {
   const res = await fetch(
     `${process.env.BASE_URL!}/api/auth/careers/careers-seo/${slug}`,

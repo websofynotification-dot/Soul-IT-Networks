@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { RouteContext } from "@/types/RouteContext";
 import dbConnect from "@/lib/dbConnect";
-import Foundation from "@/models/admin-model/AboutUs/Foundation";
+import Foundation from "@/models/admin-model/SoulIt/AboutUs/Foundation";
 
 export const GET = async (req: NextRequest, context: RouteContext) => {
     try {

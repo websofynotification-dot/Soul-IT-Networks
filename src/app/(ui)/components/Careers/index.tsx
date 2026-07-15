@@ -1,6 +1,6 @@
 import { getData } from "@/lib/getData";
 import { CareersAboutUs } from "./CareersAboutUs";
-import WhoWeAre from "@/models/admin-model/AboutUs/WhoWeAre";
+import WhoWeAre from "@/models/admin-model/SoulIt/AboutUs/WhoWeAre";
 import FeatureJob from "@/models/admin-model/Careers/FeatureJob";
 import { JobOpenings } from "./JobOpenings";
 import JobOpening from "@/models/admin-model/Careers/JobOpening";

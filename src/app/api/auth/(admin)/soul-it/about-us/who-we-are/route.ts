@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect"
-import WhoWeAre from "@/models/admin-model/AboutUs/WhoWeAre";
+import WhoWeAre from "@/models/admin-model/SoulIt/AboutUs/WhoWeAre";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest) => {

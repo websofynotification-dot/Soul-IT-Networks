@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import { RouteContext } from "@/types/RouteContext";
 import Image from "@/models/admin-model/Image";
-import WhoWeAre from "@/models/admin-model/AboutUs/WhoWeAre";
+import WhoWeAre from "@/models/admin-model/SoulIt/AboutUs/WhoWeAre";
 
 export const GET = async (req: NextRequest, context: RouteContext) => {
     try {

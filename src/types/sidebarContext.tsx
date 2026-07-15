@@ -11,3 +11,25 @@ export interface SidebarContextType {
   toggleSubmenu: (item: string) => void;
   blogs : any[];
 };
+
+
+export interface TertiaryItem {
+  name: string;
+  path: string;
+};
+
+export interface SecondaryItem {
+  name: string;
+  path?: string;
+  tertiaryItems?: TertiaryItem[];
+};
+
+export interface NavItem {
+  name: string;
+  icon: React.ReactNode;
+  path?: string;
+  subItems?: SecondaryItem[];
+};
+
+
+

@@ -1,156 +1,13 @@
 "use client";
-import React, { useEffect, useRef, useState, useCallback, FC } from "react";
+import { useEffect, useRef, useState, useCallback, FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Ellipsis, KeySquare } from "lucide-react";
+import { ChevronDown, Ellipsis } from "lucide-react";
 import { useSidebar } from "@/app/context/SidebarContext";
-import {
-  FaArrowCircleRight,
-  FaPhoneAlt,
-  FaRegUser,
-  FaUserFriends,
-} from "react-icons/fa";
-import { LuLayoutDashboard } from "react-icons/lu";
-import { MdMiscellaneousServices, MdOutlineCategory } from "react-icons/md";
-import { PiAlignTopBold } from "react-icons/pi";
-import { TbMessageCircleUser } from "react-icons/tb";
-import { IoFootstepsOutline, IoHomeOutline } from "react-icons/io5";
-import { TfiMenuAlt } from "react-icons/tfi";
-import { TiSupport } from "react-icons/ti";
-import { GiProgression } from "react-icons/gi";
-import { HiOutlineLightBulb } from "react-icons/hi2";
-import { RiTeamFill } from "react-icons/ri";
-
-type NavItem = {
-  name: string;
-  icon: React.ReactNode;
-  path?: string;
-  subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
-};
-
-const navItems: NavItem[] = [
-  {
-    icon: <LuLayoutDashboard size={18} />,
-    name: "Dashboard",
-    path: "/admin/dashboard",
-  },
-  {
-    icon: <PiAlignTopBold size={18} />,
-    name: "Topbar",
-    path: "/admin/topbar",
-  },
-  {
-    icon: <TfiMenuAlt size={18} />,
-    name: "Menu",
-    path: "/admin/menubar",
-  },
-  {
-    icon: <IoHomeOutline size={18} />,
-    name: "Home Page",
-    subItems: [
-      { name: "Hero Section", path: "/admin/home-page/hero" },
-      { name: "Our Services", path: "/admin/home-page/services" },
-      { name: "Why Choose Us", path: "/admin/home-page/why-choose-us" },
-      { name: "Projects", path: "/admin/home-page/projects" },
-      { name: "Why Soul It", path: "/admin/home-page/why-soul-it" },
-      { name: "Our Certificates", path: "/admin/home-page/certificates" },
-      { name: "Our Partners", path: "/admin/home-page/partners" },
-    ],
-  },
-  {
-    icon: <TbMessageCircleUser size={18} />,
-    name: "About Us Page",
-    subItems: [
-      { name: "Who We Are", path: "/admin/about-us/who-we-are" },
-      { name: "Our Journey", path: "/admin/about-us/journey" },
-      { name: "Foundation", path: "/admin/about-us/foundation" },
-      {
-        name: "Company Credentials",
-        path: "/admin/about-us/company-credentials",
-      },
-    ],
-  },
-  {
-    name: "Team Member",
-    icon: <RiTeamFill size={18} />,
-    path: "/admin/teams",
-  },
-  {
-    icon: <FaUserFriends size={18} />,
-    name: "Customer Page",
-    subItems: [{ name: "Sectors", path: "/admin/customer/sectors" }],
-  },
-  {
-    icon: <TiSupport size={18} />,
-    name: "Support Page",
-    subItems: [
-      { name: "Support Service", path: "/admin/suport/support-service" },
-      { name: "Support Add On", path: "/admin/suport/support-add-on" },
-    ],
-  },
-
-  {
-    icon: <GiProgression size={18} />,
-    name: "Careers Page",
-    subItems: [
-      { name: "Job Feature", path: "/admin/careers/feature-job" },
-      { name: "Job Opening", path: "/admin/careers/job-opening" },
-    ],
-  },
-  {
-    name: "Services",
-    icon: <MdMiscellaneousServices size={18} />,
-    subItems: [
-      { name: "Overview", path: "/admin/services/overview" },
-      {
-        name: "Why Choose Sout It",
-        path: "/admin/services/why-choose-soul-it",
-      },
-      { name: "Approach", path: "/admin/services/approach" },
-      { name: "Deliver", path: "/admin/services/delivery" },
-    ],
-  },
-  {
-    name: "Solutions",
-    icon: <HiOutlineLightBulb size={18} />,
-    subItems: [
-      { name: "Overview", path: "/admin/solutions/overview" },
-      { name: "Use Cases", path: "/admin/solutions/use-cases" },
-    ],
-  },
-  {
-    name: "Category",
-    icon: <MdOutlineCategory size={18} />,
-    path: "/admin/category",
-  },
-  {
-    name: "Contact Us",
-    icon: <FaPhoneAlt size={15} />,
-    path: "/admin/contact-us",
-  },
-  {
-    name: "Footer",
-    icon: <IoFootstepsOutline size={15} />,
-    path: "/admin/footer",
-  },
-  {
-    icon: <FaRegUser size={18} />,
-    name: "User Profile",
-    path: "/admin/profile",
-  },
-];
-
-const othersItems: NavItem[] = [
-  {
-    icon: <KeySquare />,
-    name: "Authentication",
-    subItems: [
-      { name: "Sign In", path: "/signin" },
-      { name: "Sign Out", path: "/logout" },
-    ],
-  },
-];
+import { FaArrowCircleRight } from "react-icons/fa";
+import { NavItem } from "@/types/sidebarContext";
+import { navItems, othersItems } from "./Navitem";
 
 export const AppSidebar: FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
@@ -233,33 +90,126 @@ export const AppSidebar: FC = () => {
               style={{
                 height:
                   openSubmenu?.type === menuType && openSubmenu?.index === index
-                    ? `${subMenuHeight[`${menuType}-${index}`]}px`
+                    ? "auto"
                     : "0px",
               }}
             >
               <ul className="mt-2 space-y-1 ml-9">
-                {nav.subItems.map((subItem) => (
+                {nav.subItems.map((subItem, childIndex) => (
                   <li key={subItem.name}>
-                    <Link
-                      href={subItem.path}
-                      className={`menu-dropdown-item ${
-                        isActive(subItem.path)
-                          ? "menu-dropdown-item-active"
-                          : "menu-dropdown-item-inactive"
-                      } flex items-center gap-2`}
-                    >
-                      <span
-                        className={`${
-                          isActive(subItem.path)
-                            ? "menu-dropdown-item-icon-active"
-                            : "menu-item-icon-inactive"
-                        }`}
-                      >
-                        <FaArrowCircleRight size={15} />
-                      </span>
+                    {subItem.tertiaryItems &&
+                    subItem.tertiaryItems.length > 0 ? (
+                      <>
+                        <button
+                          onClick={() =>
+                            setOpenTertiaryMenu((prev) =>
+                              prev?.parentIndex === index &&
+                              prev.childIndex === childIndex
+                                ? null
+                                : {
+                                    parentIndex: index,
+                                    childIndex,
+                                  },
+                            )
+                          }
+                          className={`menu-dropdown-item flex items-center justify-between w-full transition-all duration-200 ${
+                            openTertiaryMenu?.parentIndex === index &&
+                            openTertiaryMenu?.childIndex === childIndex
+                              ? "menu-dropdown-item-active"
+                              : "menu-dropdown-item-inactive"
+                          }`}
+                        >
+                          <div className="flex items-center gap-2">
+                            <FaArrowCircleRight size={15} />
+                            <span>{subItem.name}</span>
+                          </div>
 
-                      {subItem.name}
-                    </Link>
+                          <ChevronDown
+                            size={16}
+                            className={`transition-all duration-300 ${
+                              openTertiaryMenu?.parentIndex === index &&
+                              openTertiaryMenu?.childIndex === childIndex
+                                ? "rotate-180 text-primary"
+                                : "text-gray-500"
+                            }`}
+                          />
+                        </button>
+
+                        <div
+                          ref={(el) => {
+                            tertiaryMenuRefs.current[`${index}-${childIndex}`] =
+                              el;
+                          }}
+                          className="overflow-hidden transition-all duration-300"
+                          style={{
+                            height:
+                              openTertiaryMenu?.parentIndex === index &&
+                              openTertiaryMenu?.childIndex === childIndex
+                                ? `${tertiaryMenuHeight[`${index}-${childIndex}`] || 0}px`
+                                : "0px",
+                          }}
+                        >
+                          <ul className="ml-8 mt-2 space-y-1 pl-">
+                            {subItem.tertiaryItems.map((item) => (
+                              <li key={item.name}>
+                                <Link
+                                  href={item.path}
+                                  className={`menu-dropdown-item ${
+                                    isActive(item.path)
+                                      ? "menu-dropdown-item-active"
+                                      : "menu-dropdown-item-inactive"
+                                  } flex items-center gap-2 rounded-lg transition-all duration-200`}
+                                >
+                                  <span
+                                    className={`${
+                                      isActive(item.path)
+                                        ? "menu-dropdown-item-icon-active"
+                                        : "menu-item-icon-inactive"
+                                    }`}
+                                  >
+                                    <FaArrowCircleRight size={13} />
+                                  </span>
+
+                                  <span>{item.name}</span>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </>
+                    ) : subItem.path ? (
+                      <Link
+                        href={subItem.path!}
+                        className={`menu-dropdown-item ${
+                          isActive(subItem.path!)
+                            ? "menu-dropdown-item-active"
+                            : "menu-dropdown-item-inactive"
+                        } flex items-center gap-2`}
+                      >
+                        <span
+                          className={`${
+                            isActive(subItem.path!)
+                              ? "menu-dropdown-item-icon-active"
+                              : "menu-item-icon-inactive"
+                          }`}
+                        >
+                          <FaArrowCircleRight size={15} />
+                        </span>
+
+                        {subItem.name}
+                      </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        className="menu-dropdown-item menu-dropdown-item-inactive flex items-center gap-2 w-full cursor-default"
+                      >
+                        <span className="menu-item-icon-inactive">
+                          <FaArrowCircleRight size={15} />
+                        </span>
+
+                        {subItem.name}
+                      </button>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -274,10 +224,23 @@ export const AppSidebar: FC = () => {
     type: "main" | "others";
     index: number;
   } | null>(null);
+
+  const [openTertiaryMenu, setOpenTertiaryMenu] = useState<{
+    parentIndex: number;
+    childIndex: number;
+  } | null>(null);
+
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
     {},
   );
+
+  const [tertiaryMenuHeight, setTertiaryMenuHeight] = useState<
+    Record<string, number>
+  >({});
+
   const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  const tertiaryMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const isActive = useCallback((path: string) => path === pathname, [pathname]);
 
@@ -287,13 +250,31 @@ export const AppSidebar: FC = () => {
       const items = menuType === "main" ? navItems : othersItems;
       items.forEach((nav, index) => {
         if (nav.subItems) {
-          nav.subItems.forEach((subItem) => {
-            if (isActive(subItem.path)) {
+          nav.subItems.forEach((subItem, childIndex) => {
+            if (subItem.path && isActive(subItem.path)) {
               setOpenSubmenu({
                 type: menuType as "main" | "others",
                 index,
               });
+
               submenuMatched = true;
+            }
+            if (subItem.tertiaryItems) {
+              subItem.tertiaryItems.forEach((item) => {
+                if (isActive(item.path)) {
+                  setOpenSubmenu({
+                    type: menuType as "main" | "others",
+                    index,
+                  });
+
+                  setOpenTertiaryMenu({
+                    parentIndex: index,
+                    childIndex,
+                  });
+
+                  submenuMatched = true;
+                }
+              });
             }
           });
         }
@@ -316,6 +297,30 @@ export const AppSidebar: FC = () => {
     }
   }, [openSubmenu]);
 
+  useEffect(() => {
+    if (!openTertiaryMenu || !openSubmenu) return;
+
+    const tertiaryKey = `${openTertiaryMenu.parentIndex}-${openTertiaryMenu.childIndex}`;
+
+    if (tertiaryMenuRefs.current[tertiaryKey]) {
+      const tertiaryHeight =
+        tertiaryMenuRefs.current[tertiaryKey]?.scrollHeight || 0;
+
+      setTertiaryMenuHeight((prev) => ({
+        ...prev,
+        [tertiaryKey]: tertiaryHeight,
+      }));
+      const parentKey = `${openSubmenu.type}-${openSubmenu.index}`;
+
+      if (subMenuRefs.current[parentKey]) {
+        setSubMenuHeight((prev) => ({
+          ...prev,
+          [parentKey]: subMenuRefs.current[parentKey]?.scrollHeight || 0,
+        }));
+      }
+    }
+  }, [openTertiaryMenu, openSubmenu]);
+
   const handleSubmenuToggle = (index: number, menuType: "main" | "others") => {
     setOpenSubmenu((prevOpenSubmenu) => {
       if (
@@ -323,9 +328,14 @@ export const AppSidebar: FC = () => {
         prevOpenSubmenu.type === menuType &&
         prevOpenSubmenu.index === index
       ) {
+        setOpenTertiaryMenu(null);
         return null;
       }
-      return { type: menuType, index };
+      setOpenTertiaryMenu(null);
+      return {
+        type: menuType,
+        index,
+      };
     });
   };
 

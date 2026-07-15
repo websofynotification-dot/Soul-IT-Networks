@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect"
-import Foundation from "@/models/admin-model/AboutUs/Foundation";
+import Foundation from "@/models/admin-model/SoulIt/AboutUs/Foundation";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async () => {

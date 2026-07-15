@@ -12,11 +12,7 @@ export const careersMetadata = async (
       description: "This job post does not exist.",
     };
   }
-
   const { metaTitle, metaDescription, metaKeywords } = job;
-
-  console.log(job);
-  console.log(job.metaTitle);
 
   return {
     title: metaTitle,

@@ -2,7 +2,7 @@ import { getData } from "@/lib/getData";
 import { ContactCta } from "../Cta For Connect/ContactCta";
 import WhySpit from "@/models/admin-model/HomePage/WhySpit";
 import Sector from "@/models/admin-model/Customer/Sector";
-import WhoWeAre from "@/models/admin-model/AboutUs/WhoWeAre";
+import WhoWeAre from "@/models/admin-model/SoulIt/AboutUs/WhoWeAre";
 import { SupportAboutUs } from "./SupportAboutUs";
 import { SupportServices } from "./SupportService";
 import SupportService from "@/models/admin-model/support/SupportService";
