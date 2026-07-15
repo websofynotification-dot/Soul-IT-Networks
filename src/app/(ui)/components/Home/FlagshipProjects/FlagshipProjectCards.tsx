@@ -33,17 +33,17 @@ export const FlagshipProjectCards: React.FC<projectProps> = ({ projectData }) =>
                                         data-aos-delay={index * 100}
                                         className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-4 border border-secondary hover:border-transparent"
                                     >
-                                        <div className={`relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full  bg-primary/10 group-hover:scale-110 transition`}>
+                                        <div className={`relative flex items-center justify-center w-16 h-16 rounded-full  bg-primary/10 group-hover:scale-110 transition`}>
                                             <div className="text-2xl text-primary sm:text-3xl">
                                                 {projectsIcons[index % projectsIcons.length]}
                                             </div>
-                                            <div className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-40 transition"></div>
+                                            
                                         </div>
                                         <div className="flex-1 text-center sm:text-left">
                                             <h3 className="font-semibold text-20 text-MidnightNavyText   group-hover:text-primary transition">
                                                 {item.title}
                                             </h3>
-                                            <p className="text-15 text-SlateBlueText text-justify mt-1 leading-relaxed">
+                                            <p className="text-15 text-SlateBlueText text-center sm:text-justify mt-1 leading-relaxed">
                                                 {item.description}
                                             </p>
                                             <div className="mt-3 w-10 h-[2px] bg-primary mx-auto sm:mx-0 group-hover:w-16 transition-all" />

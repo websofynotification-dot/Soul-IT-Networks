@@ -1,8 +1,8 @@
-import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp, FaTwitter, FaGraduationCap, FaUserFriends, FaBullseye, FaRegLightbulb, FaRunning, FaWifi, FaRegUser, FaSatelliteDish, FaRegFile, FaBuilding } from "react-icons/fa";
-import { MdCorporateFare, MdOutlinePolicy, MdOutlineRemoveRedEye, MdOutlineRocketLaunch, MdOutlineScale, MdOutlineSettingsRemote } from "react-icons/md";
+import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp, FaTwitter, FaGraduationCap, FaUserFriends, FaBullseye, FaRegLightbulb, FaRunning, FaWifi, FaRegUser, FaSatelliteDish, FaRegFile, FaNetworkWired } from "react-icons/fa";
+import { MdCorporateFare, MdOutlinePolicy, MdOutlineRemoveRedEye, MdOutlineRocketLaunch, MdOutlineScale, MdOutlineSettingsRemote, MdSecurity } from "react-icons/md";
 import { FaArrowTrendDown, FaCode, FaHandHoldingMedical, FaLink, FaRegCircle, FaRegCompass } from "react-icons/fa6";
-import { FiDatabase, FiYoutube } from "react-icons/fi";
-import { LuCctv, LuSquareMenu, LuTwitter } from "react-icons/lu";
+import { FiDatabase, FiVideo, FiYoutube } from "react-icons/fi";
+import { LuCctv, LuNetwork, LuSquareMenu, LuTwitter } from "react-icons/lu";
 import { IoIosCamera, IoIosDesktop } from "react-icons/io";
 import { GrCloudSoftware } from "react-icons/gr";
 import { IoHardwareChipOutline, IoHome, IoTrendingUpOutline } from "react-icons/io5";
@@ -12,10 +12,12 @@ import { SiBmcsoftware, SiProcesswire } from "react-icons/si";
 import { GiHumanTarget, GiNetworkBars, GiProcessor } from "react-icons/gi";
 import { SlBadge } from "react-icons/sl";
 import { VscLaw } from "react-icons/vsc";
-import { TbWindElectricity } from "react-icons/tb";
+import { TbCloudComputing, TbWindElectricity } from "react-icons/tb";
 import { CgWebsite } from "react-icons/cg";
 import { TiMessages } from "react-icons/ti";
-import { RiCustomerService2Fill, RiTeamFill } from "react-icons/ri";
+import { RiBuilding2Line, RiCustomerService2Fill, RiCustomerService2Line, RiGovernmentLine, RiLineChartLine, RiLinksLine, RiNodeTree, RiServerLine, RiSettings3Line, RiShieldCheckLine, RiShieldKeyholeLine, RiStackLine, RiTeamFill } from "react-icons/ri";
+import { PiPresentationChart } from "react-icons/pi";
+import { AiOutlineRobot } from "react-icons/ai";
 
 export const socialMediaIcon = [
   <FaFacebook />,
@@ -52,12 +54,11 @@ export const sociaMediaBlogShearing = [
   },
 ];
 
+export const projectsIcons = [<RiBuilding2Line />, <RiShieldCheckLine />, <LuCctv />, <RiShieldKeyholeLine />];
 
-export const projectsIcons = [<LuSquareMenu />, <IoHome />, <HiOutlineBuildingOffice2 />, <IoIosDesktop />];
+export const serviceCardIcons = [<RiServerLine />, <FaNetworkWired />, <RiShieldKeyholeLine />, <TbCloudComputing />, <LuCctv />, <FiVideo />, <PiPresentationChart/>, <RiNodeTree/>, <AiOutlineRobot/>];
 
-export const serviceCardIcons = [<LuSquareMenu />, <IoIosDesktop />, <CiLock />, <CiCloud />, <FaGraduationCap />, <FaUserFriends />];
-
-export const whyChooseUsCardsIcons = [<MdOutlinePolicy />, <SiProcesswire />, <FaArrowTrendDown />, <GiProcessor />, <FaUserFriends />, <LuSquareMenu />];
+export const whyChooseUsCardsIcons = [<RiSettings3Line />, <RiGovernmentLine />, <RiStackLine />, <RiLinksLine />, <RiCustomerService2Line />, <RiLineChartLine />];
 
 export const foundationIcons = [<MdOutlineRemoveRedEye />, <FaBullseye />, <FaRegCompass />, <FaRegCircle />, <FaRegLightbulb />];
 

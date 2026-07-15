@@ -13,7 +13,7 @@ export const WhyChooseUsUser: React.FC<cardProps> = ({ cardData }) => {
                         Delivering Real Results,{" "}<span className="text-secondary">Beyond Promises</span>
                     </h2>
                     <p className="text-SlateBlueText font-normal sm:text-19  text-center m-auto">
-                        Every engagement with SPIT is built to deliver measurable outcomes—<br />
+                        Every engagement with SOUL It is built to deliver measurable outcomes—<br />
                         lower costs, higher uptime, and stronger security.
                     </p>
                 </div>
@@ -33,7 +33,7 @@ export const WhyChooseUsUser: React.FC<cardProps> = ({ cardData }) => {
                                             {whyChooseUsCardsIcons[index % whyChooseUsCardsIcons.length]}
                                         </div>
                                     </div>
-                                    <div className="pt-12 pb-6 px-6 text-center">
+                                    <div className="py-12 px-6 text-center">
                                         <h3 className="font-semibold text-20 text-MidnightNavyText">
                                             {card.title}
                                         </h3>

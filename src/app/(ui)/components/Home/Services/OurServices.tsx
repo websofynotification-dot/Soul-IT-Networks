@@ -16,7 +16,7 @@ export const OurServices: React.FC<cardProps> = ({ cardData }) => {
                         End-to-End IT Solutions,{" "}<span className="text-secondary">All Under One Roof</span>
                     </h2>
                     <p className="text-SlateBlueText font-normal sm:text-19  text-center m-auto">
-                        Six core capabilities. One partner you can rely on. <br />
+                        Nine core capabilities. One partner you can rely on. <br />
                         We simplify IT complexity so you can stay focused on your mission.
                     </p>
                 </div>
