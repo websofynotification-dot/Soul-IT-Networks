@@ -1,3 +1,4 @@
+"use client";
 import { cardProps } from "@/types/cardContext";
 import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
