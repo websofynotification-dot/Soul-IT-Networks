@@ -4,9 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { PreLoader } from '../Common/PreLoader'
 
 export const CustomersState: React.FC<cardProps> = ({ cardData }) => {
-    const statsData = Array.isArray(cardData) ? cardData.filter(item => item.description?.includes("customers")) : [];
+    const statsData = Array.isArray(cardData) ? cardData.filter(item => item.description?.includes("<customers/>")) : [];
     const [counts, setCounts] = useState(statsData.map(() => 0));
-
 
     useEffect(() => {
         statsData.forEach((stat, index) => {
@@ -29,7 +28,6 @@ export const CustomersState: React.FC<cardProps> = ({ cardData }) => {
 
     return (
         <section className="pt-12">
-
             <div className="container">
                 <div className="bg-gray-50 backdrop-blur-md
                     rounded-xl shadow-lg p-4 grid grid-cols-4 gap-4 border border-secondary">

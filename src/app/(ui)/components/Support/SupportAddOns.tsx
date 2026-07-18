@@ -7,8 +7,8 @@ import { supportServiceProps } from "@/types/supportServiceContext";
 import { IoArrowRedoCircleOutline } from "react-icons/io5";
 
 export const SupportAddOns: React.FC<supportServiceProps> = ({ supportServiceData }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 9;
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const recordsPerPage = 16;
   const totalPages = Math.ceil(supportServiceData.length / recordsPerPage);
 
   const currentData = supportServiceData.slice(
@@ -22,17 +22,16 @@ export const SupportAddOns: React.FC<supportServiceProps> = ({ supportServiceDat
         <div className="md:pb-12 text-center pb-8" data-aos="fade-up">
           <h3 className="text-primary uppercase">— Support Add-ons —</h3>
           <h2 className="pb-4 md:text-40 text-28 font-bold uppercase text-MidnightNavyText">
-            Support That{" "}<span className="text-secondary">Fits Your Needs</span>
+            Support Model That{" "}<span className="text-secondary">Fits Your Needs</span>
           </h2>
           <p className="text-SlateBlueText font-normal sm:text-19  text-center m-auto">
-            A range of flexible support frameworks designed to meet diverse <br />
-            operational and financial requirements.
+            Soul IT Networks recognizes that successful technology implementation <br /> extends beyond hardware supply.
           </p>
         </div>
         {
           currentData?.length === 0 ? <PreLoader /> :
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
 
               {currentData.map((item, index) => (
                 <div

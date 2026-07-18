@@ -13,8 +13,8 @@ export const CertificationCard: React.FC<cardProps> = ({ cardData }) => {
                         Certifications That{" "}<span className="text-secondary">Define Excellence</span>
                     </h2>
                     <p className="text-SlateBlueText font-normal sm:text-19  text-center m-auto">
-                        Backed by ISO certifications and CMMI Level 3, we adhere to rigorous global<br />
-                        standards across quality, security, and operational performance.
+                        Backed by ISO/IEC certifications, we adhere to rigorous global standards<br />
+                        across quality, security, and operational performance.
                     </p>
                 </div>
                 {

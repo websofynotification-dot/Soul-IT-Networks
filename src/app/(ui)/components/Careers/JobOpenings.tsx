@@ -18,7 +18,7 @@ export const JobOpenings: React.FC<jobProps & categoryProps> = ({ jobData, categ
     const jobCategory = categoryData?.filter(item => item.categoryType === "Job");
 
     return (
-        <Suspense fallback={<p>Loading blogs...</p>}>
+        <Suspense fallback={<p>Loading jobs...</p>}>
             <JobList jobData={jobData} categoryData={jobCategory} />
         </Suspense>
 

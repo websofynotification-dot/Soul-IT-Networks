@@ -1,6 +1,6 @@
 export const homePageMetaData = {
   title:
-    "Soul IT Networks | IT Infrastructure, System Integration & Software Solutions",
+    "Soul IT Networks | We Make Technology Accessible",
 
   description:
     "Soul IT Networks is a leading IT system integrator delivering IT infrastructure, video conferencing, surveillance, network security, cloud solutions, data center services, and customized software development for businesses across India.",
