@@ -1,9 +1,8 @@
 import { Schema, model, models } from "mongoose";
 
 const deliverySchema = new Schema({
-    title: { type: String, required: true },
     pageName: { type: String, required: true },
-    description: { type: String, default: "" },
-}, { timestamps: true });
+    keySteps: { type: [String], default:[], required: true },
+}, { timestamps: true, versionKey:false });
 
 export default models.Delivery || model("Delivery", deliverySchema);

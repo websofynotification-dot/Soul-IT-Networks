@@ -1,48 +1,69 @@
 "use client";
-import { ChangeEvent, useState } from "react";
-import { LiaCheckCircle } from "react-icons/lia";
-import { FiLoader } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
+import { LiaCheckCircle } from "react-icons/lia";
+import { FiLoader, FiMinus } from "react-icons/fi";
 import { GiCancel } from "react-icons/gi";
+import { ChangeEvent, useState } from "react";
+import { IoIosAdd } from "react-icons/io";
 import { ModalProps } from "@/types/modelContext";
-import { category } from "@/types/categoryContext";
 import { service } from "@/types/serviceContext";
 import Tooltip from "../../common/Tooltip";
 import Label from "../../form/Label";
+import { category } from "@/types/categoryContext";
 
 export const DeliveryModel: React.FC<ModalProps & { initialData?: service } & { pageCategory: category[] }> = ({ mode, onClose, onSave, initialData, loading, setLoading, showTooltip, tooltip, pageCategory }) => {
-
     const [form, setForm] = useState<service>(
         initialData || {
-            title: "",
             pageName: "",
-            description: "",
+            keySteps: [""],
         }
     );
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => setForm({ ...form, [e.target.name]: e.target.value });
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>, index?: number) => {
+        if (e.target.name === "keySteps") {
+            const updatedKeySteps = [...form.keySteps!];
+            updatedKeySteps[index!] = e.target.value;
+            setForm({ ...form, keySteps: updatedKeySteps });
+        } else {
+            setForm({ ...form, [e.target.name]: e.target.value });
+        }
+    };
 
     const handleSubmit = () => {
         setLoading(true);
-        if (!form.title || !form.pageName) {
-            showTooltip({ message: "Please fill title and page name!", type: "error" });
+        if (
+            !form.pageName ||
+            form.keySteps!.some((point: string) => !point.trim())
+        ) {
+            showTooltip({ message: "Please fill title!", type: "error" });
             setLoading(false);
             return;
         }
         onSave(form);
     };
 
-    const filterPageCategory = pageCategory.filter(item => item.categoryType === "Services");
+    const filterPageCategory = pageCategory.filter(item => item.categoryType === "Services") ;
 
+    const addKeyStepsField = () => {
+        setForm({ ...form, keySteps: [...form.keySteps!, ""] });
+    };
+
+    const removeKeyStepsField = (index: number) => {
+        const updatedKeystep = form.keySteps!.filter(
+            (_: string, i: number) => i !== index
+        );
+        setForm({ ...form, keySteps: updatedKeystep });
+    };
 
     return (
         <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center z-[9999] bg-black/60" onClick={onClose}>
             {tooltip && <Tooltip message={tooltip.message} type={tooltip.type} />}
             <div
-                className={`bg-white p-6 rounded-lg w-[95%] ${mode === "delete" ? "max-w-[500px]" : " max-w-[800px]"} max-h-[90vh] shadow-lg overflow-y-auto scroll-smooth hide-scrollbar`} onClick={(e) => e.stopPropagation()}
+                className={`bg-white p-6 rounded-lg w-[95%]  ${mode === "delete" ? "max-w-[500px]" : "max-w-[800px]"} max-h-[90vh] shadow-lg 
+                   overflow-y-auto scroll-smooth hide-scrollbar`} onClick={(e) => e.stopPropagation()}
             >
                 <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl">{mode === "edit" ? "Update" : mode === "delete" ? "Delete" : "Add"} Delivery</h2>
+                    <h2 className="text-xl font-semibold">{mode === "edit" ? "Update" : mode === "delete" ? "Delete" : "Add"} Delivery</h2>
                     <button
                         onClick={onClose}
                         className="cursor-pointer right-3 top-3 z-999 flex h-9.5 w-9.5 items-center justify-center rounded-full bg-primary/20 text-primary transition-colors hover:bg-transparent hover:text-secondary hover:border hover:border-secondary/30 sm:right-6 sm:top-6 sm:h-9 sm:w-9"
@@ -58,21 +79,10 @@ export const DeliveryModel: React.FC<ModalProps & { initialData?: service } & { 
                         <div className="space-y-4">
                             <div className="flex flex-col md:flex-row justify-center items-center gap-3">
                                 <div className="w-full">
-                                    <Label>Title</Label>
-                                    <input
-                                        name="title"
-                                        placeholder="Title"
-                                        className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded"
-                                        value={form.title}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-
-                                <div className="w-full">
                                     <Label>Page Name</Label>
                                     <select
                                         name="pageName"
-                                        className="border border-secondary shadow-secondary/20 shadow-md  cursor-pointer outline-none w-full p-2 rounded"
+                                        className="border border-secondary shadow-secondary/20 cursor-pointer shadow-md  outline-none w-full p-2 rounded"
                                         value={form.pageName}
                                         onChange={handleChange}
                                     >
@@ -84,26 +94,58 @@ export const DeliveryModel: React.FC<ModalProps & { initialData?: service } & { 
                                         }
                                     </select>
                                 </div>
-
                             </div>
 
-                            <div className="flex flex-col md:flex-row justify-center items-center gap-3">
-                                <div className="w-full">
-                                    <Label>Description</Label>
-                                    <textarea
-                                        name="description"
-                                        value={form.description}
-                                        placeholder="About your soul it data?"
-                                        rows={5}
-                                        onChange={handleChange}
-                                        className="border border-secondary shadow-secondary/20 shadow-md  outline-none w-full p-2 rounded resize-none"
-                                    />
+                            <div>
+                                <Label>Delivery Key Steps</Label>
+                                <div className="flex flex-col gap-3">
+                                    {form.keySteps!.map((keystep: string, index: number) => (
+                                        <div
+                                            key={index}
+                                            className="flex items-center gap-2"
+                                        >
+                                            <input
+                                                type="text"
+                                                name="keySteps"
+                                                placeholder={`Key step ${index + 1}`}
+                                                className="border border-secondary shadow-secondary/20 shadow-md  w-full p-2 rounded outline-none"
+                                                value={keystep}
+                                                onChange={(e) =>
+                                                    handleChange(e, index)
+                                                }
+                                            />
+
+                                            {form.keySteps!.length > 1 && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() =>
+                                                        removeKeyStepsField(index)
+                                                    }
+                                                    className="bg-error h-10 w-10 text-white px-3 py-1 rounded"
+                                                >
+                                                    <FiMinus />
+                                                </button>
+                                            )}
+
+                                            {index === form.keySteps!.length - 1 && (
+                                                <button
+                                                    type="button"
+                                                    onClick={addKeyStepsField}
+                                                    className="bg-success h-10 w-10 text-white px-3 py-1 rounded"
+                                                >
+                                                    <IoIosAdd />
+                                                </button>
+                                            )}
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
                     </>
-                )}
-                <div className="flex justify-end gap-3 mt-6">
+                )
+                }
+
+                < div className="flex justify-end gap-3 mt-6">
                     <button
                         className="bg-SlateBlueText/30 text-MidnightNavyText cursor-pointer flex items-center gap-2 px-3 py-1 rounded hover:opacity-80"
                         onClick={onClose}
@@ -129,9 +171,8 @@ export const DeliveryModel: React.FC<ModalProps & { initialData?: service } & { 
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
-
 
 

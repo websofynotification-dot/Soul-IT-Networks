@@ -7,6 +7,6 @@ const overviewSchema = new Schema({
     keySteps: { type: [String], default: [], required: true },
     image: { type: String, required: true },
     image_public_Id: { type: String, required: true },
-}, { timestamps: true });
+}, { timestamps: true, versionKey:false });
 
 export default models.Overview || model("Overview", overviewSchema);

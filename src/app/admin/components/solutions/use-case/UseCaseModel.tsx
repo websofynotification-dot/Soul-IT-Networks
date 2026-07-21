@@ -11,7 +11,6 @@ import Tooltip from "../../common/Tooltip";
 import Label from "../../form/Label";
 import { category } from "@/types/categoryContext";
 
-
 export const UseCaseModel: React.FC<ModalProps & { initialData?: service } & { pageCategory: category[] }> = ({ mode, onClose, onSave, initialData, loading, setLoading, showTooltip, tooltip, pageCategory }) => {
 
     const [form, setForm] = useState<service>(

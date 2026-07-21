@@ -5,7 +5,7 @@ import Delivery from "@/models/admin-model/Services/Delivery";
 export const GET = async () => {
     try {
         await dbConnect();
-        const deliveryData = await Delivery.find().sort({ createdAt: -1 });
+        const deliveryData = await Delivery.find().sort({ createdAt: -1 }).lean();
         return NextResponse.json({ success: true, data: deliveryData }, { status: 200 });
     } catch (error) {
         const err = error as Error;
@@ -20,13 +20,13 @@ export const GET = async () => {
 export const POST = async (req: NextRequest) => {
     try {
         await dbConnect();
-        const { title, pageName, description } = await req.json();
+        const { pageName, keySteps } = await req.json();
 
-        if (!title || !pageName) {
-            return NextResponse.json({ success: false, message: "Title and page name fields are required!" }, { status: 400 });
+        if (!keySteps || !pageName) {
+            return NextResponse.json({ success: false, message: "Page name and key stepsfields are required!" }, { status: 400 });
         }
 
-        const newDelivery = await Delivery.create({ title, pageName, description });
+        const newDelivery = await Delivery.create({ pageName, keySteps });
         return NextResponse.json({ message: "Delivery added successfully.", success: true, data: newDelivery });
     } catch (error) {
         const err = error as Error;

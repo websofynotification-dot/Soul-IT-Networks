@@ -23,8 +23,8 @@ export const WhyChoosSoulIt: React.FC<serviceProps & { title: string, subtitle: 
                     {
                         serviceData?.length === 0 ? <PreLoader /> :
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {serviceData.map((item, index) => (
-                                    <div key={item._id} data-aos="zoom-in-up" data-aos-delay={index * 120} className="group relative">
+                                {serviceData[0].keySteps!.map((step, index) => (
+                                    <div key={index} data-aos="zoom-in-up" data-aos-delay={index * 120} className="group relative">
                                         <div className={`relative bg-white border border-secondary rounded-2xl  p-5 pl-16 overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-2xl`}>
 
                                             <div className="absolute left-2 top-1/2 -translate-y-1/2">
@@ -39,7 +39,7 @@ export const WhyChoosSoulIt: React.FC<serviceProps & { title: string, subtitle: 
                                             <div className="relative z-10">
                                                 <h3 className={`font-semibold text-MidnightNavyText transition-all duration-500 group-hover:tracking-wide`}
                                                 >
-                                                    {item.title}
+                                                    {step}
                                                 </h3>
                                             </div>
                                             <div

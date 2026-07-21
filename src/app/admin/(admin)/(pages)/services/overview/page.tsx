@@ -1,4 +1,4 @@
-import { Overview } from '@/app/admin/components/services/overview/Overview';
+import { Overview } from '@/app/admin/components/common/overview/Overview';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -7,6 +7,6 @@ export const metadata: Metadata = {
     "Get an overview of our technology services, expertise, solutions, and business capabilities.",
 };
 
-const page = () => <Overview/>;
+const page = () => <Overview pageName='service'/>;
 
 export default page

@@ -18,7 +18,7 @@ export const Approach: React.FC = () => {
     const [tooltip, setTooltip] = useState<TooltipProps | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const [search, setSearch] = useState<SearchState>({ title: "", "page name": "" });
+    const [search, setSearch] = useState<SearchState>({"page name": "" });
     const [pageCategorydata, setPageCategorydata] = useState<category[]>([]);
     const recordsPerPage = 25;
 
@@ -39,8 +39,7 @@ export const Approach: React.FC = () => {
         setPageCategorydata(pageCategoryJson.data);
     };
 
-    const filteredData = data.filter(item => item.title?.toLowerCase().includes(search.title!.toLowerCase()) &&
-        item.pageName?.toLowerCase().includes(search["page name"]!.toLowerCase())
+    const filteredData = data.filter(item => item.pageName?.toLowerCase().includes(search["page name"]!.toLowerCase())
     );
 
     const totalPages = Math.ceil(filteredData.length / recordsPerPage);
@@ -101,7 +100,7 @@ export const Approach: React.FC = () => {
             </div>
 
             <div className="flex gap-3 mb-4 w-[15em]">
-                {[searchKeys[1], searchKeys[5]].map((key) => (
+                {[searchKeys[5]].map((key) => (
                     <input
                         key={key}
                         type="text"
@@ -115,7 +114,7 @@ export const Approach: React.FC = () => {
             <table className="min-w-full bg-white rounded shadow">
                 <thead>
                     <tr className="bg-primary text-white">
-                        {["Title", "Page Name", "Actions"].map((item, index) => (
+                        {["Page Name", "Actions"].map((item, index) => (
                             <th key={index} className="py-2 px-3 border">{item}</th>
                         ))}
                     </tr>
@@ -124,7 +123,6 @@ export const Approach: React.FC = () => {
                 <tbody>
                     {currentData.map((item) => (
                         <tr key={item._id} className="text-center">
-                            <td className="border border-secondary shadow-md shadow-secondary/20 p-2">{item.title}</td>
                             <td className="border border-secondary shadow-md shadow-secondary/20 p-2">{item.pageName}</td>
                             <td className="border border-secondary shadow-md shadow-secondary/20">
                                 <div className="flex mx-1 gap-2 justify-center">

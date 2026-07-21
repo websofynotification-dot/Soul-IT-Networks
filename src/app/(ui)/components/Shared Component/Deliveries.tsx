@@ -23,10 +23,10 @@ export const Deliveries: React.FC<serviceProps & { title: string, subtitle: stri
                     {
                         serviceData?.length === 0 ? <PreLoader /> :
                             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-                                {serviceData?.map((item, index) => {
+                                {serviceData[0].keySteps!.map((item, index) => {
 
                                     return (
-                                        <div key={item._id}
+                                        <div key={index}
                                             data-aos="fade-up"
                                             data-aos-delay={index * 120}
                                             className="group relative">
@@ -44,7 +44,7 @@ export const Deliveries: React.FC<serviceProps & { title: string, subtitle: stri
 
                                                     <h3 className={`my-3 p-3 rounded-xl text-MidnightNavyText font-semibold shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl`}
                                                     >
-                                                        {item.title}
+                                                        {item}
                                                     </h3>
                                                 </div>
                                             </div>

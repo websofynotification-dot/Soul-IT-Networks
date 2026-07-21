@@ -1,9 +1,8 @@
 import { model, models, Schema } from "mongoose";
 
 const whyChooseSoulItSchema = new Schema({
-    title: { type: String, required: true },
     pageName: { type: String, required: true },
-    description: { type: String, default: "" },
-}, { timestamps: true });
+    keySteps: { type: [String], default:[], required: true },
+}, { timestamps: true, versionKey:false });
 
 export default models.WhyChooseSoulIt || model("WhyChooseSoulIt", whyChooseSoulItSchema);   
