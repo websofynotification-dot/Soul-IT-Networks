@@ -110,7 +110,7 @@ export const TopbarUi: React.FC<topbarProps> = ({ topbarData }) => {
 
           <div className="hidden sm:flex items-center justify-center text-sm sm:justify-end gap-4">
             <p className="text-white">
-              Trusted IT System Integrator Since 2017
+              Trusted IT System Integrator Since 2021
             </p>
             <div className="h-5 w-px bg-white" />
             {topbarData &&

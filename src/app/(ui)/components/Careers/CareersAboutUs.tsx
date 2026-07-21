@@ -37,7 +37,7 @@ export const CareersAboutUs: React.FC<{ cardData: { whoWeAre: card[], featureJob
                         </div>
 
                         <div>
-                            <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-4 gap-12 sm:gap-6">
                                 {featureJob?.map((item, index) => (
                                     <div
                                         key={index}

@@ -55,7 +55,7 @@ export const JobDetailsPage: FC = () => {
 
   return (
     <div className="pt-8">
-      <div className="relative  overflow-hidden sm:h-80 mt-20 h-28">
+      <div className="relative  overflow-hidden sm:h-80 sm:mt-28 mt-8 h-28">
         <div className="absolute inset-0 ">
           {
             <Image

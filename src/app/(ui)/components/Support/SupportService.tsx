@@ -41,9 +41,9 @@ export const SupportServices: React.FC<supportServiceProps> = ({ supportServiceD
                   data-aos-delay={index * 120}
                   className="relative flex flex-col items-center group"
                 >
-                  <div className="w-16 h-10 sm:w-20 sm:h-20 rounded-full flex items-center justify-center relative z-10 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/30">
+                  <div className="w-16 h-16   sm:w-20 sm:h-20 rounded-full flex items-center justify-center relative z-10 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/30">
 
-                    <div className="relative w-8 h-8 sm:w-20 sm:h-20 rounded-full text-3xl overflow-hidden bg-primary text-white flex items-center justify-center transition-all duration-300 group-hover:scale-100">
+                    <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full text-3xl overflow-hidden bg-primary text-white flex items-center justify-center transition-all duration-300 group-hover:scale-100">
                       {supportServiceIcons[index % supportServiceIcons.length]}
                     </div>
                   </div>
@@ -93,97 +93,3 @@ export const SupportServices: React.FC<supportServiceProps> = ({ supportServiceD
 }
 
 
-
-
-
-const data = [
-  {
-    id: "01",
-    title: "INFOGRAPHIC",
-    desc: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    color: "bg-teal-500",
-    text: "text-teal-500",
-    image: "/images/sample1.jpg",
-  },
-  {
-    id: "02",
-    title: "INFOGRAPHIC",
-    desc: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    color: "bg-green-500",
-    text: "text-green-500",
-    image: "/images/sample2.jpg",
-  },
-  {
-    id: "03",
-    title: "INFOGRAPHIC",
-    desc: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    color: "bg-orange-500",
-    text: "text-orange-500",
-    image: "/images/sample3.jpg",
-  },
-  {
-    id: "04",
-    title: "INFOGRAPHIC",
-    desc: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    color: "bg-red-500",
-    text: "text-red-500",
-    image: "/images/sample4.jpg",
-  },
-];
-
-export default function TimelineCards() {
-
-
-  return (
-    <div className="container py-16 relative">
-
-      {/* TIMELINE LINE */}
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-
-        {data.map((item, index) => (
-          <div
-            key={index}
-            data-aos="fade-up"
-            data-aos-delay={index * 120}
-            className="relative flex flex-col items-center group"
-          >
-
-            {/* TOP BADGE */}
-            <div className={`w-16 h-10 sm:w-20 sm:h-20 bg-primary rounded-full flex items-center justify-center relative z-10`}>
-
-              {/* ICON / IMAGE */}
-              <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 32px, 40px"
-                />
-              </div>
-            </div>
-
-            {/* CARD */}
-            <div className="bg-white rounded-xl shadow-md px-5 py-6 text-center mt-[-10px] 
-              transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
-
-              <h3 className={`font-semibold text-sm mb-2 text-MidnightNavyText`}>
-                {item.title}
-              </h3>
-
-              <p className="text-xs text-gray-500 leading-relaxed">
-                {item.desc}
-              </p>
-
-              <div className={`mt-4 text-xl font-bold ${item.text}`}>
-                {item.id}
-              </div>
-            </div>
-          </div>
-        ))}
-
-      </div>
-    </div>
-  );
-}

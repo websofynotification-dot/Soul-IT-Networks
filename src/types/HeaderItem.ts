@@ -1,7 +1,7 @@
 export interface SubmenuItem { label: string, href: string }
 
 export interface HeaderItem {
-  _id: string;
+  _id?: string;
   primaryMenu: string;
   href: string;
   subMenu: boolean;

@@ -363,16 +363,16 @@ export const AppSidebar: FC = () => {
           {isExpanded || isHovered || isMobileOpen ? (
             <div className="w-64 flex justify-center items-center">
               <Image
-                src="/images/logo/soult-it-logo.png"
+                src="/images/logo/logo.png"
                 alt="Logo"
-                width={100}
+                width={130}
                 height={50}
                 className="h-auto w-auto"
               />
             </div>
           ) : (
             <Image
-              src="/images/logo/soult-it-logo.png"
+              src="/images/logo/logo.png"
               alt="Logo"
               width={500}
               height={500}

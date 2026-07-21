@@ -2,6 +2,7 @@ import { card } from "./cardContext";
 import { category } from "./categoryContext";
 import { footer } from "./footerContext";
 import { foundation } from "./foundationContext";
+import { HeaderItem } from "./HeaderItem";
 import { job } from "./jobContext";
 import { overview } from "./overviewContext";
 import { project } from "./projectContext";
@@ -14,7 +15,7 @@ import { topbar } from "./topbarContext";
 
 
 export type Mode = "create" | "edit" | "delete";
-export type Form = card | foundation | project | sector |  supportService | job | category | overview | service | footer | topbar | teams
+export type Form = card | foundation | project | sector |  supportService | job | category | overview | service | footer | topbar | teams | HeaderItem
 
 export interface ModalProps {
     mode: Mode;

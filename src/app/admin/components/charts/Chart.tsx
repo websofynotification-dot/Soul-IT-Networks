@@ -17,7 +17,6 @@ const DashboardPage = () => {
   const [contacts, setContacts] = useState<any[]>([]);
 
   const [loading, setLoading] = useState(true);
-
   const router = useRouter();
 
   useEffect(() => {

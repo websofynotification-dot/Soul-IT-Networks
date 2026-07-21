@@ -6,12 +6,12 @@ const Logo: React.FC = () => {
   return (
     <Link href="/">
       <Image
-        src="/images/logo/logo-1.png"
+        src="/images/logo/logo.png"
         alt="logo"
         width={160}
         height={50}
         quality={100}
-        className='sm:w-32 w-28'
+        className='sm:w-32 w-24'
         loading="eager"
       />
     </Link>

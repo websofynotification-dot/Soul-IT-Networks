@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ThreeDots } from "react-loader-spinner";
+import { ColorRing } from "react-loader-spinner";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,25 +33,25 @@ export default function HomePage() {
     <div className="flex flex-col h-screen items-center justify-center">
       <Link href="/">
         <Image
-          src="/images/logo/soult-it-logo.png"
+          src="/images/logo/logo.png"
           alt="logo"
           width={160}
           height={50}
           quality={100}
-          className='sm:w-44 w-10'
+          className="sm:w-80 w-60"
           loading="eager"
         />
       </Link>
-      <ThreeDots
+      <ColorRing
         visible={true}
-        height="50"
-        width="80"
-        color="#891503"
-        radius="9"
-        ariaLabel="three-dots-loading"
-        wrapperStyle={{}}
+        height="130"
+        width="130"
+        ariaLabel="color-ring-loading"
+        colors={["#891503", "#B88A2A", "#D9AE4A", "#891503", "#B88A2A"]}
       />
-      <p className="text-lg animate-pulse text-primary">Redirecting to sign in page....</p>
+      <p className="text-3xl animate-pulse text-primary">
+        Redirecting to sign in page....
+      </p>
     </div>
   );
 }

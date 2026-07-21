@@ -1,9 +1,13 @@
-"use client"
-import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { HeaderItem } from '@/types/HeaderItem';
-import { submenuServiceIcons, submenuSolutionIcons, submenuSoulItIcons } from '@/app/api/data';
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { HeaderItem } from "@/types/HeaderItem";
+import {
+  submenuServiceIcons,
+  submenuSolutionIcons,
+  submenuSoulItIcons,
+} from "@/app/api/data";
 
 const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
   const [submenuOpen, setSubmenuOpen] = useState(false);
@@ -14,31 +18,45 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
       setSubmenuOpen(true);
     }
   };
-  
+
   const handleMouseLeave = () => {
     setSubmenuOpen(false);
   };
 
-
   const isActive = path === item.href;
   const isActiveSubmenu = item.secondaryMenu?.some(
-    (subItem) => subItem.href === path
+    (subItem) => subItem.href === path,
   );
 
   return (
     <li
-      className={` ${item.secondaryMenu ? "relative" : ""} ${item.primaryMenu === "Speakers" ? 'xl:block hidden' : "block"}`}
+      className={` ${item.secondaryMenu ? "relative" : ""} ${item.primaryMenu === "Speakers" ? "xl:block hidden" : "block"}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link href={item.href} className={`text-[15px] transition-all duration-300 ease-in-out !text-MidnightNavyText py-3 uppercase  flex font-semibold  ${isActive || isActiveSubmenu ? '!text-white bg-primary p-2 rounded' : '!text-SlateBlueText hover:!text-primary'}
+      <Link
+        href={item.href}
+        className={`text-[15px] transition-all duration-300 ease-in-out !text-MidnightNavyText py-3 uppercase  flex font-semibold  ${isActive || isActiveSubmenu ? "!text-white bg-primary p-2 rounded" : "!text-SlateBlueText hover:!text-primary"}
 
-      ${path.startsWith(`/${item.primaryMenu.toLowerCase()}`) ? '!text-MidnightNavyText' : "!text-MidnightNavyText "}`}>
+      ${path.startsWith(`/${item.primaryMenu.toLowerCase()}`) ? "!text-MidnightNavyText" : "!text-MidnightNavyText "}`}
+      >
         {item.primaryMenu}
 
         {item.subMenu && (
-          <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
-            <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m7 10l5 5l5-5" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.5em"
+            height="1.5em"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
+              d="m7 10l5 5l5-5"
+            />
           </svg>
         )}
       </Link>

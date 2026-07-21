@@ -6,9 +6,10 @@ import MobileHeaderLink from "./Navigation/MobileHeaderLink";
 import { IoMdMenu } from "react-icons/io";
 import { MenuProps } from "@/types/HeaderItem";
 import { PreLoader } from "../../Common/PreLoader";
+import { useData } from "@/app/context/DataContext";
 
 export const Menu: React.FC<MenuProps> = ({ headerData }) => {
-  const [navbarOpen, setNavbarOpen] = useState(false);
+  const { navbarOpen, setNavbarOpen } = useData();
   const [sticky, setSticky] = useState(false);
   const [hideTopbar, setHideTopbar] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -45,7 +46,7 @@ export const Menu: React.FC<MenuProps> = ({ headerData }) => {
   return (
     <>
       <header
-        className={`fixed sm:h-16 h-12 bg-white z-50 w-full transition-all duration-300 ${hideTopbar ? "top-0" : "top-5 sm:top-6 lg:top-12"} ${sticky ? "shadow-lg" : "shadow-none"}`}
+        className={`fixed sm:h-16 h-12 bg-white z-50 w-full transition-all duration-300 ${hideTopbar ? "top-0" : "top-4 sm:top-6 lg:top-12"} ${sticky ? "shadow-lg" : "shadow-none"}`}
       >
         <div className="container">
           <div className="flex items-center justify-between  sm:py-2 ">

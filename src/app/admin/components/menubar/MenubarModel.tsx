@@ -7,34 +7,30 @@ import { FiLoader, FiMinus } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import { GiCancel } from "react-icons/gi";
 import { IoIosAdd } from "react-icons/io";
+import { ModalProps } from "@/types/modelContext";
+import { HeaderItem } from "@/types/HeaderItem";
 
-export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
-  const [tooltip, setTooltip] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-
-  // const [form, setForm] = useState(
-  //     initialData || {
-  //         primaryMenu: "",
-  //         href: "",
-  //         subMenu: false,
-  //         secondaryMenu: [{ label: "", href: "" }],
-  //     }
-  // );
-
-  const [form, setForm] = useState({
+export const MenubarModel: React.FC<
+  ModalProps & { initialData?: HeaderItem }
+> = ({
+  mode,
+  onClose,
+  onSave,
+  initialData,
+  loading,
+  setLoading,
+  showTooltip,
+  tooltip,
+}) => {
+  const [form, setForm] = useState<HeaderItem>({
     primaryMenu: initialData?.primaryMenu || "",
     href: initialData?.href || "",
     subMenu: initialData?.subMenu || false,
     secondaryMenu:
-      initialData?.secondaryMenu?.length > 0
-        ? initialData.secondaryMenu
+      initialData?.secondaryMenu?.length! > 0
+        ? initialData!.secondaryMenu
         : [{ label: "", href: "" }],
   });
-
-  const showTooltip = (message: string, type: any = "info") => {
-    setTooltip({ message, type });
-    setTimeout(() => setTooltip(null), 3000);
-  };
 
   const handleChange = (e: any) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -43,13 +39,16 @@ export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
     setLoading(true);
 
     if (!form.primaryMenu) {
-      showTooltip("Primary menu is required!", "error");
+      showTooltip({ message: "Primary menu is required!", type: "error" });
       setLoading(false);
       return;
     }
 
     if (!form.subMenu && !form.href) {
-      showTooltip("URL is required for primary menu!", "error");
+      showTooltip({
+        message: "URL is required for primary menu!",
+        type: "error",
+      });
       setLoading(false);
       return;
     }
@@ -58,7 +57,7 @@ export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
       form.subMenu &&
       form.secondaryMenu.some((item: any) => !item.label || !item.href)
     ) {
-      showTooltip("Fill all submenu fields!", "error");
+      showTooltip({ message: "Fill all submenu fields!", type: "error" });
       setLoading(false);
       return;
     }
@@ -141,14 +140,6 @@ export const MenubarModel = ({ mode, onClose, onSave, initialData }: any) => {
                     <input
                       type="radio"
                       checked={form.subMenu}
-                      //   onChange={() =>
-                      //     setForm((prev: any) => ({
-                      //       ...prev,
-                      //       subMenu: true,
-                      //       href: "",
-                      //     }))
-                      //   }
-
                       onChange={() =>
                         setForm((prev: any) => ({
                           ...prev,

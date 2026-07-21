@@ -20,15 +20,12 @@ export default function AuthLayout({
             <div className="flex flex-col gap-3 items-center">
               <Link href="/admin" className="block">
                 <Image
-                  width={150}
+                  width={350}
                   height={200}
-                  src="/images/logo/soult-it-logo.png"
+                  src="/images/logo/logo.png"
                   alt="Logo"
                 />
               </Link>
-              <p className="text-center uppercase font-semibold font-serif text-primary text-sm sm:text-xl">
-                SoUl IT Networks 
-              </p>
             </div>
           </div>
         </div>

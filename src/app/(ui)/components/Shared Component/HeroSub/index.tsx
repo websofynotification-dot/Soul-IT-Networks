@@ -26,7 +26,7 @@ const HeroSub: FC<HeroSubProps> = ({
     }, [imageSrc]);
     
     return (
-        <section className="relative sm:pt-36 pt-5  overflow-hidden sm:h-80 mt-20 h-28">
+        <section className="relative sm:pt-36 pt-5  overflow-hidden sm:h-80 sm:mt-28 mt-16 h-28">
             <div className="absolute inset-0">
                 {
                     imgSrc && <Image

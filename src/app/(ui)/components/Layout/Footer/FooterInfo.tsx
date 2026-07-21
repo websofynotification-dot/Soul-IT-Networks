@@ -195,7 +195,7 @@ export const FooterInfo: React.FC<footerProps & topbarProps> = ({
 
           <div className="border-t border-white my-8"></div>
 
-          <ul className="flex container my-8 flex-wrap gap-4 items-center justify-center">
+          {/* <ul className="flex container my-8 flex-wrap gap-4 items-center justify-center">
             {footerData[0]?.otherLinks.map((item, index) => (
               <li key={index}>
                 <Link
@@ -206,7 +206,7 @@ export const FooterInfo: React.FC<footerProps & topbarProps> = ({
                 </Link>
               </li>
             ))}
-          </ul>
+          </ul> */}
 
           <div className="flex sm:flex-row flex-col container justify-center">
             <p className="text-center text-white text-[14px] leading-relaxed">
