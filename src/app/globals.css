@@ -12,7 +12,7 @@
   clip-path: inset(0 100% 0 0);
   transition: clip-path 1.2s ease-out;
 }
-
+    
 .mask-reveal.show {
   clip-path: inset(0 0 0 0);
 }
